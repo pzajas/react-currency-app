@@ -1,10 +1,21 @@
-const CurrencyList = ({ everyCurrency, popularCurrency }) => {
+import CurrencyCard from "./CurrencyCard"
+
+import "./CurrencyList.css"
+
+const CurrencyList = ({ everyCurrency, popularCurrency, baseCurrency }) => {
   return (
-    <div>
+    <div className="master">
       {popularCurrency.map(({ currency, country }) => (
-        <li>
-          {currency} {country}
-        </li>
+        <ul className="currency-list">
+          <li className="currency-list-item">
+            <CurrencyCard
+              currency={currency}
+              country={country}
+              everyCurrency={everyCurrency}
+              baseCurrency={baseCurrency}
+            />
+          </li>
+        </ul>
       ))}
     </div>
   )
