@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios"
+import React, { useState, useEffect } from "react"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css"
+
+const App = () => {
+  const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=PLN`
+
+  const [currencyList, setCurrencyList] = useState([])
+  const [baseCurrency, setBaseCurrency] = useState(currencyApiUrl.slice(-3))
+
+  useEffect(() => {
+    axios.get(currencyApiUrl).then((response) => {
+      setCurrencyList(response.data.data)
+    })
+  }, [])
+
+  return <div className="App"></div>
 }
 
-export default App;
+export default App
