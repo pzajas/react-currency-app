@@ -1,7 +1,6 @@
 import axios from "axios"
 import React, { useState, useEffect } from "react"
 
-import "./App.css"
 import CurrencyList from "./components/CurrencyList"
 
 const App = () => {
@@ -32,6 +31,7 @@ const App = () => {
       <CurrencyList
         everyCurrency={everyCurrency}
         popularCurrency={popularCurrency}
+        baseCurrency={baseCurrency}
       />
     </div>
   )
