@@ -31,3 +31,7 @@
   background-color: rgb(228, 216, 216);
   border: none;
 }
+
+.input {
+  width: 40px;
+}
