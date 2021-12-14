@@ -1,12 +1,25 @@
 import "./CurrencyCard.css"
 
-const CurrencyCard = ({ everyCurrency, baseCurrency, currency, country }) => {
+const CurrencyCard = ({
+  everyCurrency,
+  baseCurrency,
+  currency,
+  country,
+  setBaseCurrency,
+}) => {
+  const currencyPrice = parseFloat(everyCurrency[currency])
+
+  const handleBaseCurrency = () => {
+    setBaseCurrency(currency)
+  }
+
   return (
     <div className="currency-card">
       {currency}
       <div className="value">
-        {parseFloat(everyCurrency[currency])} {baseCurrency}
+        {currencyPrice} {baseCurrency}
       </div>
+      <button onClick={handleBaseCurrency}>Set Curr</button>
       <img
         className="country-flag"
         height="50px"

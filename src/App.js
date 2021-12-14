@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react"
 
 import CurrencyList from "./components/CurrencyList"
 
-const App = () => {
-  const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=PLN`
+import "./App.css"
 
+const App = () => {
   const [everyCurrency, setEveryCurrency] = useState([])
-  const [baseCurrency, setBaseCurrency] = useState(currencyApiUrl.slice(-3))
+  const [baseCurrency, setBaseCurrency] = useState("PLN")
+
+  const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
 
   const popularCurrency = [
     { currency: "PLN", country: "pl" },
@@ -24,15 +26,18 @@ const App = () => {
     axios.get(currencyApiUrl).then((response) => {
       setEveryCurrency(response.data.data)
     })
-  }, [])
+  }, [baseCurrency])
 
   return (
     <div className="App">
-      <CurrencyList
-        everyCurrency={everyCurrency}
-        popularCurrency={popularCurrency}
-        baseCurrency={baseCurrency}
-      />
+      <div className="xxx">
+        <CurrencyList
+          everyCurrency={everyCurrency}
+          popularCurrency={popularCurrency}
+          baseCurrency={baseCurrency}
+          setBaseCurrency={setBaseCurrency}
+        />
+      </div>
     </div>
   )
 }
