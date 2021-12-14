@@ -1,16 +1,23 @@
 .currency-card {
   box-sizing: border-box;
-  background-color: rgb(193, 214, 221);
+  background-color: #343441;
   display: flex;
+  justify-content: space-between;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  /* display: flex;
   border-radius: 10px;
-  width: 650px;
+  width: 450px;
   height: 100px;
   font-size: 35px;
   justify-content: space-between;
   padding: 10px;
-  align-items: center;
+  align-items: center; */
 }
 
 .country-flag {
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }

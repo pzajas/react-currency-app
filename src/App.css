@@ -1,4 +1,11 @@
-@media (prefers-reduced-motion: no-preference) {
+.xxx {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
@@ -15,4 +22,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
