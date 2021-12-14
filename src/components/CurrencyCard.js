@@ -9,7 +9,7 @@ const CurrencyCard = ({
   country,
   setBaseCurrency,
 }) => {
-  const [input, setInput] = useState()
+  const [input, setInput] = useState(0)
   const [showInput, setShowInput] = useState(false)
   const currencyPrice = parseFloat(everyCurrency[currency])
 
@@ -44,7 +44,12 @@ const CurrencyCard = ({
       <div className="value">{currencyPrice.toFixed(4)}</div>
       {showInput ? (
         <div>
-          <input autoFocus="true" value={input} onChange={handleInput} />
+          <input
+            className="input"
+            autoFocus={true}
+            value={input}
+            onChange={handleInput}
+          />
           <div>{convertedValue > 0 ? convertedValue : "0.0000"}</div>
         </div>
       ) : null}

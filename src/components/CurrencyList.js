@@ -13,7 +13,7 @@ const CurrencyList = ({
     <div className="master">
       <div className="title-bar">CURRENCY CONVERTER</div>
       {popularCurrency.map(({ currency, country }) => (
-        <ul className="currency-list">
+        <ul className="currency-list" key={currency}>
           <li className="currency-list-item">
             <CurrencyCard
               currency={currency}
@@ -26,6 +26,7 @@ const CurrencyList = ({
           </li>
         </ul>
       ))}
+      <div className="base-currency">{baseCurrency}</div>
       <button className="add-btn">ADD CURRENCY</button>
     </div>
   )
