@@ -4,10 +4,9 @@
   display: flex;
   justify-content: space-between;
   color: white;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 5px;
+  height: 50px;
   /* display: flex;
   border-radius: 10px;
   width: 450px;
@@ -18,6 +17,17 @@
   align-items: center; */
 }
 
+.currency-card:hover {
+  background-color: #515164;
+}
+
 .country-flag {
-  /* border-radius: 10px; */
+  /* border-radius: 50%; */
+}
+
+.base-btn {
+  height: 30px;
+  width: 50px;
+  background-color: rgb(228, 216, 216);
+  border: none;
 }

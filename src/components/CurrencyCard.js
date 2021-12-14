@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react"
+
 import "./CurrencyCard.css"
 
 const CurrencyCard = ({
@@ -7,29 +9,49 @@ const CurrencyCard = ({
   country,
   setBaseCurrency,
 }) => {
+  const [input, setInput] = useState()
+  const [showInput, setShowInput] = useState(false)
   const currencyPrice = parseFloat(everyCurrency[currency])
+
+  const convertedValue = (input * currencyPrice).toFixed(4)
 
   const handleBaseCurrency = () => {
     setBaseCurrency(currency)
   }
 
+  const handleInput = (event) => {
+    setInput(event.target.value)
+  }
+
+  const handleShowInput = () => {
+    setShowInput(showInput ? false : true)
+  }
+
   return (
     <div className="currency-card">
-      {currency}
-      <div className="value">
-        {currencyPrice} {baseCurrency}
-      </div>
-      <button onClick={handleBaseCurrency}>Set Curr</button>
       <img
+        onClick={handleShowInput}
         className="country-flag"
-        height="50px"
-        width="60px"
+        height="30px"
+        width="50px"
         src={
           "https://www.worldometers.info/img/flags/" +
           `${country}` +
           "-flag.gif"
         }
       />
+      {currency}
+      <div className="value">{currencyPrice.toFixed(4)}</div>
+      {showInput ? (
+        <div>
+          <input autoFocus="true" value={input} onChange={handleInput} />
+          <div>{convertedValue > 0 ? convertedValue : "0.0000"}</div>
+        </div>
+      ) : null}
+
+      <button className="base-btn" onClick={handleBaseCurrency}>
+        {baseCurrency}
+      </button>
     </div>
   )
 }
