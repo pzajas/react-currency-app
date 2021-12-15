@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 import "./CurrencyCard.css"
 
@@ -7,10 +7,10 @@ const CurrencyCard = ({
   baseCurrency,
   currency,
   country,
+  input,
   setBaseCurrency,
 }) => {
-  const [input, setInput] = useState(0)
-  const [showInput, setShowInput] = useState(false)
+  const [convertedCurrency, setConvertedCurrency] = useState(false)
   const currencyPrice = parseFloat(everyCurrency[currency])
 
   const convertedValue = (input * currencyPrice).toFixed(4)
@@ -19,18 +19,16 @@ const CurrencyCard = ({
     setBaseCurrency(currency)
   }
 
-  const handleInput = (event) => {
-    setInput(event.target.value)
-  }
-
-  const handleShowInput = () => {
-    setShowInput(showInput ? false : true)
+  const handleConvertCurrency = () => {
+    setConvertedCurrency(convertedCurrency ? false : true)
   }
 
   return (
-    <div className="currency-card">
+    <div
+      onClick={handleConvertCurrency}
+      className={convertedCurrency ? "currency-card-yellow" : "currency-card"}
+    >
       <img
-        onClick={handleShowInput}
         className="country-flag"
         height="30px"
         width="50px"
@@ -42,18 +40,7 @@ const CurrencyCard = ({
       />
       {currency}
       <div className="value">{currencyPrice.toFixed(4)}</div>
-      {showInput ? (
-        <div>
-          <input
-            className="input"
-            autoFocus={true}
-            value={input}
-            onChange={handleInput}
-          />
-          <div>{convertedValue > 0 ? convertedValue : "0.0000"}</div>
-        </div>
-      ) : null}
-
+      {convertedCurrency ? <div>{convertedValue}</div> : "0.0000"}
       <button className="base-btn" onClick={handleBaseCurrency}>
         {baseCurrency}
       </button>

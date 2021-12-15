@@ -7,14 +7,19 @@
   align-items: center;
   padding: 5px;
   height: 50px;
-  /* display: flex;
-  border-radius: 10px;
-  width: 450px;
-  height: 100px;
-  font-size: 35px;
+}
+
+.currency-card-yellow {
+  box-sizing: border-box;
+  background-color: #343441;
+  display: flex;
   justify-content: space-between;
-  padding: 10px;
-  align-items: center; */
+  color: white;
+  align-items: center;
+  padding: 5px;
+  height: 50px;
+  border: solid 2px yellow;
+  border-color: yellow;
 }
 
 .currency-card:hover {

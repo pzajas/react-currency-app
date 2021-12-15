@@ -48,3 +48,24 @@
   text-align: center;
   background-color: rgb(180, 180, 180);
 }
+
+.currency-input {
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  width: 70%;
+}
+
+.currency-input:focus,
+.currency-select:focus {
+  outline: none;
+}
+
+.currency-select {
+  width: 19%;
+  height: 21px;
+}
+
+.input-form {
+  display: flex;
+}

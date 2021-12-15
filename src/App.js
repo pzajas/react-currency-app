@@ -9,6 +9,8 @@ const App = () => {
   const [everyCurrency, setEveryCurrency] = useState([])
   const [baseCurrency, setBaseCurrency] = useState("PLN")
 
+  const [input, setInput] = useState("")
+
   const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
 
   const popularCurrency = [
@@ -28,6 +30,10 @@ const App = () => {
     })
   }, [baseCurrency])
 
+  const handleInputChange = (event) => {
+    setInput(event.target.value)
+  }
+
   return (
     <div className="App">
       <div className="xxx">
@@ -36,6 +42,8 @@ const App = () => {
           popularCurrency={popularCurrency}
           baseCurrency={baseCurrency}
           setBaseCurrency={setBaseCurrency}
+          input={input}
+          handleInputChange={handleInputChange}
         />
       </div>
     </div>
