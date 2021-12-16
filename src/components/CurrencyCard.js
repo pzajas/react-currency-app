@@ -32,11 +32,7 @@ const CurrencyCard = ({
         className="country-flag"
         height="30px"
         width="50px"
-        src={
-          "https://www.worldometers.info/img/flags/" +
-          `${country}` +
-          "-flag.gif"
-        }
+        src={`https://www.worldometers.info/img/flags/${country}-flag.gif`}
       />
       {currency}
       <div className="value">{currencyPrice.toFixed(4)}</div>

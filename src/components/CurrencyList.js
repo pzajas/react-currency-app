@@ -7,14 +7,44 @@ const CurrencyList = ({
   everyCurrency,
   popularCurrency,
   baseCurrency,
+  setPopularCurrency,
   currencyPrice,
   setBaseCurrency,
   input,
   handleInputChange,
 }) => {
-  const handleSelectChange = (event) => {
+  const [addCurrencyClick, setAddCurrencyClick] = useState(true)
+
+  const [addCurrencyInput, setAddCurrencyInput] = useState("")
+  const [addCountryInput, setAddCountryInput] = useState("")
+
+  const handleToggleAddCurrencyButton = () => {
+    setAddCurrencyClick(addCurrencyClick ? false : true)
+  }
+
+  const handleAddCurrencyInput = event => {
+    setAddCurrencyInput(event.target.value.toUpperCase())
+  }
+
+  const handleAddCountryInput = event => {
+    setAddCountryInput(event.target.value.toLowerCase())
+  }
+
+  const handleSelectChange = event => {
     setBaseCurrency(event.target.value)
   }
+
+  const handleSubmitCurrency = event => {
+    event.preventDefault()
+
+    setPopularCurrency([
+      ...popularCurrency,
+      { currency: addCurrencyInput, country: addCountryInput },
+    ])
+
+    setAddCurrencyClick(true)
+  }
+
   return (
     <div className="master">
       <div className="title-bar">CURRENCY CONVERTER</div>
@@ -46,7 +76,17 @@ const CurrencyList = ({
           </li>
         </ul>
       ))}
-      <button className="add-btn">ADD CURRENCY</button>
+      {addCurrencyClick ? (
+        <button onClick={handleToggleAddCurrencyButton} className="add-btn">
+          ADD CURRENCY
+        </button>
+      ) : (
+        <form>
+          <input value={addCurrencyInput} onChange={handleAddCurrencyInput} />
+          <input value={addCountryInput} onChange={handleAddCountryInput} />
+          <button onClick={handleSubmitCurrency}>Submit</button>
+        </form>
+      )}
     </div>
   )
 }
