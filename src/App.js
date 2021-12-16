@@ -13,7 +13,7 @@ const App = () => {
 
   const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
 
-  const popularCurrency = [
+  const [popularCurrency, setPopularCurrency] = useState([
     { currency: "PLN", country: "pl" },
     { currency: "CAD", country: "ca" },
     { currency: "USD", country: "us" },
@@ -22,15 +22,15 @@ const App = () => {
     { currency: "AUD", country: "as" },
     { currency: "NOK", country: "no" },
     { currency: "CZK", country: "ez" },
-  ]
+  ])
 
   useEffect(() => {
-    axios.get(currencyApiUrl).then((response) => {
+    axios.get(currencyApiUrl).then(response => {
       setEveryCurrency(response.data.data)
     })
   }, [baseCurrency])
 
-  const handleInputChange = (event) => {
+  const handleInputChange = event => {
     setInput(event.target.value)
   }
 
@@ -40,6 +40,7 @@ const App = () => {
         <CurrencyList
           everyCurrency={everyCurrency}
           popularCurrency={popularCurrency}
+          setPopularCurrency={setPopularCurrency}
           baseCurrency={baseCurrency}
           setBaseCurrency={setBaseCurrency}
           input={input}
