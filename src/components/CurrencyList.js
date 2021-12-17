@@ -42,6 +42,8 @@ const CurrencyList = ({
       { currency: addCurrencyInput, country: addCountryInput },
     ])
 
+    setAddCurrencyInput("")
+    setAddCountryInput("")
     setAddCurrencyClick(true)
   }
 
@@ -72,6 +74,8 @@ const CurrencyList = ({
               currencyPrice={currencyPrice}
               setBaseCurrency={setBaseCurrency}
               input={input}
+              popularCurrency={popularCurrency}
+              setPopularCurrency={setPopularCurrency}
             />
           </li>
         </ul>

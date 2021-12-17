@@ -28,7 +28,7 @@ const App = () => {
     axios.get(currencyApiUrl).then(response => {
       setEveryCurrency(response.data.data)
     })
-  }, [baseCurrency])
+  }, [baseCurrency, currencyApiUrl])
 
   const handleInputChange = event => {
     setInput(event.target.value)

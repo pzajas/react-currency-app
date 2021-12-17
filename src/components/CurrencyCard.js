@@ -8,16 +8,13 @@ const CurrencyCard = ({
   currency,
   country,
   input,
-  setBaseCurrency,
+  popularCurrency,
+  setPopularCurrency,
 }) => {
   const [convertedCurrency, setConvertedCurrency] = useState(false)
   const currencyPrice = parseFloat(everyCurrency[currency])
 
   const convertedValue = (input * currencyPrice).toFixed(4)
-
-  const handleBaseCurrency = () => {
-    setBaseCurrency(currency)
-  }
 
   const handleConvertCurrency = () => {
     setConvertedCurrency(convertedCurrency ? false : true)
@@ -25,21 +22,23 @@ const CurrencyCard = ({
 
   return (
     <div
-      onClick={handleConvertCurrency}
+      // onClick={handleConvertCurrency}
       className={convertedCurrency ? "currency-card-yellow" : "currency-card"}
     >
-      <img
-        className="country-flag"
-        height="30px"
-        width="50px"
-        src={`https://www.worldometers.info/img/flags/${country}-flag.gif`}
-      />
-      {currency}
-      <div className="value">{currencyPrice.toFixed(4)}</div>
-      {convertedCurrency ? <div>{convertedValue}</div> : "0.0000"}
-      <button className="base-btn" onClick={handleBaseCurrency}>
-        {baseCurrency}
-      </button>
+      <div className="first-two">
+        <img
+          className="flag"
+          alt="country flag"
+          height="30px"
+          width="50px"
+          src={`https://www.worldometers.info/img/flags/${country}-flag.gif`}
+        />
+        <div>{currency}</div>
+      </div>
+
+      <div className="value-to-convert">
+        {convertedValue} {baseCurrency}
+      </div>
     </div>
   )
 }
