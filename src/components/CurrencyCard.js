@@ -29,9 +29,10 @@ const CurrencyCard = ({
         <img
           className="flag"
           alt="country flag"
-          height="30px"
-          width="50px"
-          src={`https://www.worldometers.info/img/flags/${country}-flag.gif`}
+          height="40px"
+          width="60px"
+          // src={`https://www.worldometers.info/img/flags/${country}-flag.gif`}
+          src={`https://flagpedia.net/data/flags/w580/${country}.png`}
         />
         <div>{currency}</div>
       </div>

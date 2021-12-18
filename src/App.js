@@ -17,11 +17,11 @@ const App = () => {
     { currency: "PLN", country: "pl" },
     { currency: "CAD", country: "ca" },
     { currency: "USD", country: "us" },
-    { currency: "CHF", country: "sz" },
+    { currency: "CHF", country: "ch" },
     { currency: "RUB", country: "rs" },
-    { currency: "AUD", country: "as" },
+    { currency: "AUD", country: "au" },
     { currency: "NOK", country: "no" },
-    { currency: "CZK", country: "ez" },
+    { currency: "CZK", country: "cz" },
   ])
 
   useEffect(() => {

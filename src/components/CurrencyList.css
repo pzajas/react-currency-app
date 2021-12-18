@@ -69,3 +69,15 @@
 .input-form {
   display: flex;
 }
+
+.form-input-currency {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 8px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+}
+
+.currency-inp {
+  width: 74.5%;
+}
