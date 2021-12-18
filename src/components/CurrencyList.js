@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 import CurrencyCard from "./CurrencyCard"
 import "./CurrencyList.css"
@@ -16,7 +16,6 @@ const CurrencyList = ({
   const [addCurrencyClick, setAddCurrencyClick] = useState(true)
 
   const [addCurrencyInput, setAddCurrencyInput] = useState("")
-  const [addCountryInput, setAddCountryInput] = useState("")
 
   const handleToggleAddCurrencyButton = () => {
     setAddCurrencyClick(addCurrencyClick ? false : true)
@@ -26,27 +25,31 @@ const CurrencyList = ({
     setAddCurrencyInput(event.target.value.toUpperCase())
   }
 
-  const handleAddCountryInput = event => {
-    setAddCountryInput(event.target.value.toLowerCase())
-  }
-
   const handleSelectChange = event => {
     setBaseCurrency(event.target.value)
   }
+
+  let ppp = ""
+
+  const inp = popularCurrency.filter(({ currency, country }) =>
+    currency === addCurrencyInput ? (ppp = country) : null
+  )
 
   const handleSubmitCurrency = event => {
     event.preventDefault()
 
     setPopularCurrency([
       ...popularCurrency,
-      { currency: addCurrencyInput, country: addCountryInput },
+      {
+        currency: addCurrencyInput,
+        country: ppp,
+      },
     ])
-
     setAddCurrencyInput("")
-    setAddCountryInput("")
     setAddCurrencyClick(true)
+    ppp = "xxx"
   }
-
+  console.log(ppp)
   return (
     <div className="master">
       <div className="title-bar">CURRENCY CONVERTER</div>
@@ -85,9 +88,12 @@ const CurrencyList = ({
           ADD CURRENCY
         </button>
       ) : (
-        <form>
-          <input value={addCurrencyInput} onChange={handleAddCurrencyInput} />
-          <input value={addCountryInput} onChange={handleAddCountryInput} />
+        <form className="form-input-currency">
+          <input
+            className="currency-inp"
+            value={addCurrencyInput}
+            onChange={handleAddCurrencyInput}
+          />
           <button onClick={handleSubmitCurrency}>Submit</button>
         </form>
       )}
