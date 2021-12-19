@@ -33,7 +33,7 @@ const CurrencyList = ({
       </div>
       {userCurrencyList.map(({ currency, country }) => (
         <ul className="currency-list" key={currency}>
-          <li className="currency-list-item">
+          <li key={currency} className="currency-list-item">
             <CurrencyCard
               currency={currency}
               country={country}

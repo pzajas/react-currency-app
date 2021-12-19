@@ -56,6 +56,8 @@
   margin-right: 8px;
   margin-bottom: 5px;
   width: 70%;
+  height: 20px;
+  font-size: 15px;
 }
 
 .currency-input:focus,
@@ -65,7 +67,7 @@
 
 .currency-select {
   width: 19%;
-  height: 21px;
+  height: 26px;
   background-color: #2d2d37;
   color: white;
   border: none;

@@ -46,13 +46,13 @@ const colourStyles = {
   },
 }
 
-const CustomSelect = ({ currencyCountryList, handleAddToTheList }) => {
+const CustomSelect = ({ addCurrencySelectOptions, handleAddToTheList }) => {
   return (
     <div className="custom-select">
       <Select
         value="placeholder"
         styles={colourStyles}
-        options={currencyCountryList}
+        options={addCurrencySelectOptions}
         onChange={handleAddToTheList}
         getOptionLabel={option => option.currency}
         getOptionValue={option => option.country}
