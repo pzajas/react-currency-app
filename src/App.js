@@ -23,7 +23,6 @@ const App = () => {
   ])
 
   const [userCurrencyList, setUserCurrencyList] = useState([
-    { currency: "PLN", country: "pl" },
     { currency: "CAD", country: "ca" },
     { currency: "USD", country: "us" },
     { currency: "CHF", country: "ch" },
@@ -46,14 +45,13 @@ const App = () => {
   }
 
   const handleAddToTheList = data => {
-    currencyCountryList.filter(currency =>
-      currency === data
-        ? setUserCurrencyList([
-            ...userCurrencyList,
-            { currency: data.currency, country: data.country },
-          ])
-        : null
-    )
+    const mappedUserCurrencyList = userCurrencyList.map(item => item.currency)
+    !mappedUserCurrencyList.includes(data.currency)
+      ? setUserCurrencyList([
+          ...userCurrencyList,
+          { currency: data.currency, country: data.country },
+        ])
+      : alert("Already in the list")
   }
 
   return (
