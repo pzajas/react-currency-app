@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 
 import CurrencyList from "./components/CurrencyList"
-import CustomSelect from "./components/CustomSelect"
+import CurrencyAdd from "./components/CurrencyAdd"
 
 import "./App.css"
 
@@ -34,6 +34,10 @@ const App = () => {
 
   const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
 
+  const addCurrencySelectOptions = currencyCountryList.filter(
+    item => !userCurrencyList.find(({ currency }) => item.currency === currency)
+  )
+
   useEffect(() => {
     axios.get(currencyApiUrl).then(response => {
       setCurrencyValuesList(response.data.data)
@@ -51,7 +55,7 @@ const App = () => {
           ...userCurrencyList,
           { currency: data.currency, country: data.country },
         ])
-      : alert("Already in the list")
+      : alert("To do: use SweetAlert")
   }
 
   return (
@@ -67,8 +71,9 @@ const App = () => {
           handleInputChange={handleInputChange}
         />
       </div>
-      <CustomSelect
+      <CurrencyAdd
         className="custom-select"
+        addCurrencySelectOptions={addCurrencySelectOptions}
         handleAddToTheList={handleAddToTheList}
         currencyCountryList={currencyCountryList}
         setCurrencyCountryList={setBaseCurrency}
