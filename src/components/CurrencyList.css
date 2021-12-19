@@ -8,20 +8,6 @@
   background-color: #232323;
   width: 300px;
   height: 100%;
-  border-radius: 4px 4px 0px 0px;
-}
-
-.title-bar {
-  height: 50px;
-  background-color: #2d2d37;
-  color: white;
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  margin-bottom: 8px;
-  border-radius: 4px 4px 0px 0px;
 }
 
 .currency-list {
@@ -49,42 +35,4 @@
   justify-content: center;
   text-align: center;
   background-color: rgb(180, 180, 180);
-}
-
-.currency-input {
-  margin-left: 8px;
-  margin-right: 8px;
-  margin-bottom: 5px;
-  width: 70%;
-  height: 20px;
-  font-size: 15px;
-}
-
-.currency-input:focus,
-.currency-select:focus {
-  outline: none;
-}
-
-.currency-select {
-  width: 19%;
-  height: 26px;
-  background-color: #2d2d37;
-  color: white;
-  border: none;
-}
-
-.input-form {
-  display: flex;
-}
-
-.form-input-currency {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 8px;
-  margin-left: 8px;
-  margin-bottom: 5px;
-}
-
-.currency-inp {
-  width: 74.5%;
 }

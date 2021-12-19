@@ -46,7 +46,7 @@ const colourStyles = {
   },
 }
 
-const CustomSelect = ({ addCurrencySelectOptions, handleAddToTheList }) => {
+const CurrencyAdd = ({ addCurrencySelectOptions, handleAddToTheList }) => {
   return (
     <div className="custom-select">
       <Select
@@ -61,4 +61,4 @@ const CustomSelect = ({ addCurrencySelectOptions, handleAddToTheList }) => {
   )
 }
 
-export default CustomSelect
+export default CurrencyAdd

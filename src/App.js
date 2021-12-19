@@ -29,7 +29,6 @@ const App = () => {
     { currency: "RUB", country: "rs" },
     { currency: "AUD", country: "au" },
     { currency: "NOK", country: "no" },
-    { currency: "CZK", country: "cz" },
   ])
 
   const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
@@ -48,6 +47,10 @@ const App = () => {
     setInput(event.target.value)
   }
 
+  const handleSelectChange = event => {
+    setBaseCurrency(event.target.value)
+  }
+
   const handleAddToTheList = data => {
     const mappedUserCurrencyList = userCurrencyList.map(item => item.currency)
     !mappedUserCurrencyList.includes(data.currency)
@@ -60,6 +63,20 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className="title-bar">CURRENCY CONVERTER</div>
+      <div className="input-form">
+        <input
+          placeholder="Enter the amount to convert..."
+          value={input}
+          onChange={handleInputChange}
+          className="currency-input"
+        />
+        <select onChange={handleSelectChange} className="currency-select">
+          {currencyCountryList.map(({ currency }) => (
+            <option value={currency}>{currency}</option>
+          ))}
+        </select>
+      </div>
       <div className="currency-list-container">
         <CurrencyList
           currencyValuesList={currencyValuesList}

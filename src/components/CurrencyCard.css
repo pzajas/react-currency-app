@@ -10,18 +10,6 @@
   border-radius: 2px;
 }
 
-.currency-card-yellow {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  box-sizing: border-box;
-  background-color: #343441;
-  color: white;
-  height: 50px;
-  align-items: center;
-  border: solid yellow 1px;
-}
-
 .first-two {
   display: flex;
   flex-direction: row;

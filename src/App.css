@@ -1,6 +1,70 @@
+.App {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  height: 100%;
+  margin: auto;
+  margin-top: 100px;
+}
+
 .currency-list-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+}
+
+.title-bar {
+  height: 50px;
+  background-color: #2d2d37;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.currency-input {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  width: 70%;
+  height: 20px;
+  font-size: 15px;
+}
+
+.currency-input:focus,
+.currency-select:focus {
+  outline: none;
+}
+
+.currency-select {
+  width: 19%;
+  height: 26px;
+  background-color: #2d2d37;
+  color: white;
+  border: none;
+  margin-top: 5px;
+}
+
+.input-form {
+  display: flex;
+  background-color: #232323;
+}
+
+.form-input-currency {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 8px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+}
+
+.currency-inp {
+  width: 74.5%;
 }
