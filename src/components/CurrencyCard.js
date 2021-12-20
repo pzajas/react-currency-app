@@ -22,7 +22,9 @@ const CurrencyCard = ({
           width="60px"
           src={`https://flagpedia.net/data/flags/w580/${country}.png`}
         />
-        <div>{currency}</div>
+        <div>
+          {input} {currency}
+        </div>
       </div>
 
       <div className="value-to-convert">
