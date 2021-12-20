@@ -23,6 +23,10 @@
   width: 100%;
 }
 
+.currency-list-item-hidden {
+  width: 90px;
+}
+
 .add-btn {
   background-color: rgb(214, 214, 214);
   height: 30px;

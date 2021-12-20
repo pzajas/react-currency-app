@@ -10,6 +10,8 @@ const App = () => {
   const [currencyValuesList, setCurrencyValuesList] = useState([])
   const [baseCurrency, setBaseCurrency] = useState("PLN")
   const [input, setInput] = useState("")
+  const [filteredCurrency, setFilteredCurrency] = useState([])
+  const [previousCurrency, setPreviousCurrency] = useState([])
 
   const [currencyCountryList, setCurrencyCountryList] = useState([
     { currency: "PLN", country: "pl" },
@@ -27,8 +29,6 @@ const App = () => {
     { currency: "USD", country: "us" },
     { currency: "CHF", country: "ch" },
     { currency: "RUB", country: "rs" },
-    { currency: "AUD", country: "au" },
-    { currency: "NOK", country: "no" },
   ])
 
   const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
@@ -43,12 +43,25 @@ const App = () => {
     })
   }, [baseCurrency, currencyApiUrl])
 
+  useEffect(() => {
+    setUserCurrencyList(
+      filteredCurrency.length > 0
+        ? [...userCurrencyList, filteredCurrency[0]]
+        : [...userCurrencyList]
+    )
+    setFilteredCurrency([{ currency: baseCurrency, country: {} }])
+  }, [baseCurrency])
+
   const handleInputChange = event => {
     setInput(event.target.value)
   }
 
   const handleSelectChange = event => {
     setBaseCurrency(event.target.value)
+
+    setUserCurrencyList(
+      userCurrencyList.filter(item => item.currency !== event.target.value)
+    )
   }
 
   const handleAddToTheList = data => {
@@ -60,7 +73,6 @@ const App = () => {
         ])
       : alert("To do: use SweetAlert")
   }
-
   return (
     <div className="App">
       <div className="title-bar">CURRENCY CONVERTER</div>
