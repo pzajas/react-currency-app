@@ -14,14 +14,38 @@ const App = () => {
   const [previousCurrency, setPreviousCurrency] = useState([])
 
   const [currencyCountryList, setCurrencyCountryList] = useState([
-    { currency: "PLN", country: "pl" },
-    { currency: "CAD", country: "ca" },
-    { currency: "USD", country: "us" },
-    { currency: "CHF", country: "ch" },
-    { currency: "RUB", country: "rs" },
-    { currency: "AUD", country: "au" },
-    { currency: "NOK", country: "no" },
-    { currency: "CZK", country: "cz" },
+    {
+      currency: "PLN",
+      country: "pl",
+    },
+    {
+      currency: "CAD",
+      country: "ca",
+    },
+    {
+      currency: "USD",
+      country: "us",
+    },
+    {
+      currency: "CHF",
+      country: "ch",
+    },
+    {
+      currency: "RUB",
+      country: "rs",
+    },
+    {
+      currency: "AUD",
+      country: "au",
+    },
+    {
+      currency: "NOK",
+      country: "no",
+    },
+    {
+      currency: "CZK",
+      country: "cz",
+    },
   ])
 
   const [userCurrencyList, setUserCurrencyList] = useState([
@@ -36,7 +60,6 @@ const App = () => {
   const addCurrencySelectOptions = currencyCountryList.filter(
     item => !userCurrencyList.find(({ currency }) => item.currency === currency)
   )
-
   useEffect(() => {
     axios.get(currencyApiUrl).then(response => {
       setCurrencyValuesList(response.data.data)
@@ -49,7 +72,7 @@ const App = () => {
         ? [...userCurrencyList, filteredCurrency[0]]
         : [...userCurrencyList]
     )
-    setFilteredCurrency([{ currency: baseCurrency, country: {} }])
+    setFilteredCurrency([{ currency: baseCurrency }])
   }, [baseCurrency])
 
   const handleInputChange = event => {
@@ -84,7 +107,7 @@ const App = () => {
           className="currency-input"
         />
         <select onChange={handleSelectChange} className="currency-select">
-          {currencyCountryList.map(({ currency }) => (
+          {currencyCountryList.map(({ currency, country }) => (
             <option value={currency}>{currency}</option>
           ))}
         </select>
@@ -101,6 +124,7 @@ const App = () => {
         />
       </div>
       <CurrencyAdd
+        userCurrencyList={userCurrencyList}
         className="custom-select"
         addCurrencySelectOptions={addCurrencySelectOptions}
         handleAddToTheList={handleAddToTheList}

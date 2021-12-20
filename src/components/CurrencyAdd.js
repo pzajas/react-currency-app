@@ -1,6 +1,8 @@
 import React from "react"
 import Select from "react-select"
 
+import "./CurrencyAdd.css"
+
 const colourStyles = {
   container: styles => ({
     ...styles,
@@ -36,7 +38,14 @@ const colourStyles = {
   option: (styles, { isDisabled }) => {
     return {
       ...styles,
+      margin: "auto",
+      fontSize: "15px",
+      margin: "auto",
       color: "white",
+      // display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      alignText: "center",
       backgroundColor: "#2d2d37",
       "&:hover": {
         backgroundColor: "grey",
@@ -54,8 +63,19 @@ const CurrencyAdd = ({ addCurrencySelectOptions, handleAddToTheList }) => {
         styles={colourStyles}
         options={addCurrencySelectOptions}
         onChange={handleAddToTheList}
-        getOptionLabel={option => option.currency}
         getOptionValue={option => option.country}
+        getOptionLabel={option => (
+          <div className="select-option">
+            <img
+              className="select-flag"
+              alt="country flag"
+              height="20px"
+              width="30px"
+              src={`https://flagpedia.net/data/flags/w580/${option.country}.png`}
+            />
+            <div className="select-text">{option.currency}</div>
+          </div>
+        )}
       />
     </div>
   )

@@ -1,0 +1,13 @@
+.select-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select-flag {
+  margin-left: 80px;
+}
+
+.select-text {
+  margin-right: 80px;
+}
