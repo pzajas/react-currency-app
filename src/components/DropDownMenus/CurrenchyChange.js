@@ -1,44 +1,54 @@
 import React from "react"
 import Select from "react-select"
 
-import "./CurrencyAdd.css"
-
 const colourStyles = {
   container: styles => ({
     ...styles,
-    width: "300px",
-    margin: "auto",
+    width: "100px",
+    height: "20px",
     "&:hover": {
-      color: "white",
+      color: "black",
     },
   }),
   control: base => ({
-    ...base,
+    marginTop: 5,
+    marginRight: 8,
     border: "1px solid #2d2d37",
     backgroundColor: "#2d2d37",
     color: "white",
-    borderRadius: "0px 0px 4px 4px",
+    // borderRadius: "0px 0px 4px 4px",
     boxShadow: "none",
+    fontSize: "10px",
+    height: 24,
+    minHeight: 10,
     "&:hover": {},
+    display: "flex",
+    alignItems: "center",
+    alignText: "center",
   }),
   input: styles => ({
     ...styles,
     color: "white",
-    fontSize: "15px",
+    fontSize: "12px",
   }),
   dropdownIndicator: styles => ({
     ...styles,
     "&:hover": {
       border: "#2d2d37",
-      color: "white",
     },
   }),
+  menu: styles => ({
+    border: "none",
+    marginRight: 8,
+  }),
+  menuList: styles => ({
+    ...styles,
+  }),
+
   option: (styles, { isDisabled }) => {
     return {
       ...styles,
-      margin: "auto",
-      fontSize: "15px",
-      margin: "auto",
+      fontSize: "10px",
       color: "white",
       justifyContent: "center",
       alignItems: "center",
@@ -52,30 +62,20 @@ const colourStyles = {
   },
 }
 
-const CurrencyAdd = ({ addCurrencySelectOptions, handleAddToTheList }) => {
+const CurrenchyChange = ({ currencyCountryList, handleSelectChange }) => {
+  const xxx = currencyCountryList.map(item => item)
   return (
-    <div className="custom-select">
+    <div>
       <Select
-        value="placeholder"
+        value="palceholder"
+        onChange={handleSelectChange}
         styles={colourStyles}
-        options={addCurrencySelectOptions}
-        onChange={handleAddToTheList}
+        options={currencyCountryList}
+        getOptionLabel={option => option.currency}
         getOptionValue={option => option.country}
-        getOptionLabel={option => (
-          <div className="select-option">
-            <img
-              className="select-flag"
-              alt="country flag"
-              height="20px"
-              width="30px"
-              src={`https://flagpedia.net/data/flags/w580/${option.country}.png`}
-            />
-            <div className="select-text">{option.currency}</div>
-          </div>
-        )}
       />
     </div>
   )
 }
 
-export default CurrencyAdd
+export default CurrenchyChange

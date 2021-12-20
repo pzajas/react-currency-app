@@ -3,6 +3,7 @@ import axios from "axios"
 
 import CurrencyList from "./components/CurrencyList"
 import CurrencyAdd from "./components/CurrencyAdd"
+import CurrenchyChange from "./components/DropDownMenus/CurrenchyChange"
 
 import "./App.css"
 
@@ -60,6 +61,7 @@ const App = () => {
   const addCurrencySelectOptions = currencyCountryList.filter(
     item => !userCurrencyList.find(({ currency }) => item.currency === currency)
   )
+
   useEffect(() => {
     axios.get(currencyApiUrl).then(response => {
       setCurrencyValuesList(response.data.data)
@@ -80,10 +82,10 @@ const App = () => {
   }
 
   const handleSelectChange = event => {
-    setBaseCurrency(event.target.value)
+    setBaseCurrency(event.currency)
 
     setUserCurrencyList(
-      userCurrencyList.filter(item => item.currency !== event.target.value)
+      userCurrencyList.filter(item => item.currency !== event.currency)
     )
   }
 
@@ -106,11 +108,11 @@ const App = () => {
           onChange={handleInputChange}
           className="currency-input"
         />
-        <select onChange={handleSelectChange} className="currency-select">
-          {currencyCountryList.map(({ currency, country }) => (
-            <option value={currency}>{currency}</option>
-          ))}
-        </select>
+        <CurrenchyChange
+          handleSelectChange={handleSelectChange}
+          currencyCountryList={currencyCountryList}
+          userCurrencyList={userCurrencyList}
+        />
       </div>
       <div className="currency-list-container">
         <CurrencyList
