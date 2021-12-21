@@ -4,41 +4,29 @@ import axios from "axios"
 import CurrencyList from "./components/CurrencyList"
 import CurrencyAdd from "./components/CurrencyAdd"
 import CurrenchyChange from "./components/DropDownMenus/CurrenchyChange"
+import CurrencyUpdate from "./components/update_timer/CurrencyUpdate"
 
 import "./App.css"
 
 const App = () => {
   const [currencyValuesList, setCurrencyValuesList] = useState([])
-  const [baseCurrency, setBaseCurrency] = useState("Select Base")
+  const [lastCurrencyValueUpdate, setLastCurrencyValueUpdate] = useState([])
+  const [baseCurrency, setBaseCurrency] = useState("USD")
   const [input, setInput] = useState("")
 
   const [currencyCountryList, setCurrencyCountryList] = useState([
     { currency: "PLN", country: "pl" },
     { currency: "CAD", country: "ca" },
     { currency: "USD", country: "us" },
-    {
-      currency: "CHF",
-      country: "ch",
-    },
-    {
-      currency: "RUB",
-      country: "rs",
-    },
-    {
-      currency: "AUD",
-      country: "au",
-    },
-    {
-      currency: "NOK",
-      country: "no",
-    },
-    {
-      currency: "CZK",
-      country: "cz",
-    },
+    { currency: "CHF", country: "ch" },
+    { currency: "RUB", country: "rs" },
+    { currency: "AUD", country: "au" },
+    { currency: "NOK", country: "no" },
+    { currency: "CZK", country: "cz" },
   ])
 
   const [userCurrencyList, setUserCurrencyList] = useState([
+    { currency: "PLN", country: "pl" },
     { currency: "CAD", country: "ca" },
     { currency: "USD", country: "us" },
     { currency: "CHF", country: "ch" },
@@ -56,6 +44,14 @@ const App = () => {
       setCurrencyValuesList(response.data.data)
     })
   }, [baseCurrency, currencyApiUrl])
+
+  // useEffect(() => {
+  //   axios.get(currencyApiUrl).then(response => {
+  //     setTimeout(() => {
+  //       setLastCurrencyValueUpdate(response.data.query.timestamp)
+  //     }, 1000)
+  //   })
+  // }, [lastCurrencyValueUpdate])
 
   useEffect(() => {
     userCurrencyList.some(item =>
@@ -105,6 +101,7 @@ const App = () => {
           userCurrencyList={userCurrencyList}
         />
       </div>
+      <CurrencyUpdate lastCurrencyValueUpdate={lastCurrencyValueUpdate} />
       <div className="currency-list-container">
         <CurrencyList
           currencyValuesList={currencyValuesList}
