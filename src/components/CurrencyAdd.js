@@ -1,3 +1,4 @@
+import { findByLabelText } from "@testing-library/react"
 import React from "react"
 import Select from "react-select"
 
@@ -12,14 +13,19 @@ const colourStyles = {
       color: "white",
     },
   }),
-  control: base => ({
-    ...base,
+  control: () => ({
     border: "1px solid #2d2d37",
     backgroundColor: "#2d2d37",
     color: "white",
     borderRadius: "0px 0px 4px 4px",
     boxShadow: "none",
     "&:hover": {},
+    fontSize: "10px",
+    height: 30,
+    minHeight: 10,
+    display: "flex",
+    alignItems: "center",
+    alignText: "center",
   }),
   input: styles => ({
     ...styles,
@@ -32,6 +38,10 @@ const colourStyles = {
       border: "#2d2d37",
       color: "white",
     },
+  }),
+  menu: () => ({}),
+  menuList: styles => ({
+    ...styles,
   }),
   option: (styles, { isDisabled }) => {
     return {

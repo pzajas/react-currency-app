@@ -12,21 +12,11 @@ const App = () => {
   const [baseCurrency, setBaseCurrency] = useState("PLN")
   const [input, setInput] = useState("")
   const [filteredCurrency, setFilteredCurrency] = useState([])
-  const [previousCurrency, setPreviousCurrency] = useState([])
 
   const [currencyCountryList, setCurrencyCountryList] = useState([
-    {
-      currency: "PLN",
-      country: "pl",
-    },
-    {
-      currency: "CAD",
-      country: "ca",
-    },
-    {
-      currency: "USD",
-      country: "us",
-    },
+    { currency: "PLN", country: "pl" },
+    { currency: "CAD", country: "ca" },
+    { currency: "USD", country: "us" },
     {
       currency: "CHF",
       country: "ch",

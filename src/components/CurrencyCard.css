@@ -8,10 +8,11 @@
   height: 50px;
   align-items: center;
   border-radius: 2px;
+  transition: all 0.4s ease-in-out;
 }
 
 .currency-card:hover {
-  background-color: grey;
+  background-color: #565666;
 }
 
 .first-two {
