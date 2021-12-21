@@ -11,8 +11,8 @@ const colourStyles = {
     },
   }),
   control: () => ({
-    marginTop: 5,
-    marginRight: 8,
+    marginTop: 4,
+    marginRight: 4,
     border: "1px solid #2d2d37",
     backgroundColor: "#2d2d37",
     color: "white",
@@ -43,8 +43,8 @@ const colourStyles = {
   }),
   menuList: styles => ({
     ...styles,
+    zIndex: 9999,
   }),
-
   option: (styles, { isDisabled }) => {
     return {
       ...styles,

@@ -9,9 +9,8 @@ import "./App.css"
 
 const App = () => {
   const [currencyValuesList, setCurrencyValuesList] = useState([])
-  const [baseCurrency, setBaseCurrency] = useState("PLN")
+  const [baseCurrency, setBaseCurrency] = useState("Select Base")
   const [input, setInput] = useState("")
-  const [filteredCurrency, setFilteredCurrency] = useState([])
 
   const [currencyCountryList, setCurrencyCountryList] = useState([
     { currency: "PLN", country: "pl" },
@@ -59,12 +58,18 @@ const App = () => {
   }, [baseCurrency, currencyApiUrl])
 
   useEffect(() => {
-    setUserCurrencyList(
-      filteredCurrency.length > 0
-        ? [...userCurrencyList, filteredCurrency[0]]
-        : [...userCurrencyList]
+    userCurrencyList.some(item =>
+      item.currency === baseCurrency
+        ? userCurrencyList.push(
+            userCurrencyList.splice(
+              userCurrencyList.findIndex(
+                item => item.currency === baseCurrency
+              ),
+              1
+            )[0]
+          )
+        : null
     )
-    setFilteredCurrency([{ currency: baseCurrency }])
   }, [baseCurrency])
 
   const handleInputChange = event => {
@@ -73,18 +78,14 @@ const App = () => {
 
   const handleSelectChange = event => {
     setBaseCurrency(event.currency)
-
-    setUserCurrencyList(
-      userCurrencyList.filter(item => item.currency !== event.currency)
-    )
   }
 
   const handleAddToTheList = data => {
     const mappedUserCurrencyList = userCurrencyList.map(item => item.currency)
     !mappedUserCurrencyList.includes(data.currency)
       ? setUserCurrencyList([
-          ...userCurrencyList,
           { currency: data.currency, country: data.country },
+          ...userCurrencyList,
         ])
       : alert("To do: use SweetAlert")
   }
