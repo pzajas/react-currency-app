@@ -1,11 +1,10 @@
 .select-option {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
 .select-flag {
-  margin-left: 80px;
+  justify-self: start;
 }
 
 .select-text {

@@ -10,13 +10,12 @@ const colourStyles = {
       color: "black",
     },
   }),
-  control: base => ({
+  control: () => ({
     marginTop: 5,
     marginRight: 8,
     border: "1px solid #2d2d37",
     backgroundColor: "#2d2d37",
     color: "white",
-    // borderRadius: "0px 0px 4px 4px",
     boxShadow: "none",
     fontSize: "10px",
     height: 24,
@@ -35,9 +34,10 @@ const colourStyles = {
     ...styles,
     "&:hover": {
       border: "#2d2d37",
+      color: "white",
     },
   }),
-  menu: styles => ({
+  menu: () => ({
     border: "none",
     marginRight: 8,
   }),
