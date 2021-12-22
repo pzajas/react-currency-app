@@ -45,6 +45,10 @@ const colourStyles = {
     ...styles,
     zIndex: 9999,
   }),
+  singleValue: styles => ({
+    ...styles,
+    color: "white",
+  }),
   option: (styles, { isDisabled }) => {
     return {
       ...styles,
@@ -63,11 +67,9 @@ const colourStyles = {
 }
 
 const CurrenchyChange = ({ currencyCountryList, handleSelectChange }) => {
-  const xxx = currencyCountryList.map(item => item)
   return (
     <div>
       <Select
-        value="palceholder"
         onChange={handleSelectChange}
         styles={colourStyles}
         options={currencyCountryList}
