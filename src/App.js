@@ -2,15 +2,15 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 
 import CurrencyList from "./components/CurrencyList"
-import CurrencyAdd from "./components/CurrencyAdd"
+import CurrencyAdd from "./components/DropDownMenus/CurrencyAdd"
 import CurrenchyChange from "./components/DropDownMenus/CurrenchyChange"
-import CurrencyUpdate from "./components/update_timer/CurrencyUpdate"
+import CurrencyUpdate from "./components/UpdateTimer/CurrencyUpdate"
 
 import "./App.css"
 
 const App = () => {
   const [currencyValuesList, setCurrencyValuesList] = useState([])
-  const [lastCurrencyValueUpdate, setLastCurrencyValueUpdate] = useState([])
+  //const [lastCurrencyValueUpdate, setLastCurrencyValueUpdate] = useState([])
   const [baseCurrency, setBaseCurrency] = useState("USD")
   const [input, setInput] = useState("")
 
@@ -45,6 +45,8 @@ const App = () => {
     })
   }, [baseCurrency, currencyApiUrl])
 
+  // Disabled useEffect to save API credits
+
   // useEffect(() => {
   //   axios.get(currencyApiUrl).then(response => {
   //     setTimeout(() => {
@@ -69,7 +71,9 @@ const App = () => {
   }, [baseCurrency])
 
   const handleInputChange = event => {
-    setInput(event.target.value)
+    const num = event.target.value
+
+    setInput(num.replace(/[^\d.]/g, ""))
   }
 
   const handleSelectChange = event => {
@@ -101,7 +105,7 @@ const App = () => {
           userCurrencyList={userCurrencyList}
         />
       </div>
-      <CurrencyUpdate lastCurrencyValueUpdate={lastCurrencyValueUpdate} />
+      {/* <CurrencyUpdate lastCurrencyValueUpdate={lastCurrencyValueUpdate} /> */}
       <div className="currency-list-container">
         <CurrencyList
           currencyValuesList={currencyValuesList}

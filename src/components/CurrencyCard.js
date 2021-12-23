@@ -1,5 +1,3 @@
-import React, { useState } from "react"
-
 import "./CurrencyCard.css"
 
 const CurrencyCard = ({
@@ -18,8 +16,8 @@ const CurrencyCard = ({
         <img
           className="flag"
           alt="country flag"
-          height="40px"
-          width="60px"
+          height="30px"
+          width="45px"
           src={`https://flagpedia.net/data/flags/w580/${country}.png`}
         />
         <div>
