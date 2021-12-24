@@ -29,6 +29,7 @@ const colourStyles = {
     ...styles,
     color: "white",
     fontSize: "12px",
+    maxLength: "3",
   }),
   dropdownIndicator: styles => ({
     ...styles,
@@ -66,10 +67,15 @@ const colourStyles = {
   },
 }
 
-const CurrenchyChange = ({ currencyCountryList, handleSelectChange }) => {
+const CurrenchyChange = ({
+  currencyCountryList,
+  handleSelectChange,
+  baseCurrency,
+}) => {
   return (
     <div>
       <Select
+        defaultValue={{ currency: baseCurrency }}
         onChange={handleSelectChange}
         styles={colourStyles}
         options={currencyCountryList}

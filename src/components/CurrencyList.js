@@ -8,6 +8,7 @@ const CurrencyList = ({
   setBaseCurrency,
   input,
   userCurrencyList,
+  handleDeleteCurrency,
 }) => {
   return (
     <div className="curr-list">
@@ -15,6 +16,7 @@ const CurrencyList = ({
         <ul className="currency-list" key={currency}>
           <li key={currency} className="currency-list-item">
             <CurrencyCard
+              handleDeleteCurrency={handleDeleteCurrency}
               currency={currency}
               country={country}
               currencyValuesList={currencyValuesList}

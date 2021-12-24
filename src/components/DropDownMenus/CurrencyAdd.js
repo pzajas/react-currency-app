@@ -6,7 +6,6 @@ const colourStyles = {
   container: styles => ({
     ...styles,
     width: "300px",
-    margin: "auto",
     "&:hover": {
       color: "white",
     },
@@ -24,6 +23,7 @@ const colourStyles = {
     display: "flex",
     alignItems: "center",
     alignText: "center",
+    type: "number",
   }),
   input: styles => ({
     ...styles,
@@ -44,7 +44,6 @@ const colourStyles = {
   option: (styles, { isDisabled }) => {
     return {
       ...styles,
-      margin: "auto",
       fontSize: "15px",
       margin: "auto",
       color: "white",
@@ -60,15 +59,20 @@ const colourStyles = {
   },
 }
 
-const CurrencyAdd = ({ addCurrencySelectOptions, handleAddToTheList }) => {
+const CurrencyAdd = ({
+  addCurrencySelectOptions,
+  handleAddToTheList,
+  onKeyDown,
+}) => {
   return (
     <div className="custom-select">
       <Select
+        onKeyDown={onKeyDown}
         value="placeholder"
         styles={colourStyles}
         options={addCurrencySelectOptions}
         onChange={handleAddToTheList}
-        getOptionValue={option => option.country}
+        getOptionValue={option => option.currency}
         getOptionLabel={option => (
           <div className="select-option">
             <img

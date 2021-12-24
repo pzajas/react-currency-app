@@ -6,9 +6,10 @@ const CurrencyCard = ({
   currency,
   country,
   input,
+  handleDeleteCurrency,
 }) => {
   const currencyPrice = parseFloat(currencyValuesList[currency])
-  const convertedValue = (input * currencyPrice).toFixed(4)
+  const convertedValue = (input * currencyPrice).toFixed(2)
 
   return (
     <div className="currency-card">
@@ -20,14 +21,20 @@ const CurrencyCard = ({
           width="45px"
           src={`https://flagpedia.net/data/flags/w580/${country}.png`}
         />
-        <div>
+        {currency}
+        {/* <div>
           {input} {baseCurrency}
-        </div>
+        </div> */}
       </div>
 
       <div className="value-to-convert">
         {convertedValue} {currency}
       </div>
+      {/* <button
+        className="delete-btn"
+        value={currency}
+        onClick={handleDeleteCurrency}
+      ></button> */}
     </div>
   )
 }
