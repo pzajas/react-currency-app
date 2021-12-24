@@ -11,8 +11,13 @@ import "./App.css"
 const App = () => {
   const [currencyValuesList, setCurrencyValuesList] = useState([])
   //const [lastCurrencyValueUpdate, setLastCurrencyValueUpdate] = useState([])
-  const [baseCurrency, setBaseCurrency] = useState("USD")
+  const [baseCurrency, setBaseCurrency] = useState("PLN")
   const [input, setInput] = useState("")
+
+  const [newApi, setNewApi] = useState([])
+  const [newApii, setNewApii] = useState([])
+
+  const [three, setThree] = useState([])
 
   const [currencyCountryList, setCurrencyCountryList] = useState([
     { currency: "PLN", country: "pl" },
@@ -43,7 +48,7 @@ const App = () => {
     axios.get(currencyApiUrl).then(response => {
       setCurrencyValuesList(response.data.data)
     })
-  }, [baseCurrency, currencyApiUrl])
+  }, [baseCurrency])
 
   // Disabled useEffect to save API credits
 
@@ -70,6 +75,24 @@ const App = () => {
     )
   }, [baseCurrency])
 
+  useEffect(() => {
+    axios.get("http://api.nbp.pl/api/exchangerates/tables/A").then(response => {
+      setNewApi(response.data[0].rates)
+    })
+  }, [])
+
+  useEffect(() => {
+    axios.get("http://api.nbp.pl/api/exchangerates/tables/B").then(response => {
+      setNewApii(response.data)
+    })
+  }, [])
+
+  const handleDeleteCurrency = e => {
+    setUserCurrencyList(
+      userCurrencyList.filter(item => item.currency !== e.target.value)
+    )
+  }
+
   const handleInputChange = event => {
     const num = event.target.value
 
@@ -89,6 +112,10 @@ const App = () => {
         ])
       : alert("To do: use SweetAlert")
   }
+
+  const onKeyDown = e => {
+    !e.key.match(/[a-zA-Z]/) ? e.preventDefault() : console.log("ppp")
+  }
   return (
     <div className="App">
       <div className="title-bar">CURRENCY CONVERTER</div>
@@ -100,6 +127,7 @@ const App = () => {
           className="currency-input"
         />
         <CurrenchyChange
+          baseCurrency={baseCurrency}
           handleSelectChange={handleSelectChange}
           currencyCountryList={currencyCountryList}
           userCurrencyList={userCurrencyList}
@@ -108,6 +136,7 @@ const App = () => {
       {/* <CurrencyUpdate lastCurrencyValueUpdate={lastCurrencyValueUpdate} /> */}
       <div className="currency-list-container">
         <CurrencyList
+          handleDeleteCurrency={handleDeleteCurrency}
           currencyValuesList={currencyValuesList}
           currencyCountryList={currencyCountryList}
           userCurrencyList={userCurrencyList}
@@ -118,6 +147,7 @@ const App = () => {
         />
       </div>
       <CurrencyAdd
+        onKeyDown={onKeyDown}
         userCurrencyList={userCurrencyList}
         className="custom-select"
         addCurrencySelectOptions={addCurrencySelectOptions}
