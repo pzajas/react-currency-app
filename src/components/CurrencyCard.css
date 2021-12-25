@@ -44,4 +44,14 @@
 .value-to-convert {
   justify-content: space-between;
   margin-right: 5px;
+  font-size: 12px;
+}
+
+.currency-three-code {
+  font-size: 12px;
+}
+
+.full-name {
+  font-size: 10px;
+  align-self: flex-end;
 }
