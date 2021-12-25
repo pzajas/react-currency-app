@@ -10,14 +10,11 @@ import "./App.css"
 
 const App = () => {
   const [currencyValuesList, setCurrencyValuesList] = useState([])
-  //const [lastCurrencyValueUpdate, setLastCurrencyValueUpdate] = useState([])
   const [baseCurrency, setBaseCurrency] = useState("PLN")
   const [input, setInput] = useState("")
 
-  const [newApi, setNewApi] = useState([])
-  const [newApii, setNewApii] = useState([])
-
-  const [three, setThree] = useState([])
+  const [fullCurrencyNameArrayOne, setFullCurrencyNameArrayOne] = useState([])
+  const [fullCurrencyNameArraytwo, setfullCurrencyNameArrayTwo] = useState([])
 
   const [currencyCountryList, setCurrencyCountryList] = useState([
     { currency: "PLN", country: "pl" },
@@ -31,7 +28,6 @@ const App = () => {
   ])
 
   const [userCurrencyList, setUserCurrencyList] = useState([
-    { currency: "PLN", country: "pl" },
     { currency: "CAD", country: "ca" },
     { currency: "USD", country: "us" },
     { currency: "CHF", country: "ch" },
@@ -44,21 +40,18 @@ const App = () => {
     item => !userCurrencyList.find(({ currency }) => item.currency === currency)
   )
 
+  const itemCurrency = userCurrencyList.map(object1 => ({
+    ...object1,
+    ...fullCurrencyNameArrayOne.find(
+      object2 => object2.code === object1.currency
+    ),
+  }))
+
   useEffect(() => {
     axios.get(currencyApiUrl).then(response => {
       setCurrencyValuesList(response.data.data)
     })
   }, [baseCurrency])
-
-  // Disabled useEffect to save API credits
-
-  // useEffect(() => {
-  //   axios.get(currencyApiUrl).then(response => {
-  //     setTimeout(() => {
-  //       setLastCurrencyValueUpdate(response.data.query.timestamp)
-  //     }, 1000)
-  //   })
-  // }, [lastCurrencyValueUpdate])
 
   useEffect(() => {
     userCurrencyList.some(item =>
@@ -77,13 +70,13 @@ const App = () => {
 
   useEffect(() => {
     axios.get("http://api.nbp.pl/api/exchangerates/tables/A").then(response => {
-      setNewApi(response.data[0].rates)
+      setFullCurrencyNameArrayOne(response.data[0].rates)
     })
   }, [])
 
   useEffect(() => {
     axios.get("http://api.nbp.pl/api/exchangerates/tables/B").then(response => {
-      setNewApii(response.data)
+      setfullCurrencyNameArrayTwo(response.data)
     })
   }, [])
 
@@ -133,13 +126,14 @@ const App = () => {
           userCurrencyList={userCurrencyList}
         />
       </div>
-      {/* <CurrencyUpdate lastCurrencyValueUpdate={lastCurrencyValueUpdate} /> */}
+
       <div className="currency-list-container">
         <CurrencyList
           handleDeleteCurrency={handleDeleteCurrency}
           currencyValuesList={currencyValuesList}
           currencyCountryList={currencyCountryList}
           userCurrencyList={userCurrencyList}
+          itemCurrency={itemCurrency}
           baseCurrency={baseCurrency}
           setBaseCurrency={setBaseCurrency}
           input={input}
@@ -160,3 +154,17 @@ const App = () => {
 }
 
 export default App
+
+// Disabled useEffect to save API credits
+
+//const [lastCurrencyValueUpdate, setLastCurrencyValueUpdate] = useState([])
+
+// useEffect(() => {
+//   axios.get(currencyApiUrl).then(response => {
+//     setTimeout(() => {
+//       setLastCurrencyValueUpdate(response.data.query.timestamp)
+//     }, 1000)
+//   })
+// }, [lastCurrencyValueUpdate])
+
+/* <CurrencyUpdate lastCurrencyValueUpdate={lastCurrencyValueUpdate} /> */

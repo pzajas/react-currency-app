@@ -1,11 +1,13 @@
 import "./CurrencyCard.css"
 
+import React, { useState } from "react"
+
 const CurrencyCard = ({
   currencyValuesList,
-  baseCurrency,
   currency,
   country,
   input,
+  itemCurrency,
   handleDeleteCurrency,
 }) => {
   const currencyPrice = parseFloat(currencyValuesList[currency])
@@ -21,15 +23,19 @@ const CurrencyCard = ({
           width="45px"
           src={`https://flagpedia.net/data/flags/w580/${country}.png`}
         />
-        {currency}
-        {/* <div>
-          {input} {baseCurrency}
-        </div> */}
+        <div>
+          <div className="currency-three-code">{currency}</div>
+          <div className="full-name">
+            {itemCurrency.map(item =>
+              item.code === currency && item.code !== "PLN"
+                ? `${item.currency[0].toUpperCase()}${item.currency.slice(1)}`
+                : null
+            )}
+          </div>
+        </div>
       </div>
 
-      <div className="value-to-convert">
-        {convertedValue} {currency}
-      </div>
+      <div className="value-to-convert">{convertedValue}</div>
       {/* <button
         className="delete-btn"
         value={currency}

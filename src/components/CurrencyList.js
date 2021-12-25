@@ -9,6 +9,7 @@ const CurrencyList = ({
   input,
   userCurrencyList,
   handleDeleteCurrency,
+  itemCurrency,
 }) => {
   return (
     <div className="curr-list">
@@ -16,6 +17,7 @@ const CurrencyList = ({
         <ul className="currency-list" key={currency}>
           <li key={currency} className="currency-list-item">
             <CurrencyCard
+              itemCurrency={itemCurrency}
               handleDeleteCurrency={handleDeleteCurrency}
               currency={currency}
               country={country}
