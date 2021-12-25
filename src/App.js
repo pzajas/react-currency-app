@@ -16,6 +16,11 @@ const App = () => {
   const [fullCurrencyNameArrayOne, setFullCurrencyNameArrayOne] = useState([])
   const [fullCurrencyNameArraytwo, setfullCurrencyNameArrayTwo] = useState([])
 
+  const fullCurrencyNameArraysCombined = [
+    ...fullCurrencyNameArrayOne,
+    ...fullCurrencyNameArraytwo,
+  ]
+
   const [currencyCountryList, setCurrencyCountryList] = useState([
     { currency: "PLN", country: "pl" },
     { currency: "CAD", country: "ca" },
@@ -25,6 +30,8 @@ const App = () => {
     { currency: "AUD", country: "au" },
     { currency: "NOK", country: "no" },
     { currency: "CZK", country: "cz" },
+    { currency: "CNY", country: "cn" },
+    { currency: "GBP", country: "gb" },
   ])
 
   const [userCurrencyList, setUserCurrencyList] = useState([
@@ -34,7 +41,9 @@ const App = () => {
     { currency: "RUB", country: "rs" },
   ])
 
-  const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
+  const currencyValuesApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
+  const currencyFullNamesApiUrlA = `http://api.nbp.pl/api/exchangerates/tables/A`
+  const currencyFullNamesApiUrlB = `http://api.nbp.pl/api/exchangerates/tables/B`
 
   const addCurrencySelectOptions = currencyCountryList.filter(
     item => !userCurrencyList.find(({ currency }) => item.currency === currency)
@@ -42,18 +51,15 @@ const App = () => {
 
   const itemCurrency = userCurrencyList.map(object1 => ({
     ...object1,
-    ...fullCurrencyNameArrayOne.find(
+    ...fullCurrencyNameArraysCombined.find(
       object2 => object2.code === object1.currency
     ),
   }))
 
   useEffect(() => {
-    axios.get(currencyApiUrl).then(response => {
+    axios.get(currencyValuesApiUrl).then(response => {
       setCurrencyValuesList(response.data.data)
     })
-  }, [baseCurrency])
-
-  useEffect(() => {
     userCurrencyList.some(item =>
       item.currency === baseCurrency
         ? userCurrencyList.push(
@@ -69,14 +75,11 @@ const App = () => {
   }, [baseCurrency])
 
   useEffect(() => {
-    axios.get("http://api.nbp.pl/api/exchangerates/tables/A").then(response => {
+    axios.get(currencyFullNamesApiUrlA).then(response => {
       setFullCurrencyNameArrayOne(response.data[0].rates)
     })
-  }, [])
-
-  useEffect(() => {
-    axios.get("http://api.nbp.pl/api/exchangerates/tables/B").then(response => {
-      setfullCurrencyNameArrayTwo(response.data)
+    axios.get(currencyFullNamesApiUrlB).then(response => {
+      setfullCurrencyNameArrayTwo(response.data[0].rates)
     })
   }, [])
 
@@ -107,8 +110,11 @@ const App = () => {
   }
 
   const onKeyDown = e => {
-    !e.key.match(/[a-zA-Z]/) ? e.preventDefault() : console.log("ppp")
+    if (!e.key.match(/[a-zA-Z]/)) e.preventDefault()
   }
+
+  console.log(fullCurrencyNameArraysCombined[145])
+
   return (
     <div className="App">
       <div className="title-bar">CURRENCY CONVERTER</div>

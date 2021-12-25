@@ -1,7 +1,5 @@
 import "./CurrencyCard.css"
 
-import React, { useState } from "react"
-
 const CurrencyCard = ({
   currencyValuesList,
   currency,
@@ -27,7 +25,7 @@ const CurrencyCard = ({
           <div className="currency-three-code">{currency}</div>
           <div className="full-name">
             {itemCurrency.map(item =>
-              item.code === currency && item.code !== "PLN"
+              item.code === currency
                 ? `${item.currency[0].toUpperCase()}${item.currency.slice(1)}`
                 : null
             )}
