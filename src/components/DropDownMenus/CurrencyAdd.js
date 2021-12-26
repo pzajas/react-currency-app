@@ -80,7 +80,7 @@ const CurrencyAdd = ({
               alt="country flag"
               height="20px"
               width="30px"
-              src={`https://flagpedia.net/data/flags/w580/${option.country}.png`}
+              src={option.flag}
             />
             <div className="select-text">{option.currency}</div>
           </div>

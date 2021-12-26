@@ -68,7 +68,7 @@ const colourStyles = {
 }
 
 const CurrenchyChange = ({
-  currencyCountryList,
+  baseArrFiltered,
   handleSelectChange,
   baseCurrency,
 }) => {
@@ -78,7 +78,7 @@ const CurrenchyChange = ({
         defaultValue={{ currency: baseCurrency }}
         onChange={handleSelectChange}
         styles={colourStyles}
-        options={currencyCountryList}
+        options={baseArrFiltered}
         getOptionLabel={option => option.currency}
         getOptionValue={option => option.country}
       />

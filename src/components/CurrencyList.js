@@ -10,13 +10,16 @@ const CurrencyList = ({
   userCurrencyList,
   handleDeleteCurrency,
   itemCurrency,
+  baseArrFiltered,
 }) => {
   return (
     <div className="curr-list">
-      {userCurrencyList.map(({ currency, country }) => (
+      {userCurrencyList.map(({ currency, country, flag }) => (
         <ul className="currency-list" key={currency}>
           <li key={currency} className="currency-list-item">
             <CurrencyCard
+              flag={flag}
+              baseArrFiltered={baseArrFiltered}
               itemCurrency={itemCurrency}
               handleDeleteCurrency={handleDeleteCurrency}
               currency={currency}
