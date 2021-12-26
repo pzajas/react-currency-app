@@ -7,6 +7,7 @@ const CurrencyCard = ({
   input,
   itemCurrency,
   handleDeleteCurrency,
+  flag,
 }) => {
   const currencyPrice = parseFloat(currencyValuesList[currency])
   const convertedValue = (input * currencyPrice).toFixed(2)
@@ -19,17 +20,11 @@ const CurrencyCard = ({
           alt="country flag"
           height="30px"
           width="45px"
-          src={`https://flagpedia.net/data/flags/w580/${country}.png`}
+          src={flag}
         />
         <div>
           <div className="currency-three-code">{currency}</div>
-          <div className="full-name">
-            {itemCurrency.map(item =>
-              item.code === currency
-                ? `${item.currency[0].toUpperCase()}${item.currency.slice(1)}`
-                : null
-            )}
-          </div>
+          <div className="full-name">{country}</div>
         </div>
       </div>
 

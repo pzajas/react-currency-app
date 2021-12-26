@@ -10,7 +10,7 @@ import "./App.css"
 
 const App = () => {
   const [currencyValuesList, setCurrencyValuesList] = useState([])
-  const [baseCurrency, setBaseCurrency] = useState("PLN")
+  const [baseCurrency, setBaseCurrency] = useState("USD")
   const [input, setInput] = useState("")
 
   const [fullCurrencyNameArrayOne, setFullCurrencyNameArrayOne] = useState([])
@@ -21,38 +21,60 @@ const App = () => {
     ...fullCurrencyNameArraytwo,
   ]
 
-  const [currencyCountryList, setCurrencyCountryList] = useState([
-    { currency: "PLN", country: "pl" },
-    { currency: "CAD", country: "ca" },
-    { currency: "USD", country: "us" },
-    { currency: "CHF", country: "ch" },
-    { currency: "RUB", country: "rs" },
-    { currency: "AUD", country: "au" },
-    { currency: "NOK", country: "no" },
-    { currency: "CZK", country: "cz" },
-    { currency: "CNY", country: "cn" },
-    { currency: "GBP", country: "gb" },
-  ])
+  const [x, setX] = useState([])
 
-  const [userCurrencyList, setUserCurrencyList] = useState([
-    { currency: "CAD", country: "ca" },
-    { currency: "USD", country: "us" },
-    { currency: "CHF", country: "ch" },
-    { currency: "RUB", country: "rs" },
-  ])
+  useEffect(() => {
+    axios.get("https://restcountries.com/v3.1/all").then(response => {
+      setX(response.data)
+    })
+  }, [])
+
+  const xxx = []
+  const ggg = []
+  for (const [key, value] of Object.entries(currencyValuesList)) {
+    ggg.push({
+      nation: key,
+      value: value,
+    })
+  }
+
+  const ooo = x
+    .filter(item => item.currencies)
+    .forEach(item =>
+      xxx.push({
+        currency: Object.keys(item.currencies)[0],
+        country: Object.values(item.currencies)[0].name,
+        flag: item.flags.png,
+      })
+    )
+
+  const baseArr = xxx.sort((a, b) => a.currency.localeCompare(b.currency))
+
+  const nationList = ggg.sort((a, b) => a.nation.localeCompare(b.nation))
+
+  const baseArr2 = baseArr.map(object1 => ({
+    ...object1,
+    ...nationList.find(object2 => object2.nation === object1.currency),
+  }))
+
+  const baseArrFiltered = baseArr2.filter(({ nation }) => nation)
+
+  const [currencyCountryList, setCurrencyCountryList] = useState([])
+
+  const [userCurrencyList, setUserCurrencyList] = useState([])
 
   const currencyValuesApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
   const currencyFullNamesApiUrlA = `http://api.nbp.pl/api/exchangerates/tables/A`
   const currencyFullNamesApiUrlB = `http://api.nbp.pl/api/exchangerates/tables/B`
 
-  const addCurrencySelectOptions = currencyCountryList.filter(
+  const addCurrencySelectOptions = baseArrFiltered.filter(
     item => !userCurrencyList.find(({ currency }) => item.currency === currency)
   )
 
   const itemCurrency = userCurrencyList.map(object1 => ({
     ...object1,
     ...fullCurrencyNameArraysCombined.find(
-      object2 => object2.code === object1.currency
+      object2 => object2.currency === object1.nation
     ),
   }))
 
@@ -100,10 +122,14 @@ const App = () => {
   }
 
   const handleAddToTheList = data => {
-    const mappedUserCurrencyList = userCurrencyList.map(item => item.currency)
-    !mappedUserCurrencyList.includes(data.currency)
+    const mappedUserCurrencyList = baseArrFiltered.map(item => item.currency)
+    mappedUserCurrencyList.includes(data.currency)
       ? setUserCurrencyList([
-          { currency: data.currency, country: data.country },
+          {
+            currency: data.currency,
+            country: data.country,
+            flag: data.flag,
+          },
           ...userCurrencyList,
         ])
       : alert("To do: use SweetAlert")
@@ -113,7 +139,7 @@ const App = () => {
     if (!e.key.match(/[a-zA-Z]/)) e.preventDefault()
   }
 
-  console.log(fullCurrencyNameArraysCombined[145])
+  console.log(baseArrFiltered)
 
   return (
     <div className="App">
@@ -128,13 +154,14 @@ const App = () => {
         <CurrenchyChange
           baseCurrency={baseCurrency}
           handleSelectChange={handleSelectChange}
-          currencyCountryList={currencyCountryList}
+          baseArrFiltered={baseArrFiltered}
           userCurrencyList={userCurrencyList}
         />
       </div>
 
       <div className="currency-list-container">
         <CurrencyList
+          baseArrFiltered={baseArrFiltered}
           handleDeleteCurrency={handleDeleteCurrency}
           currencyValuesList={currencyValuesList}
           currencyCountryList={currencyCountryList}
@@ -160,17 +187,3 @@ const App = () => {
 }
 
 export default App
-
-// Disabled useEffect to save API credits
-
-//const [lastCurrencyValueUpdate, setLastCurrencyValueUpdate] = useState([])
-
-// useEffect(() => {
-//   axios.get(currencyApiUrl).then(response => {
-//     setTimeout(() => {
-//       setLastCurrencyValueUpdate(response.data.query.timestamp)
-//     }, 1000)
-//   })
-// }, [lastCurrencyValueUpdate])
-
-/* <CurrencyUpdate lastCurrencyValueUpdate={lastCurrencyValueUpdate} /> */
