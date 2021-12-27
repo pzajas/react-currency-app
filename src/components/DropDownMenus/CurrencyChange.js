@@ -67,23 +67,23 @@ const colourStyles = {
   },
 }
 
-const CurrenchyChange = ({
-  baseArrFiltered,
+const CurrencyChange = ({
+  currencyCountryListWithValues,
   handleSelectChange,
   baseCurrency,
 }) => {
   return (
     <div>
       <Select
-        defaultValue={{ currency: baseCurrency }}
+        defaultValue={{ currencyCode: baseCurrency }}
         onChange={handleSelectChange}
         styles={colourStyles}
-        options={baseArrFiltered}
-        getOptionLabel={option => option.currency}
-        getOptionValue={option => option.country}
+        options={currencyCountryListWithValues}
+        getOptionLabel={option => option.currencyCode}
+        getOptionValue={option => option.currencyName}
       />
     </div>
   )
 }
 
-export default CurrenchyChange
+export default CurrencyChange

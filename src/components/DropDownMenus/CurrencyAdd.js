@@ -72,17 +72,15 @@ const CurrencyAdd = ({
         styles={colourStyles}
         options={addCurrencySelectOptions}
         onChange={handleAddToTheList}
-        getOptionValue={option => option.currency}
+        getOptionValue={option => option.currencyCode}
         getOptionLabel={option => (
           <div className="select-option">
             <img
               className="select-flag"
               alt="country flag"
-              height="20px"
-              width="30px"
-              src={option.flag}
+              src={option.countryFlag}
             />
-            <div className="select-text">{option.currency}</div>
+            <div className="select-text">{option.currencyCode}</div>
           </div>
         )}
       />
