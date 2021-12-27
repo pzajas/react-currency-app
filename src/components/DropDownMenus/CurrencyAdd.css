@@ -5,6 +5,8 @@
 
 .select-flag {
   justify-self: start;
+  height: 20px;
+  width: 30px;
 }
 
 .select-text {
