@@ -74,6 +74,10 @@ const App = () => {
       ),
     }))
     .filter(({ nation }) => nation)
+    .filter(
+      (v, i, a) => a.findIndex(t => t.currencyCode === v.currencyCode) === i
+    )
+    .sort((a, b) => a.currencyCode.localeCompare(b.currencyCode))
 
   //-----------------------------FUNCTIONS TO HANDLE STATE-----------------------------//
 

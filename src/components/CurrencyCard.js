@@ -10,6 +10,9 @@ const CurrencyCard = ({
   const currencyPrice = parseFloat(currencyValuesList[currencyCode])
   const convertedValue = (input * currencyPrice).toFixed(2)
 
+  const EU_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png`
+  const UK_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png`
+
   return (
     <div className="currency-card">
       <div className="first-two">
@@ -18,7 +21,13 @@ const CurrencyCard = ({
           alt="country flag"
           height="30px"
           width="45px"
-          src={countryFlag}
+          src={
+            currencyCode === "EUR"
+              ? EU_FLAG
+              : currencyCode === "GBP"
+              ? UK_FLAG
+              : countryFlag
+          }
         />
         <div>
           <div className="currency-three-code">{currencyCode}</div>

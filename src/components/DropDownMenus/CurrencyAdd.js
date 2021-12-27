@@ -78,7 +78,13 @@ const CurrencyAdd = ({
             <img
               className="select-flag"
               alt="country flag"
-              src={option.countryFlag}
+              src={
+                option.currencyCode === "EUR"
+                  ? "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png"
+                  : option.currencyCode === "GBP"
+                  ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png"
+                  : option.countryFlag
+              }
             />
             <div className="select-text">{option.currencyCode}</div>
           </div>
