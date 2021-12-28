@@ -18,6 +18,8 @@ const App = () => {
   const currencyCountryListFiltered = []
   const currencyValuesListFiltered = []
 
+  const [prevCurrency, setPrevCurrency] = useState([])
+
   const CURRENCY_VALUES_API_URL = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
   const CURRENCY_COUNTRY_API_URL = `https://restcountries.com/v3.1/all`
 
@@ -27,19 +29,10 @@ const App = () => {
     axios.get(CURRENCY_VALUES_API_URL).then(response => {
       setCurrencyValuesList(response.data.data)
     })
-    userCurrencyList.some(item =>
-      item.currencyCode === baseCurrency
-        ? userCurrencyList.push(
-            userCurrencyList.splice(
-              userCurrencyList.findIndex(
-                item => item.currencyCode === baseCurrency
-              ),
-              1
-            )[0]
-          )
-        : null
-    )
+    const testArr = [...userCurrencyList]
   }, [baseCurrency])
+
+  console.log(prevCurrency)
 
   useEffect(() => {
     axios.get(CURRENCY_COUNTRY_API_URL).then(response => {
@@ -133,6 +126,7 @@ const App = () => {
           onChange={handleInputChange}
         />
         <CurrencyChange
+          userCurrencyList={userCurrencyList}
           baseCurrency={baseCurrency}
           currencyCountryListWithValues={currencyCountryListWithValues}
           handleSelectChange={handleSelectChange}
@@ -143,6 +137,7 @@ const App = () => {
           currencyCountryListWithValues={currencyCountryListWithValues}
           currencyValuesList={currencyValuesList}
           userCurrencyList={userCurrencyList}
+          setUserCurrencyList={setUserCurrencyList}
           input={input}
           setBaseCurrency={setBaseCurrency}
           handleInputChange={handleInputChange}

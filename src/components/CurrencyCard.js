@@ -31,7 +31,11 @@ const CurrencyCard = ({
         />
         <div>
           <div className="currency-three-code">{currencyCode}</div>
-          <div className="full-name">{currencyName}</div>
+          <div className="full-name">
+            {currencyName
+              .split(" ")
+              .map(word => `${word[0].toUpperCase()}${word.substring(1)} `)}
+          </div>
         </div>
       </div>
 
