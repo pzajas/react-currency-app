@@ -11,14 +11,13 @@ const App = () => {
   const [currencyValuesList, setCurrencyValuesList] = useState([])
   const [currencyCountryList, setCurrencyCountryList] = useState([])
   const [baseCurrency, setBaseCurrency] = useState("USD")
+  const [prevCurrency, setPrevCurrency] = useState([])
 
   const [userCurrencyList, setUserCurrencyList] = useState([])
   const [input, setInput] = useState("")
 
   const currencyCountryListFiltered = []
   const currencyValuesListFiltered = []
-
-  const [prevCurrency, setPrevCurrency] = useState([])
 
   const CURRENCY_VALUES_API_URL = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
   const CURRENCY_COUNTRY_API_URL = `https://restcountries.com/v3.1/all`
@@ -29,10 +28,21 @@ const App = () => {
     axios.get(CURRENCY_VALUES_API_URL).then(response => {
       setCurrencyValuesList(response.data.data)
     })
-    const testArr = [...userCurrencyList]
-  }, [baseCurrency])
+    const userCurrencyListCopy = [...userCurrencyList]
+    setPrevCurrency([])
 
-  console.log(prevCurrency)
+    userCurrencyListCopy.map(currency => {
+      if (currency.currencyCode === baseCurrency) {
+        setPrevCurrency([currency])
+      }
+    })
+
+    console.log(prevCurrency)
+    const filteredBaseCurrency = userCurrencyListCopy.filter(
+      currency => currency.currencyCode !== baseCurrency
+    )
+    setUserCurrencyList([...filteredBaseCurrency, ...prevCurrency])
+  }, [baseCurrency])
 
   useEffect(() => {
     axios.get(CURRENCY_COUNTRY_API_URL).then(response => {
@@ -62,23 +72,16 @@ const App = () => {
   const currencyCountryListWithValues = currencyCountryListFiltered
     .map(object1 => ({
       ...object1,
-      ...currencyValuesListFiltered.find(
-        object2 => object2.nation === object1.currencyCode
-      ),
+      ...currencyValuesListFiltered.find(object2 => object2.nation === object1.currencyCode),
     }))
     .filter(({ nation }) => nation)
-    .filter(
-      (v, i, a) => a.findIndex(t => t.currencyCode === v.currencyCode) === i
-    )
+    .filter((v, i, a) => a.findIndex(t => t.currencyCode === v.currencyCode) === i)
     .sort((a, b) => a.currencyCode.localeCompare(b.currencyCode))
 
   //-----------------------------FUNCTIONS TO HANDLE STATE-----------------------------//
 
   const addCurrencySelectOptions = currencyCountryListWithValues.filter(
-    item =>
-      !userCurrencyList.find(
-        ({ currencyCode }) => item.currencyCode === currencyCode
-      )
+    item => !userCurrencyList.find(({ currencyCode }) => item.currencyCode === currencyCode)
   )
 
   const handleInputChange = event => {
@@ -92,9 +95,7 @@ const App = () => {
   }
 
   const handleAddToTheList = data => {
-    const mappedUserCurrencyList = currencyCountryListWithValues.map(
-      item => item.currencyCode
-    )
+    const mappedUserCurrencyList = currencyCountryListWithValues.map(item => item.currencyCode)
     mappedUserCurrencyList.includes(data.currencyCode)
       ? setUserCurrencyList([
           {

@@ -1,12 +1,6 @@
 import "./CurrencyCard.css"
 
-const CurrencyCard = ({
-  currencyValuesList,
-  currencyName,
-  input,
-  countryFlag,
-  currencyCode,
-}) => {
+const CurrencyCard = ({ currencyValuesList, currencyName, input, countryFlag, currencyCode }) => {
   const currencyPrice = parseFloat(currencyValuesList[currencyCode])
   const convertedValue = (input * currencyPrice).toFixed(2)
 
@@ -21,20 +15,12 @@ const CurrencyCard = ({
           alt="country flag"
           height="30px"
           width="45px"
-          src={
-            currencyCode === "EUR"
-              ? EU_FLAG
-              : currencyCode === "GBP"
-              ? UK_FLAG
-              : countryFlag
-          }
+          src={currencyCode === "EUR" ? EU_FLAG : currencyCode === "GBP" ? UK_FLAG : countryFlag}
         />
         <div>
           <div className="currency-three-code">{currencyCode}</div>
           <div className="full-name">
-            {currencyName
-              .split(" ")
-              .map(word => `${word[0].toUpperCase()}${word.substring(1)} `)}
+            {currencyName.split(" ").map(word => `${word[0].toUpperCase()}${word.substring(1)} `)}
           </div>
         </div>
       </div>
