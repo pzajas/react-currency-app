@@ -8,11 +8,8 @@ import CurrencyChange from "./components/DropDownMenus/CurrencyChange"
 import "./App.css"
 
 const App = () => {
-  const [currencyValuesList, setCurrencyValuesList] = useState([])
-  const [currencyCountryList, setCurrencyCountryList] = useState([])
-  const [userCurrencyList, setUserCurrencyList] = useState([])
-
   const [input, setInput] = useState("")
+  const [userCurrencyList, setUserCurrencyList] = useState([])
 
   const [baseCurrency, setBaseCurrency] = useState("USD")
   const [prevCurrency, setPrevCurrency] = useState([])
@@ -24,40 +21,29 @@ const App = () => {
   const CURRENCY_COUNTRY_API_URL = `https://restcountries.com/v3.1/all`
 
   //------------FETCH DATA FROM API AND MAKE ARRAYS OF CURRENCIES AND VALUES ------------//
+
   useEffect(() => {
     axios.get(CURRENCY_COUNTRY_API_URL).then(response => {
-      const currencyCountryListArray = []
-      setCurrencyCountryList(
-        response.data
-          .filter(item => item.currencies && item.continents[0] === "Europe")
-          .forEach(item =>
-            currencyCountryListArray.push({
-              currencyCode: Object.keys(item.currencies)[0],
-              currencyName: Object.values(item.currencies)[0].name,
-              countryFlag: item.flags.png,
-            })
-          )
-      )
+      const currencyCountryListArray = response.data
+        .filter(item => item.currencies && item.continents[0] === "Europe")
+        .map(item => ({
+          currencyCode: Object.keys(item.currencies)[0],
+          currencyName: Object.values(item.currencies)[0].name,
+          countryFlag: item.flags.png,
+        }))
       setCurrencyCountryListFiltered([...currencyCountryListArray])
     })
-  }, [currencyCountryList])
+  }, [])
 
   useEffect(() => {
     axios.get(CURRENCY_VALUES_API_URL).then(response => {
-      const currencyValuesListArray = []
-
-      setCurrencyValuesList(response.data.data)
-
-      for (const [key, value] of Object.entries(currencyValuesList)) {
-        currencyValuesListArray.push({
-          nation: key,
-          value: value,
-        })
-      }
-
+      const currencyValuesListArray = Object.entries(response.data.data).map(([key, value]) => ({
+        nation: key,
+        price: value,
+      }))
       setCurrencyValuesListFiltered([...currencyValuesListArray])
     })
-  }, [currencyValuesList])
+  }, [baseCurrency])
 
   //------------FILTER BASE CURRENCY FROM THE USER LIST AND ADD PREV CURRENCY ------------//
 
@@ -112,6 +98,8 @@ const App = () => {
             currencyCode: data.currencyCode,
             currencyName: data.currencyName,
             countryFlag: data.countryFlag,
+            nation: data.nation,
+            price: data.price,
           },
           ...userCurrencyList,
         ])
@@ -123,9 +111,7 @@ const App = () => {
   const onKeyDown = e => {
     if (!e.key.match(/[a-zA-Z]/)) e.preventDefault()
   }
-
   //-----------------------------JSX-----------------------------//
-
   return (
     <div className="App">
       <div className="title-bar">CURRENCY CONVERTER</div>
@@ -146,12 +132,8 @@ const App = () => {
       <div className="currency-list-container">
         <CurrencyList
           currencyCountryListWithValues={currencyCountryListWithValues}
-          currencyValuesList={currencyValuesList}
           userCurrencyList={userCurrencyList}
-          setUserCurrencyList={setUserCurrencyList}
           input={input}
-          setBaseCurrency={setBaseCurrency}
-          handleInputChange={handleInputChange}
         />
       </div>
       <CurrencyAdd

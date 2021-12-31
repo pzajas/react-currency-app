@@ -1,13 +1,7 @@
 import CurrencyCard from "./CurrencyCard"
 import "./CurrencyList.css"
 
-const CurrencyList = ({
-  currencyValuesList,
-  currencyPrice,
-  setBaseCurrency,
-  input,
-  userCurrencyList,
-}) => {
+const CurrencyList = ({ currencyCountryListWithValues, input, userCurrencyList }) => {
   return (
     <div className="curr-list">
       {userCurrencyList.map(({ currencyCode, currencyName, countryFlag }) => (
@@ -17,9 +11,7 @@ const CurrencyList = ({
               countryFlag={countryFlag}
               currencyCode={currencyCode}
               currencyName={currencyName}
-              currencyValuesList={currencyValuesList}
-              currencyPrice={currencyPrice}
-              setBaseCurrency={setBaseCurrency}
+              currencyCountryListWithValues={currencyCountryListWithValues}
               input={input}
             />
           </li>

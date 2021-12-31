@@ -1,11 +1,19 @@
 import "./CurrencyCard.css"
 
-const CurrencyCard = ({ currencyValuesList, currencyName, input, countryFlag, currencyCode }) => {
-  const currencyPrice = parseFloat(currencyValuesList[currencyCode])
-  const convertedValue = (input * currencyPrice).toFixed(2)
-
+const CurrencyCard = ({
+  currencyName,
+  countryFlag,
+  currencyCode,
+  input,
+  currencyCountryListWithValues,
+}) => {
   const EU_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png`
   const UK_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png`
+
+  const currencyPriceRatioChange = currencyCountryListWithValues.find(
+    item => item.nation === currencyCode
+  ).price
+  const currencyPriceRatioCalculated = parseFloat(input * currencyPriceRatioChange).toFixed(2)
 
   return (
     <div className="currency-card">
@@ -24,8 +32,7 @@ const CurrencyCard = ({ currencyValuesList, currencyName, input, countryFlag, cu
           </div>
         </div>
       </div>
-
-      <div className="value-to-convert">{convertedValue}</div>
+      <div className="value-to-convert">{currencyPriceRatioCalculated}</div>
       {/* <button
         className="delete-btn"
         value={currency}
