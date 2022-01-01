@@ -1,5 +1,6 @@
-import CurrencyDeleteButton from "../components/CurrencyButtons/CurrencyDeleteButton"
+import { useState } from "react"
 
+import CurrencyDeleteButton from "../components/CurrencyButtons/CurrencyDeleteButton"
 import "./CurrencyCard.css"
 
 const CurrencyCard = ({
@@ -12,14 +13,20 @@ const CurrencyCard = ({
   userCurrencyList,
   setUserCurrencyList,
 }) => {
+  const [toggleDeleteButton, setToggleDeleteButton] = useState(false)
+
   const EU_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png`
   const UK_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png`
 
   const currencyPriceRatioChange = currencyCountryListWithValues.find(item => item.nation === currencyCode).price
   const currencyPriceRatioCalculated = parseFloat(input * currencyPriceRatioChange).toFixed(2)
 
+  const handleToggleDeleteButton = () => {
+    setToggleDeleteButton(toggleDeleteButton === true ? false : true)
+  }
+  console.log(toggleDeleteButton)
   return (
-    <div className="currency-card">
+    <div className="currency-card" onClick={handleToggleDeleteButton}>
       <div className="first-two">
         <img
           className="flag"
@@ -35,15 +42,18 @@ const CurrencyCard = ({
           </div>
         </div>
       </div>
-      <div className="value-to-convert">{currencyPriceRatioCalculated}</div>
-      <div className="separator"></div>
-      <div className="symbol">{`${currencySymbol[0].toUpperCase()}${currencySymbol.substring(1, 2)}`}</div>
-      <CurrencyDeleteButton
-        value={currencyCode}
-        userCurrencyList={userCurrencyList}
-        setUserCurrencyList={setUserCurrencyList}
-        currencyCode={currencyCode}
-      />
+      {!toggleDeleteButton ? (
+        <div className="converted_symbol">
+          <div className="value-to-convert">{currencyPriceRatioCalculated}</div>
+          <div className="symbol">{`${currencySymbol[0].toUpperCase()}${currencySymbol.substring(1, 2)}`}</div>
+        </div>
+      ) : (
+        <CurrencyDeleteButton
+          userCurrencyList={userCurrencyList}
+          setUserCurrencyList={setUserCurrencyList}
+          currencyCode={currencyCode}
+        />
+      )}
     </div>
   )
 }

@@ -1,3 +1,5 @@
+import { FiTrash } from "react-icons/fi"
+
 import "./CurrencyDeleteButton.css"
 
 const CurrencyDeleteButton = ({ userCurrencyList, setUserCurrencyList, currencyCode }) => {
@@ -5,11 +7,9 @@ const CurrencyDeleteButton = ({ userCurrencyList, setUserCurrencyList, currencyC
     setUserCurrencyList(userCurrencyList.filter(item => item.currencyCode !== e.target.value))
   }
   return (
-    <div>
-      <button className="delete-btn" value={currencyCode} onClick={handleRemoveFromTheList}>
-        X
-      </button>
-    </div>
+    <button className="delete-btn" value={currencyCode} onClick={handleRemoveFromTheList}>
+      <FiTrash />
+    </button>
   )
 }
 

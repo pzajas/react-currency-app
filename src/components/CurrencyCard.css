@@ -11,7 +11,7 @@
   border-radius: 2px;
   transition: all 0.4s ease-in-out;
 }
-.currency-card:hover .delete-btn:hover {
+.currency-card:hover {
   background-color: #565666;
 }
 
@@ -26,11 +26,15 @@
   margin: 5px;
   border-radius: 2px;
 }
+.converted_symbol {
+  display: flex;
+}
 
 .value-to-convert {
   font-size: 12px;
   display: flex;
   justify-content: right;
+  margin-right: 20px;
   width: 100px;
 }
 
