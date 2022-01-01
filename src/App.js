@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 
+import CurrencyInput from "./components/CurrencyInput/CurrencyInput"
 import CurrencyList from "./components/CurrencyList"
 import CurrencyAdd from "./components/DropDownMenus/CurrencyAdd"
 import CurrencyChange from "./components/DropDownMenus/CurrencyChange"
@@ -76,60 +77,17 @@ const App = () => {
     .filter((v, i, a) => a.findIndex(t => t.currencyCode === v.currencyCode) === i)
     .sort((a, b) => a.currencyCode.localeCompare(b.currencyCode))
 
-  //-----------------------------FUNCTIONS TO HANDLE STATE-----------------------------//
-
-  const addCurrencySelectOptions = currencyCountryListWithValues.filter(
-    item => !userCurrencyList.find(({ currencyCode }) => item.currencyCode === currencyCode)
-  )
-
-  const handleInputChange = event => {
-    const num = event.target.value
-
-    setInput(num.replace(/[^\d.]/g, ""))
-  }
-
-  const handleSelectChange = event => {
-    setBaseCurrency(event.currencyCode)
-  }
-
-  const handleAddToTheList = data => {
-    const mappedUserCurrencyList = currencyCountryListWithValues.map(item => item.currencyCode)
-    mappedUserCurrencyList.includes(data.currencyCode)
-      ? setUserCurrencyList([
-          {
-            currencyCode: data.currencyCode,
-            currencyName: data.currencyName,
-            countryFlag: data.countryFlag,
-            currencySymbol: data.currencySymbol,
-            nation: data.nation,
-            price: data.price,
-          },
-          ...userCurrencyList,
-        ])
-      : alert("To do: use SweetAlert")
-  }
-
-  //-----------------------------VALIDATE-----------------------------//
-
-  const onKeyDown = e => {
-    if (!e.key.match(/[a-zA-Z]/)) e.preventDefault()
-  }
   //-----------------------------JSX-----------------------------//
   return (
     <div className="App">
       <div className="title-bar">CURRENCY CONVERTER</div>
       <div className="input-form">
-        <input
-          placeholder="Enter the amount to convert..."
-          className="currency-input"
-          value={input}
-          onChange={handleInputChange}
-        />
+        <CurrencyInput value={input} setInput={setInput} />
         <CurrencyChange
           userCurrencyList={userCurrencyList}
           baseCurrency={baseCurrency}
+          setBaseCurrency={setBaseCurrency}
           currencyCountryListWithValues={currencyCountryListWithValues}
-          handleSelectChange={handleSelectChange}
         />
       </div>
       <div className="currency-list-container">
@@ -141,9 +99,9 @@ const App = () => {
       </div>
       <CurrencyAdd
         className="custom-select"
-        addCurrencySelectOptions={addCurrencySelectOptions}
-        handleAddToTheList={handleAddToTheList}
-        onKeyDown={onKeyDown}
+        currencyCountryListWithValues={currencyCountryListWithValues}
+        userCurrencyList={userCurrencyList}
+        setUserCurrencyList={setUserCurrencyList}
       />
     </div>
   )
