@@ -6,6 +6,7 @@ const CurrencyCard = ({
   currencyCode,
   input,
   currencyCountryListWithValues,
+  currencySymbol,
 }) => {
   const EU_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png`
   const UK_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png`
@@ -32,7 +33,9 @@ const CurrencyCard = ({
           </div>
         </div>
       </div>
-      <div className="value-to-convert">{currencyPriceRatioCalculated}</div>
+      <div className="value-to-convert">
+        {currencyPriceRatioCalculated} {currencySymbol}
+      </div>
       {/* <button
         className="delete-btn"
         value={currency}
