@@ -67,11 +67,10 @@ const colourStyles = {
   },
 }
 
-const CurrencyChange = ({
-  currencyCountryListWithValues,
-  handleSelectChange,
-  baseCurrency,
-}) => {
+const CurrencyChange = ({ currencyCountryListWithValues, baseCurrency, setBaseCurrency }) => {
+  const handleSelectChange = event => {
+    setBaseCurrency(event.currencyCode)
+  }
   return (
     <div>
       <Select

@@ -19,7 +19,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 140px;
 }
+
 .flag {
   margin: 5px;
   border-radius: 2px;
@@ -42,9 +44,10 @@
 }
 
 .value-to-convert {
-  justify-content: space-between;
-  margin-right: 5px;
   font-size: 12px;
+  display: flex;
+  justify-content: right;
+  width: 100px;
 }
 
 .currency-three-code {
@@ -53,5 +56,11 @@
 
 .full-name {
   font-size: 10px;
-  align-self: flex-end;
+}
+.symbol {
+  margin-right: 5px;
+  font-size: 12px;
+  width: 18px;
+  display: flex;
+  justify-content: left;
 }

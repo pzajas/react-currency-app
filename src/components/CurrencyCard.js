@@ -33,9 +33,12 @@ const CurrencyCard = ({
           </div>
         </div>
       </div>
-      <div className="value-to-convert">
-        {currencyPriceRatioCalculated} {currencySymbol}
-      </div>
+      <div className="value-to-convert">{currencyPriceRatioCalculated}</div>
+      <div className="separator"></div>
+      <div className="symbol">{`${currencySymbol[0].toUpperCase()}${currencySymbol.substring(
+        1,
+        2
+      )}`}</div>
       {/* <button
         className="delete-btn"
         value={currency}

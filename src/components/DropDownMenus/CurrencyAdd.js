@@ -59,11 +59,30 @@ const colourStyles = {
   },
 }
 
-const CurrencyAdd = ({
-  addCurrencySelectOptions,
-  handleAddToTheList,
-  onKeyDown,
-}) => {
+const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyCountryListWithValues }) => {
+  const addCurrencySelectOptions = currencyCountryListWithValues.filter(
+    item => !userCurrencyList.find(({ currencyCode }) => item.currencyCode === currencyCode)
+  )
+
+  const handleAddToTheList = data => {
+    const mappedUserCurrencyList = currencyCountryListWithValues.map(item => item.currencyCode)
+    mappedUserCurrencyList.includes(data.currencyCode)
+      ? setUserCurrencyList([
+          {
+            currencyCode: data.currencyCode,
+            currencyName: data.currencyName,
+            countryFlag: data.countryFlag,
+            currencySymbol: data.currencySymbol,
+            nation: data.nation,
+            price: data.price,
+          },
+          ...userCurrencyList,
+        ])
+      : alert("To do: use SweetAlert")
+  }
+  const onKeyDown = e => {
+    if (!e.key.match(/[a-zA-Z]/)) e.preventDefault()
+  }
   return (
     <div className="custom-select">
       <Select
