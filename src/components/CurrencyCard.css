@@ -27,22 +27,6 @@
   border-radius: 2px;
 }
 
-.delete-btn {
-  margin-right: 5px;
-  padding: 0;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  font-size: 10px;
-  border: none;
-  opacity: 0;
-}
-
-.delete-btn:hover {
-  opacity: 1;
-  background-color: red;
-}
-
 .value-to-convert {
   font-size: 12px;
   display: flex;

@@ -1,7 +1,7 @@
 import CurrencyCard from "./CurrencyCard"
 import "./CurrencyList.css"
 
-const CurrencyList = ({ currencyCountryListWithValues, input, userCurrencyList }) => {
+const CurrencyList = ({ currencyCountryListWithValues, input, userCurrencyList, setUserCurrencyList }) => {
   console.log(userCurrencyList)
   return (
     <div className="curr-list">
@@ -15,6 +15,8 @@ const CurrencyList = ({ currencyCountryListWithValues, input, userCurrencyList }
               currencySymbol={currencySymbol}
               currencyCountryListWithValues={currencyCountryListWithValues}
               input={input}
+              userCurrencyList={userCurrencyList}
+              setUserCurrencyList={setUserCurrencyList}
             />
           </li>
         </ul>
