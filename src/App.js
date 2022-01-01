@@ -24,16 +24,18 @@ const App = () => {
 
   useEffect(() => {
     axios.get(CURRENCY_COUNTRY_API_URL).then(response => {
+      console.log(response.data)
       const currencyCountryListArray = response.data
         .filter(item => item.currencies && item.continents[0] === "Europe")
         .map(item => ({
           currencyCode: Object.keys(item.currencies)[0],
           currencyName: Object.values(item.currencies)[0].name,
           countryFlag: item.flags.png,
+          currencySymbol: Object.values(item.currencies)[0].symbol,
         }))
       setCurrencyCountryListFiltered([...currencyCountryListArray])
     })
-  }, [])
+  }, [CURRENCY_COUNTRY_API_URL])
 
   useEffect(() => {
     axios.get(CURRENCY_VALUES_API_URL).then(response => {
@@ -43,7 +45,7 @@ const App = () => {
       }))
       setCurrencyValuesListFiltered([...currencyValuesListArray])
     })
-  }, [baseCurrency])
+  }, [baseCurrency, CURRENCY_VALUES_API_URL])
 
   //------------FILTER BASE CURRENCY FROM THE USER LIST AND ADD PREV CURRENCY ------------//
 
@@ -98,6 +100,7 @@ const App = () => {
             currencyCode: data.currencyCode,
             currencyName: data.currencyName,
             countryFlag: data.countryFlag,
+            currencySymbol: data.currencySymbol,
             nation: data.nation,
             price: data.price,
           },
