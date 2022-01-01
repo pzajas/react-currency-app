@@ -2,7 +2,6 @@ import CurrencyCard from "./CurrencyCard"
 import "./CurrencyList.css"
 
 const CurrencyList = ({ currencyCountryListWithValues, input, userCurrencyList, setUserCurrencyList }) => {
-  console.log(userCurrencyList)
   return (
     <div className="curr-list">
       {userCurrencyList.map(({ currencyCode, currencyName, currencySymbol, countryFlag }) => (
