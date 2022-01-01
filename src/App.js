@@ -53,9 +53,7 @@ const App = () => {
   useEffect(() => {
     const userCurrencyListCopy = [...userCurrencyList]
     setPrevCurrency([])
-    const filteredBaseCurrency = userCurrencyListCopy.filter(
-      currency => currency.currencyCode !== baseCurrency
-    )
+    const filteredBaseCurrency = userCurrencyListCopy.filter(currency => currency.currencyCode !== baseCurrency)
 
     userCurrencyListCopy.map(currency => {
       if (currency.currencyCode === baseCurrency) {
@@ -94,6 +92,7 @@ const App = () => {
         <CurrencyList
           currencyCountryListWithValues={currencyCountryListWithValues}
           userCurrencyList={userCurrencyList}
+          setUserCurrencyList={setUserCurrencyList}
           input={input}
         />
       </div>
@@ -116,9 +115,3 @@ export default App
 // const nationList = currencyValuesListFiltered.sort((a, b) =>
 //   a.nation.localeCompare(b.nation)
 // )
-
-// const handleDeleteCurrency = e => {
-//   setUserCurrencyList(
-//     userCurrencyList.filter(item => item.currencyCode !== e.target.value)
-//   )
-// }
