@@ -107,11 +107,3 @@ const App = () => {
 }
 
 export default App
-
-// const baseArr = currencyCountryListFiltered.sort((a, b) =>
-//   a.currency.localeCompare(b.currency)
-// )
-
-// const nationList = currencyValuesListFiltered.sort((a, b) =>
-//   a.nation.localeCompare(b.nation)
-// )
