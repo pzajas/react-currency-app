@@ -1,12 +1,25 @@
 import { useState, useEffect } from "react"
-import axios from "axios"
 
-import CurrencyInput from "./components/CurrencyInput/CurrencyInput"
+import axios from "axios"
+import styled from "styled-components"
+
+import CurrencyNavbar from "./components/CurrencyNavbar/CurrencyNavbar"
+import CurrencyForm from "./components/CurrencyForm/CurrencyForm"
 import CurrencyList from "./components/CurrencyList"
 import CurrencyAdd from "./components/DropDownMenus/CurrencyAdd"
-import CurrencyChange from "./components/DropDownMenus/CurrencyChange"
 
-import "./App.css"
+const StyledContainer = styled.div`
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  height: 100%;
+  margin: auto;
+  margin-top: 100px;
+`
 
 const App = () => {
   const [input, setInput] = useState("")
@@ -77,19 +90,19 @@ const App = () => {
 
   //-----------------------------JSX-----------------------------//
   return (
-    <div className="App">
-      <div className="title-bar">CURRENCY CONVERTER</div>
-      <div className="input-form">
-        <CurrencyInput value={input} setInput={setInput} />
-        <CurrencyChange
-          userCurrencyList={userCurrencyList}
-          baseCurrency={baseCurrency}
-          setBaseCurrency={setBaseCurrency}
-          currencyCountryListWithValues={currencyCountryListWithValues}
-        />
-      </div>
-      <div className="currency-list-container">
+    <StyledContainer>
+      <CurrencyNavbar />
+      <CurrencyForm
+        value={input}
+        setInput={setInput}
+        userCurrencyList={userCurrencyList}
+        baseCurrency={baseCurrency}
+        setBaseCurrency={setBaseCurrency}
+        currencyCountryListWithValues={currencyCountryListWithValues}
+      ></CurrencyForm>
+      <div>
         <CurrencyList
+          className="currency-list-container"
           currencyCountryListWithValues={currencyCountryListWithValues}
           userCurrencyList={userCurrencyList}
           setUserCurrencyList={setUserCurrencyList}
@@ -102,7 +115,7 @@ const App = () => {
         userCurrencyList={userCurrencyList}
         setUserCurrencyList={setUserCurrencyList}
       />
-    </div>
+    </StyledContainer>
   )
 }
 
