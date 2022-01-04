@@ -3,13 +3,13 @@ import styled from "styled-components"
 const StyledSymbol = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: right;
-  width: 50px;
+  justify-content: center;
 
   & div {
     font-size: 11px;
-    width: 100px;
-    margin: 0px 14px 0px 8px;
+    margin: 0px 4px 0px 15px;
+    width: 20px;
+    //justify-content: center;
   }
 `
 
