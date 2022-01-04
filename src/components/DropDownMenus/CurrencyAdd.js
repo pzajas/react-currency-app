@@ -59,13 +59,13 @@ const colourStyles = {
   },
 }
 
-const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyCountryListWithValues }) => {
-  const addCurrencySelectOptions = currencyCountryListWithValues.filter(
+const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinentsFiltered }) => {
+  const addCurrencySelectOptions = currencyContinentsFiltered.filter(
     item => !userCurrencyList.find(({ currencyCode }) => item.currencyCode === currencyCode)
   )
 
   const handleAddToTheList = data => {
-    const mappedUserCurrencyList = currencyCountryListWithValues.map(item => item.currencyCode)
+    const mappedUserCurrencyList = currencyContinentsFiltered.map(item => item.currencyCode)
     mappedUserCurrencyList.includes(data.currencyCode)
       ? setUserCurrencyList([
           {
