@@ -9,7 +9,7 @@ const StyledList = styled.ul`
   flex-direction: column;
   justify-content: center;
   background-color: #232323;
-  width: 300px;
+  width: 100%;
   height: 100%;
 
   & li {

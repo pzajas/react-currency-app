@@ -6,6 +6,10 @@ const StyledInput = styled.input`
   height: 20px;
   font-size: 12px;
 
+  @media (max-width: 750px) {
+    width: 100%;
+  }
+
   &:focus {
     outline: none;
   }

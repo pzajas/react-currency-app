@@ -14,10 +14,22 @@ const StyledButton = styled.button`
   font-size: 8px;
   color: white;
   background-color: #232323;
+  border-radius: 1px;
+
+  @media (max-width: 750px) {
+    width: 80%;
+  }
 `
 
 const CurrencyFilter = ({ currencyCountryListWithValues, setCurrencyContinentsFiltered }) => {
-  const filterValues = ["World", "Europe", "Africa", "Asia", "North America", "South America"]
+  const filterValues = [
+    { id: Math.random() * 1000, continent: "World" },
+    { id: Math.random() * 1000, continent: "Europe" },
+    { id: Math.random() * 1000, continent: "Asia" },
+    { id: Math.random() * 1000, continent: "Africa" },
+    { id: Math.random() * 1000, continent: "North America" },
+    { id: Math.random() * 1000, continent: "South America" },
+  ]
 
   const filterCurrencyByContinent = e => {
     setCurrencyContinentsFiltered(
@@ -28,11 +40,12 @@ const CurrencyFilter = ({ currencyCountryListWithValues, setCurrencyContinentsFi
           )
     )
   }
+
   return (
     <StyledCurrencyFilter>
       {filterValues.map(item => (
-        <StyledButton value={item} onClick={filterCurrencyByContinent}>
-          {item}
+        <StyledButton value={item.continent} onClick={filterCurrencyByContinent}>
+          {item.continent}
         </StyledButton>
       ))}
     </StyledCurrencyFilter>

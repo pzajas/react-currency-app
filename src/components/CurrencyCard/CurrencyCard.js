@@ -13,10 +13,15 @@ const StyledCard = styled.div`
   background-color: #343441;
   color: white;
   height: 40px;
+  width: 100%;
   margin-bottom: 1px;
   align-items: center;
   border-radius: 2px;
   transition: all 0.4s ease-in-out;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 
   &:hover {
     background-color: #565666;

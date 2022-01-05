@@ -10,6 +10,7 @@ const StyledFlag = styled.div`
     height: 30px;
     width: 45px;
     margin: 0px 4px 0px 4px;
+    border-radius: 2px;
   }
 
   & div {

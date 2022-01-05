@@ -11,6 +11,10 @@ const StyledNavbar = styled.nav`
   align-items: center;
   font-weight: 500;
   border-radius: 4px 4px 0px 0px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `
 
 const CurrencyNavbar = () => {

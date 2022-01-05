@@ -17,10 +17,18 @@ const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 300px;
+  width: 100%;
   height: 100%;
   margin: auto;
-  margin-top: 100px;
+  border-radius: 2px;
+
+  @media (max-width: 1600px) {
+    width: 50%;
+  }
+
+  @media (max-width: 750px) {
+    width: 100%;
+  }
 `
 
 const App = () => {
@@ -119,14 +127,12 @@ const App = () => {
         currencyCountryListWithValues={currencyCountryListWithValues}
       />
       <CurrencyList
-        className="currency-list-container"
         currencyCountryListWithValues={currencyCountryListWithValues}
         userCurrencyList={userCurrencyList}
         setUserCurrencyList={setUserCurrencyList}
         input={input}
       />
       <CurrencyAdd
-        className="custom-select"
         currencyContinentsFiltered={currencyContinentsFiltered}
         userCurrencyList={userCurrencyList}
         setUserCurrencyList={setUserCurrencyList}
