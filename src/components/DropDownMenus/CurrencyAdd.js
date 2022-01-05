@@ -1,11 +1,31 @@
 import Select from "react-select"
+import styled from "styled-components"
 
-import "./CurrencyAdd.css"
+const StyledSelect = styled(Select)`
+  .select-option {
+    display: flex;
+    align-items: center;
+  }
+
+  .select-flag {
+    justify-self: start;
+    height: 20px;
+    width: 30px;
+  }
+
+  .select-text {
+    margin-right: 80px;
+  }
+
+  /* @media (max-width: 600px) {
+    width: 100%;
+  } */
+`
 
 const colourStyles = {
   container: styles => ({
     ...styles,
-    width: "300px",
+    width: "100%",
     "&:hover": {
       color: "white",
     },
@@ -85,7 +105,7 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
   }
   return (
     <div className="custom-select">
-      <Select
+      <StyledSelect
         onKeyDown={onKeyDown}
         value="placeholder"
         styles={colourStyles}

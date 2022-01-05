@@ -1,5 +1,11 @@
-import React from "react"
 import Select from "react-select"
+import styled from "styled-components"
+
+const StyledSelect = styled(Select)`
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+`
 
 const colourStyles = {
   container: styles => ({
@@ -73,7 +79,7 @@ const CurrencyChange = ({ currencyCountryListWithValues, baseCurrency, setBaseCu
   }
   return (
     <div>
-      <Select
+      <StyledSelect
         defaultValue={{ currencyCode: baseCurrency }}
         onChange={handleSelectChange}
         styles={colourStyles}
