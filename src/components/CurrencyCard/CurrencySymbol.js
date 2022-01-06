@@ -9,7 +9,11 @@ const StyledSymbol = styled.div`
     font-size: 11px;
     margin: 0px 4px 0px 15px;
     width: 20px;
-    //justify-content: center;
+
+    @media (max-width: 750px) {
+      width: 100%;
+      font-size: 14px;
+    }
   }
 `
 

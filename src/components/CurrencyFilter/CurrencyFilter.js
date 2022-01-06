@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react"
-
 import styled from "styled-components"
 
 const StyledCurrencyFilter = styled.div`
@@ -18,6 +16,7 @@ const StyledButton = styled.button`
 
   @media (max-width: 750px) {
     width: 80%;
+    font-size: 12px;
   }
 `
 

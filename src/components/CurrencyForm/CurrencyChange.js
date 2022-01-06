@@ -26,16 +26,23 @@ const colourStyles = {
     fontSize: "10px",
     height: 24,
     minHeight: 10,
-    "&:hover": {},
     display: "flex",
     alignItems: "center",
     alignText: "center",
+    "@media (max-width: 750px)": {
+      height: "34px",
+      fontSize: 17,
+    },
   }),
   input: styles => ({
     ...styles,
     color: "white",
     fontSize: "12px",
     maxLength: "3",
+    "@media (max-width: 750px)": {
+      height: "34px",
+      fontSize: 17,
+    },
   }),
   dropdownIndicator: styles => ({
     ...styles,
@@ -67,6 +74,10 @@ const colourStyles = {
       backgroundColor: "#2d2d37",
       "&:hover": {
         backgroundColor: "grey",
+      },
+      "@media (max-width: 750px)": {
+        height: "34px",
+        fontSize: 17,
       },
       cursor: isDisabled ? "not-allowed" : "default",
     }

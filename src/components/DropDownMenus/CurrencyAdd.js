@@ -16,10 +16,6 @@ const StyledSelect = styled(Select)`
   .select-text {
     margin-right: 80px;
   }
-
-  /* @media (max-width: 600px) {
-    width: 100%;
-  } */
 `
 
 const colourStyles = {
@@ -36,7 +32,6 @@ const colourStyles = {
     color: "white",
     borderRadius: "0px 0px 4px 4px",
     boxShadow: "none",
-    "&:hover": {},
     fontSize: "10px",
     height: 30,
     minHeight: 10,
@@ -44,6 +39,10 @@ const colourStyles = {
     alignItems: "center",
     alignText: "center",
     type: "number",
+    "@media (max-width: 750px)": {
+      height: "34px",
+      fontSize: 17,
+    },
   }),
   input: styles => ({
     ...styles,
@@ -73,6 +72,9 @@ const colourStyles = {
       backgroundColor: "#2d2d37",
       "&:hover": {
         backgroundColor: "grey",
+      },
+      "@media (max-width: 750px)": {
+        fontSize: 17,
       },
       cursor: isDisabled ? "not-allowed" : "default",
     }
@@ -107,8 +109,11 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
     <div className="custom-select">
       <StyledSelect
         onKeyDown={onKeyDown}
+        isSearchable={false}
         value="placeholder"
         styles={colourStyles}
+        menuPlacement="auto"
+        menuPosition="absolute"
         options={addCurrencySelectOptions}
         onChange={handleAddToTheList}
         getOptionValue={option => option.currencyCode}

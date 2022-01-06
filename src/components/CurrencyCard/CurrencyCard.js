@@ -21,6 +21,8 @@ const StyledCard = styled.div`
 
   @media (max-width: 600px) {
     width: 100%;
+    height: 60px;
+    margin-bottom: 3px;
   }
 
   &:hover {
