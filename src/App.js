@@ -28,6 +28,7 @@ const StyledContainer = styled.div`
 
   @media (max-width: 750px) {
     width: 100%;
+    height: 100%;
   }
 `
 

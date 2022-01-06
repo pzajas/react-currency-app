@@ -7,7 +7,8 @@ const StyledInput = styled.input`
   font-size: 12px;
 
   @media (max-width: 750px) {
-    width: 100%;
+    height: 30px;
+    font-size: 17px;
   }
 
   &:focus {

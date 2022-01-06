@@ -5,6 +5,7 @@ const StyledFlag = styled.div`
   flex-direction: row;
   align-items: center;
   width: 140px;
+  font-size: 11px;
 
   & img {
     height: 30px;
@@ -13,8 +14,14 @@ const StyledFlag = styled.div`
     border-radius: 2px;
   }
 
-  & div {
-    font-size: 11px;
+  @media (max-width: 750px) {
+    width: 100%;
+    font-size: 14px;
+
+    & img {
+      height: 50px;
+      width: 70px;
+    }
   }
 `
 
