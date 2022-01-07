@@ -39,7 +39,7 @@ const colourStyles = {
     alignItems: "center",
     alignText: "center",
     type: "number",
-    "@media (max-width: 750px)": {
+    "@media (max-width: 896px)": {
       height: "34px",
       fontSize: 17,
     },
@@ -73,7 +73,7 @@ const colourStyles = {
       "&:hover": {
         backgroundColor: "grey",
       },
-      "@media (max-width: 750px)": {
+      "@media (max-width: 896px)": {
         fontSize: 17,
       },
       cursor: isDisabled ? "not-allowed" : "default",

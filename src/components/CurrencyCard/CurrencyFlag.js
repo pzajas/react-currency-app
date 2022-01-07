@@ -4,24 +4,39 @@ const StyledFlag = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 140px;
-  font-size: 11px;
+  width: 50%;
+  font-size: 18px;
 
   & img {
     height: 30px;
     width: 45px;
     margin: 0px 4px 0px 4px;
     border-radius: 2px;
+
+    @media (max-width: 2400px) {
+      height: 50px;
+      width: 70px;
+    }
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 2400px) {
     width: 100%;
-    font-size: 14px;
+    font-size: 18;
+  }
+
+  @media (max-width: 896px) {
+    width: 100%;
+    font-size: 16px;
 
     & img {
       height: 50px;
       width: 70px;
     }
+  }
+
+  @media (max-width: 400px) {
+    width: 100%;
+    font-size: 12px;
   }
 `
 
