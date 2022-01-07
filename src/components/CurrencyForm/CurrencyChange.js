@@ -10,7 +10,7 @@ const StyledSelect = styled(Select)`
 const colourStyles = {
   container: styles => ({
     ...styles,
-    width: "100px",
+    width: "21vh",
     height: "20px",
     "&:hover": {
       color: "black",
@@ -29,7 +29,7 @@ const colourStyles = {
     display: "flex",
     alignItems: "center",
     alignText: "center",
-    "@media (max-width: 750px)": {
+    "@media (max-width: 896px)": {
       height: "34px",
       fontSize: 17,
     },
@@ -39,7 +39,7 @@ const colourStyles = {
     color: "white",
     fontSize: "12px",
     maxLength: "3",
-    "@media (max-width: 750px)": {
+    "@media (max-width: 896px)": {
       height: "34px",
       fontSize: 17,
     },
@@ -75,7 +75,7 @@ const colourStyles = {
       "&:hover": {
         backgroundColor: "grey",
       },
-      "@media (max-width: 750px)": {
+      "@media (max-width: 896px)": {
         height: "34px",
         fontSize: 17,
       },

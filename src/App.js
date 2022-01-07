@@ -21,19 +21,20 @@ const StyledContainer = styled.div`
   height: 100%;
   margin: auto;
   border-radius: 2px;
+  font-family: "Roboto", sans-serif;
 
-  @media (max-width: 1600px) {
+  @media (max-width: 2400px) {
     width: 50%;
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 896px) {
     width: 100%;
     height: 100%;
   }
 `
 
 const App = () => {
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState([])
   const [userCurrencyList, setUserCurrencyList] = useState([])
 
   const [baseCurrency, setBaseCurrency] = useState("USD")
@@ -62,7 +63,6 @@ const App = () => {
           currencyContinent: item.continents[0],
         }))
       setCurrencyCountryListFiltered([...currencyCountryListArray])
-      console.log(currencyCountryListFiltered)
     })
   }, [CURRENCY_COUNTRY_API_URL])
 
@@ -115,10 +115,10 @@ const App = () => {
   return (
     <StyledContainer>
       <CurrencyNavbar />
-      <CurrencyFilter
+      {/* <CurrencyFilter
         setCurrencyContinentsFiltered={setCurrencyContinentsFiltered}
         currencyCountryListWithValues={currencyCountryListWithValues}
-      />
+      /> */}
       <CurrencyForm
         value={input}
         setInput={setInput}

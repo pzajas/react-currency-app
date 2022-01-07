@@ -12,7 +12,7 @@ const StyledNavbar = styled.nav`
   font-weight: 500;
   border-radius: 4px 4px 0px 0px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 896px) {
     width: 100%;
   }
 `
