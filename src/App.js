@@ -23,11 +23,14 @@ const StyledContainer = styled.div`
   border-radius: 2px;
   font-family: "Roboto", sans-serif;
 
-  @media (max-width: 2400px) {
-    width: 50%;
+  body {
+    background-color: red;
+  }
+  @media (max-width: 1500px) {
+    width: 80%;
   }
 
-  @media (max-width: 896px) {
+  @media (max-width: 750px) {
     width: 100%;
     height: 100%;
   }
@@ -75,6 +78,8 @@ const App = () => {
       setCurrencyValuesListFiltered([...currencyValuesListArray])
     })
   }, [baseCurrency, CURRENCY_VALUES_API_URL])
+
+  console.log(currencyValuesListFiltered)
 
   //------------FILTER BASE CURRENCY FROM THE USER LIST AND ADD PREV CURRENCY ------------//
 

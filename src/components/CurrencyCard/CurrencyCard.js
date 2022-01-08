@@ -19,14 +19,20 @@ const StyledCard = styled.div`
   border-radius: 2px;
   transition: all 0.4s ease-in-out;
 
-  @media (max-width: 2400px) {
+  @media (max-width: 1500px) {
     width: 100%;
-    height: 10vh;
+    height: 8rem;
   }
 
-  @media (max-width: 896px) {
+  @media (max-width: 750px) {
     width: 100%;
-    height: 10%;
+    height: 5rem;
+    margin-bottom: 3px;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+    height: 4rem;
     margin-bottom: 3px;
   }
 

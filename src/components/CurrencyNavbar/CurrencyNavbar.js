@@ -12,13 +12,19 @@ const StyledNavbar = styled.nav`
   font-weight: 500;
   border-radius: 4px 4px 0px 0px;
 
+  @media (max-width: 2400px) {
+    width: 100%;
+    height: 10vh;
+
+    font-size: 40px;
+  }
   @media (max-width: 896px) {
     width: 100%;
   }
 `
 
 const CurrencyNavbar = () => {
-  return <StyledNavbar>CURRENCY CONVERTER</StyledNavbar>
+  return <StyledNavbar></StyledNavbar>
 }
 
 export default CurrencyNavbar

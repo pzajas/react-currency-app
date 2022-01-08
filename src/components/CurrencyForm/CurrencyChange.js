@@ -10,10 +10,18 @@ const StyledSelect = styled(Select)`
 const colourStyles = {
   container: styles => ({
     ...styles,
-    width: "21vh",
+    width: "17rem",
     height: "20px",
     "&:hover": {
       color: "black",
+    },
+    "@media (max-width: 1500px)": {
+      width: "12rem",
+    },
+    "@media (max-width: 750px)": {
+      height: "2rem",
+      width: "8rem",
+      fontSize: "1rem",
     },
   }),
   control: () => ({
@@ -29,9 +37,15 @@ const colourStyles = {
     display: "flex",
     alignItems: "center",
     alignText: "center",
-    "@media (max-width: 896px)": {
-      height: "34px",
-      fontSize: 17,
+    "@media (max-width: 1500px)": {
+      height: "3rem",
+      width: "11.6rem",
+      fontSize: "2rem",
+    },
+    "@media (max-width: 750px)": {
+      height: "2rem",
+      width: "94%",
+      fontSize: "1rem",
     },
   }),
   input: styles => ({
@@ -39,9 +53,13 @@ const colourStyles = {
     color: "white",
     fontSize: "12px",
     maxLength: "3",
-    "@media (max-width: 896px)": {
+    "@media (max-width: 2400px)": {
+      height: "44px",
+      fontSize: 25,
+    },
+    "@media (max-width: 750px)": {
       height: "34px",
-      fontSize: 17,
+      fontSize: "1rem",
     },
   }),
   dropdownIndicator: styles => ({
@@ -75,9 +93,13 @@ const colourStyles = {
       "&:hover": {
         backgroundColor: "grey",
       },
-      "@media (max-width: 896px)": {
+      "@media (max-width: 2400px)": {
+        height: "44px",
+        fontSize: 25,
+      },
+      "@media (max-width: 750px)": {
         height: "34px",
-        fontSize: 17,
+        fontSize: 16,
       },
       cursor: isDisabled ? "not-allowed" : "default",
     }

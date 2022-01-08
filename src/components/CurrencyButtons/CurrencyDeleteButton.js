@@ -17,6 +17,12 @@ const CurrencyDeletButton = styled.button`
 
   background-color: lightcoral;
 
+  @media (max-width: 2400px) {
+    margin: 4px;
+    height: 7vh;
+    width: 5vw;
+  }
+
   @media (max-width: 896px) {
     margin: 4px;
     height: 7vh;

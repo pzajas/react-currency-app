@@ -1,7 +1,11 @@
 import styled from "styled-components"
 
 const StyledContainer = styled.div`
-  @media (max-width: 896px) {
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+
+  @media (max-width: 750px) {
     display: flex;
     font-size: 16px;
   }
@@ -13,12 +17,12 @@ const StyledContainer = styled.div`
 const StyledCurrency = styled.div`
   font-size: 14px;
   margin-right: 3vw;
-
-  @media (max-width: 896px) {
-    font-size: 16px;
+  @media (max-width: 1500px) {
+    width: 100%;
+    font-size: 2rem;
   }
-  @media (max-width: 400px) {
-    font-size: 12px;
+  @media (max-width: 750px) {
+    font-size: 0.9rem;
   }
 `
 
@@ -28,11 +32,15 @@ const StyledSymbol = styled.div`
   width: 9.5vw;
   font-size: 14px;
 
-  @media (max-width: 896px) {
-    font-size: 16px;
+  @media (max-width: 1500px) {
+    width: 100%;
+    font-size: 2rem;
   }
-  @media (max-width: 400px) {
-    font-size: 12px;
+
+  @media (max-width: 750px) {
+    font-size: 0.9rem;
+    width: 4vw;
+    margin-right: 2vw;
   }
 `
 
