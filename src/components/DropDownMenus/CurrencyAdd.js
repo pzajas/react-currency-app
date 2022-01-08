@@ -9,8 +9,13 @@ const StyledSelect = styled(Select)`
 
   .select-flag {
     justify-self: start;
-    height: 20px;
-    width: 30px;
+    height: 3rem;
+    width: 5rem;
+
+    @media (max-width: 750px) {
+      height: 2rem;
+      width: 3.5rem;
+    }
   }
 
   .select-text {
@@ -39,15 +44,27 @@ const colourStyles = {
     alignItems: "center",
     alignText: "center",
     type: "number",
-    "@media (max-width: 896px)": {
-      height: "34px",
-      fontSize: 17,
+    "@media (max-width: 1500px)": {
+      height: "3rem",
+      fontSize: "2rem",
+    },
+    "@media (max-width: 750px)": {
+      height: "2rem",
+      fontSize: "16px",
     },
   }),
   input: styles => ({
     ...styles,
     color: "white",
     fontSize: "15px",
+    "@media (max-width: 1500px)": {
+      height: "4rem",
+      fontSize: "2rem",
+    },
+    "@media (max-width: 750px)": {
+      height: "2rem",
+      fontSize: "1rem",
+    },
   }),
   dropdownIndicator: styles => ({
     ...styles,
@@ -73,8 +90,14 @@ const colourStyles = {
       "&:hover": {
         backgroundColor: "grey",
       },
-      "@media (max-width: 896px)": {
-        fontSize: 17,
+      "@media (max-width: 1500px)": {
+        height: "4rem",
+        fontSize: "2rem",
+        marginBottom: "3px",
+      },
+      "@media (max-width: 750px)": {
+        fontSize: "1rem",
+        height: "3rem",
       },
       cursor: isDisabled ? "not-allowed" : "default",
     }
@@ -109,7 +132,7 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
     <div className="custom-select">
       <StyledSelect
         onKeyDown={onKeyDown}
-        isSearchable={false}
+        //isSearchable={false}
         value="placeholder"
         styles={colourStyles}
         menuPlacement="auto"

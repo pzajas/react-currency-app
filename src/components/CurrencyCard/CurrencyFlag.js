@@ -12,31 +12,26 @@ const StyledFlag = styled.div`
     width: 45px;
     margin: 0px 4px 0px 4px;
     border-radius: 2px;
-
-    @media (max-width: 2400px) {
-      height: 50px;
-      width: 70px;
-    }
   }
 
-  @media (max-width: 2400px) {
+  @media (max-width: 1500px) {
     width: 100%;
-    font-size: 18;
-  }
-
-  @media (max-width: 896px) {
-    width: 100%;
-    font-size: 16px;
+    font-size: 2rem;
 
     & img {
-      height: 50px;
-      width: 70px;
+      height: 7rem;
+      width: 10rem;
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 750px) {
     width: 100%;
-    font-size: 12px;
+    font-size: 0.9rem;
+
+    & img {
+      height: 4rem;
+      width: 6rem;
+    }
   }
 `
 

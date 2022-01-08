@@ -4,12 +4,20 @@ const StyledInput = styled.input`
   margin: 4px;
   width: 70%;
   height: 20px;
-  font-size: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0rem;
 
-  @media (max-width: 896px) {
-    height: 30px;
-    width: 100%;
-    font-size: 17px;
+  @media (max-width: 1500px) {
+    height: 3rem;
+    width: 80%;
+    font-size: 2rem;
+  }
+
+  @media (max-width: 750px) {
+    height: 2rem;
+    width: 80%;
+    font-size: 1rem;
   }
 
   &:focus {
