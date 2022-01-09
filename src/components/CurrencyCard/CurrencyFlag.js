@@ -29,7 +29,7 @@ const StyledFlag = styled.div`
     font-size: 0.9rem;
 
     & img {
-      height: 4rem;
+      height: 3.7rem;
       width: 6rem;
     }
   }
@@ -38,9 +38,24 @@ const StyledFlag = styled.div`
 const CurrencyFlag = ({ currencyCode, countryFlag, currencyName }) => {
   const EU_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png`
   const UK_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png`
+  const US_FLAG = `https://flagcdn.com/w320/us.png`
+  const AU_FLAG = `https://flagcdn.com/w320/au.png`
   return (
     <StyledFlag>
-      <img alt="country flag" src={currencyCode === "EUR" ? EU_FLAG : currencyCode === "GBP" ? UK_FLAG : countryFlag} />
+      <img
+        alt="country flag"
+        src={
+          currencyCode === "EUR"
+            ? EU_FLAG
+            : currencyCode === "GBP"
+            ? UK_FLAG
+            : currencyCode === "USD"
+            ? US_FLAG
+            : currencyCode === "AUD"
+            ? AU_FLAG
+            : countryFlag
+        }
+      />
       <div>
         <div className="currency-three-code">{currencyCode}</div>
         <div className="full-name">
