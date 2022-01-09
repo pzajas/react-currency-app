@@ -46,18 +46,19 @@ const CurrencyCard = ({
   currencyCode,
   currencySymbol,
   input,
-  currencyCountryListWithValues,
   userCurrencyList,
   setUserCurrencyList,
+  currencyValuesListFiltered,
 }) => {
   const [toggleDeleteButton, setToggleDeleteButton] = useState(false)
 
-  const currencyPriceRatioChange = currencyCountryListWithValues.find(item => item.nation === currencyCode).price
+  const currencyPriceRatioChange = currencyValuesListFiltered.find(item => item.nation === currencyCode).price
   const currencyPriceRatioCalculated = parseFloat(input * currencyPriceRatioChange).toFixed(2)
 
   const handleToggleDeleteButton = () => {
     setToggleDeleteButton(toggleDeleteButton === true ? false : true)
   }
+
   return (
     <StyledCard onClick={handleToggleDeleteButton}>
       <CurrencyFlag currencyCode={currencyCode} countryFlag={countryFlag} currencyName={currencyName}></CurrencyFlag>
