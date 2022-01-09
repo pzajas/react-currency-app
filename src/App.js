@@ -97,6 +97,7 @@ const App = () => {
 
   //-----------------------------PREPARE CURRENCY ARRAYS-----------------------------//
 
+  console.log(prevCurrency)
   useEffect(() => {
     setCurrencyCountryListWithValues(
       currencyCountryListFiltered
@@ -105,10 +106,13 @@ const App = () => {
           ...currencyValuesListFiltered.find(object2 => object2.nation === object1.currencyCode),
         }))
         .filter(({ nation }) => nation)
+        .filter(item => item.currencyCode !== baseCurrency)
+        .filter(item => item.currencyCode !== prevCurrency.includes(item))
+        .filter(item => item.currencyContinent === "Europe")
         .filter((v, i, a) => a.findIndex(t => t.currencyCode === v.currencyCode) === i)
         .sort((a, b) => a.currencyCode.localeCompare(b.currencyCode))
     )
-  }, [baseCurrency, currencyCountryListFiltered])
+  }, [prevCurrency, baseCurrency, currencyCountryListFiltered])
 
   useEffect(() => {
     setCurrencyContinentsFiltered(currencyCountryListWithValues)
@@ -131,11 +135,11 @@ const App = () => {
         currencyCountryListWithValues={currencyCountryListWithValues}
       />
       <CurrencyList
-        currencyCountryListWithValues={currencyCountryListWithValues}
         userCurrencyList={userCurrencyList}
         setUserCurrencyList={setUserCurrencyList}
         input={input}
         baseCurrency={baseCurrency}
+        currencyValuesListFiltered={currencyValuesListFiltered}
       />
       <CurrencyAdd
         currencyContinentsFiltered={currencyContinentsFiltered}
