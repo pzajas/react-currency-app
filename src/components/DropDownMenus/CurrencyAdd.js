@@ -128,6 +128,7 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
   const onKeyDown = e => {
     if (!e.key.match(/[a-zA-Z]/)) e.preventDefault()
   }
+
   return (
     <div className="custom-select">
       <StyledSelect
@@ -150,6 +151,10 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
                   ? "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png"
                   : option.currencyCode === "GBP"
                   ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png"
+                  : option.currencyCode === "USD"
+                  ? `https://flagcdn.com/w320/us.png`
+                  : option.currencyCode === "AUD"
+                  ? `https://flagcdn.com/w320/au.png`
                   : option.countryFlag
               }
             />
@@ -160,5 +165,4 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
     </div>
   )
 }
-
 export default CurrencyAdd

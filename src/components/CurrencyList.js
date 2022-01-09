@@ -20,7 +20,13 @@ const StyledList = styled.ul`
   }
 `
 
-const CurrencyList = ({ currencyCountryListWithValues, input, userCurrencyList, setUserCurrencyList }) => {
+const CurrencyList = ({
+  baseCurrency,
+  currencyCountryListWithValues,
+  input,
+  userCurrencyList,
+  setUserCurrencyList,
+}) => {
   return (
     <div>
       {userCurrencyList.map(({ currencyCode, currencyName, currencySymbol, countryFlag }) => (
@@ -33,6 +39,7 @@ const CurrencyList = ({ currencyCountryListWithValues, input, userCurrencyList, 
               currencySymbol={currencySymbol}
               currencyCountryListWithValues={currencyCountryListWithValues}
               input={input}
+              baseCurrency={baseCurrency}
               userCurrencyList={userCurrencyList}
               setUserCurrencyList={setUserCurrencyList}
             />

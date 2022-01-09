@@ -40,7 +40,7 @@ const App = () => {
   const [input, setInput] = useState([])
   const [userCurrencyList, setUserCurrencyList] = useState([])
 
-  const [baseCurrency, setBaseCurrency] = useState("USD")
+  const [baseCurrency, setBaseCurrency] = useState("JPY")
   const [prevCurrency, setPrevCurrency] = useState([])
 
   const [currencyCountryListFiltered, setCurrencyCountryListFiltered] = useState([])
@@ -67,7 +67,7 @@ const App = () => {
         }))
       setCurrencyCountryListFiltered([...currencyCountryListArray])
     })
-  }, [CURRENCY_COUNTRY_API_URL])
+  }, [baseCurrency, CURRENCY_COUNTRY_API_URL])
 
   useEffect(() => {
     axios.get(CURRENCY_VALUES_API_URL).then(response => {
@@ -78,8 +78,6 @@ const App = () => {
       setCurrencyValuesListFiltered([...currencyValuesListArray])
     })
   }, [baseCurrency, CURRENCY_VALUES_API_URL])
-
-  console.log(currencyValuesListFiltered)
 
   //------------FILTER BASE CURRENCY FROM THE USER LIST AND ADD PREV CURRENCY ------------//
 
@@ -110,7 +108,7 @@ const App = () => {
         .filter((v, i, a) => a.findIndex(t => t.currencyCode === v.currencyCode) === i)
         .sort((a, b) => a.currencyCode.localeCompare(b.currencyCode))
     )
-  }, [currencyCountryListFiltered])
+  }, [baseCurrency, currencyCountryListFiltered])
 
   useEffect(() => {
     setCurrencyContinentsFiltered(currencyCountryListWithValues)
@@ -137,6 +135,7 @@ const App = () => {
         userCurrencyList={userCurrencyList}
         setUserCurrencyList={setUserCurrencyList}
         input={input}
+        baseCurrency={baseCurrency}
       />
       <CurrencyAdd
         currencyContinentsFiltered={currencyContinentsFiltered}
