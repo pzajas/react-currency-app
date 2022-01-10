@@ -14,13 +14,28 @@ const StyledFlag = styled.div`
     border-radius: 2px;
   }
 
-  @media (max-width: 1500px) {
+  @media (max-width: 2500px) {
     width: 100%;
     font-size: 2rem;
 
     & img {
       height: 7rem;
       width: 10rem;
+      margin-right: 1rem;
+    }
+  }
+
+  @media (max-width: 1025px) {
+    width: 100%;
+    height: 6rem;
+
+    font-size: 1.5rem;
+
+    & img {
+      height: 5rem;
+      width: 8rem;
+
+      margin-right: 1rem;
     }
   }
 

@@ -8,10 +8,16 @@ const StyledInput = styled.input`
   border: none;
   border-radius: 0rem;
 
-  @media (max-width: 1500px) {
+  @media (max-width: 2500px) {
     height: 3rem;
     width: 80%;
     font-size: 2rem;
+  }
+
+  @media (max-width: 1025px) {
+    height: 2.5rem;
+    width: 80%;
+    font-size: 1.5rem;
   }
 
   @media (max-width: 750px) {
