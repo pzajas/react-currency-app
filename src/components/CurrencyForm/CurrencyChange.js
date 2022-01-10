@@ -2,8 +2,8 @@ import Select from "react-select"
 import styled from "styled-components"
 
 const StyledSelect = styled(Select)`
-  @media (max-width: 600px) {
-    width: 100%;
+  @media (max-width: 750px) {
+    width: 10rem;
   }
 `
 
@@ -15,12 +15,15 @@ const colourStyles = {
     "&:hover": {
       color: "black",
     },
-    "@media (max-width: 1500px)": {
+    "@media (max-width: 2500px)": {
+      width: "25rem",
+    },
+    "@media (max-width: 1025px)": {
       width: "12rem",
     },
     "@media (max-width: 750px)": {
       height: "2rem",
-      width: "8rem",
+      maxWidth: "8.4rem",
       fontSize: "1rem",
     },
   }),
@@ -37,14 +40,20 @@ const colourStyles = {
     display: "flex",
     alignItems: "center",
     alignText: "center",
-    "@media (max-width: 1500px)": {
+    "@media (max-width: 2500px)": {
       height: "3rem",
-      width: "11.6rem",
+      width: "24.6rem",
       fontSize: "2rem",
+    },
+    "@media (max-width: 1025px)": {
+      height: "2.5rem",
+      width: "11.6rem",
+      fontSize: "1.5rem",
     },
     "@media (max-width: 750px)": {
       height: "2rem",
-      width: "94%",
+      minWidth: "4rem",
+      maxWidth: "8rem",
       fontSize: "1rem",
     },
   }),
@@ -53,7 +62,7 @@ const colourStyles = {
     color: "white",
     fontSize: "12px",
     maxLength: "3",
-    "@media (max-width: 2400px)": {
+    "@media (max-width: 2500px)": {
       height: "44px",
       fontSize: 25,
     },

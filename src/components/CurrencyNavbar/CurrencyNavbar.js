@@ -20,13 +20,20 @@ const StyledNavbar = styled.nav`
     padding: 2px;
   }
 
-  @media (max-width: 2400px) {
+  @media (max-width: 2500px) {
     width: 100%;
-    height: 10vh;
+    height: 8rem;
 
     font-size: 40px;
   }
-  @media (max-width: 896px) {
+
+  @media (max-width: 1025px) {
+    width: 100%;
+    height: 5.6rem;
+  }
+
+  @media (max-width: 750px) {
+    height: 4.5rem;
     width: 100%;
   }
 `

@@ -15,12 +15,24 @@ const StyledContainer = styled.div`
   }
 `
 const StyledCurrency = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 14px;
   margin-right: 3vw;
-  @media (max-width: 1500px) {
+
+  @media (max-width: 2500px) {
     width: 100%;
     font-size: 2rem;
   }
+
+  @media (max-width: 1025px) {
+    width: 100%;
+    height: 6rem;
+
+    font-size: 1.5rem;
+  }
+
   @media (max-width: 750px) {
     font-size: 0.9rem;
   }
@@ -29,12 +41,20 @@ const StyledCurrency = styled.div`
 const StyledSymbol = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 9.5vw;
   font-size: 14px;
 
-  @media (max-width: 1500px) {
-    width: 100%;
+  @media (max-width: 2500px) {
+    width: 4rem;
     font-size: 2rem;
+  }
+
+  @media (max-width: 1025px) {
+    width: 5rem;
+    height: 6rem;
+
+    font-size: 1.5rem;
   }
 
   @media (max-width: 750px) {

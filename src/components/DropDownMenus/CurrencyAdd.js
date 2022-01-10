@@ -1,3 +1,4 @@
+import { findByLabelText } from "@testing-library/react"
 import Select from "react-select"
 import styled from "styled-components"
 
@@ -44,28 +45,36 @@ const colourStyles = {
     alignItems: "center",
     alignText: "center",
     type: "number",
-    "@media (max-width: 1500px)": {
+    "@media (max-width: 2500px)": {
       height: "3rem",
       fontSize: "2rem",
     },
-    "@media (max-width: 750px)": {
-      height: "2rem",
-      fontSize: "16px",
-    },
-  }),
-  input: styles => ({
-    ...styles,
-    color: "white",
-    fontSize: "15px",
-    "@media (max-width: 1500px)": {
-      height: "4rem",
-      fontSize: "2rem",
+    "@media (max-width: 1025px)": {
+      height: "2.5rem",
+      fontSize: "1.5rem",
     },
     "@media (max-width: 750px)": {
       height: "2rem",
       fontSize: "1rem",
     },
   }),
+  input: styles => ({
+    ...styles,
+    color: "white",
+    fontSize: "15px",
+    "@media (max-width: 2500px)": {
+      height: "4rem",
+      fontSize: "2rem",
+    },
+    "@media (max-width: 1025px)": {
+      fontSize: "1.5rem",
+    },
+    "@media (max-width: 750px)": {
+      height: "2rem",
+      fontSize: "1rem",
+    },
+  }),
+
   dropdownIndicator: styles => ({
     ...styles,
     "&:hover": {
@@ -80,7 +89,7 @@ const colourStyles = {
   option: (styles, { isDisabled }) => {
     return {
       ...styles,
-      fontSize: "15px",
+      fontSize: "1rem",
       margin: "auto",
       color: "white",
       justifyContent: "center",
@@ -90,14 +99,22 @@ const colourStyles = {
       "&:hover": {
         backgroundColor: "grey",
       },
+      "@media (max-width: 2500px)": {
+        height: "4rem",
+        fontSize: "2rem",
+        marginBottom: "3px",
+        marginRight: "1rem",
+      },
       "@media (max-width: 1500px)": {
         height: "4rem",
         fontSize: "2rem",
         marginBottom: "3px",
+        marginRight: "1rem",
       },
       "@media (max-width: 750px)": {
         fontSize: "1rem",
         height: "3rem",
+        marginRight: "1rem",
       },
       cursor: isDisabled ? "not-allowed" : "default",
     }

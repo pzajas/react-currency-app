@@ -26,8 +26,8 @@ const StyledContainer = styled.div`
   body {
     background-color: red;
   }
-  @media (max-width: 1500px) {
-    width: 80%;
+  @media (max-width: 2500px) {
+    width: 100%;
   }
 
   @media (max-width: 750px) {
