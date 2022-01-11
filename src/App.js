@@ -39,6 +39,7 @@ const StyledContainer = styled.div`
 const App = () => {
   const [input, setInput] = useState([])
   const [userCurrencyList, setUserCurrencyList] = useState([])
+  const [userFavouriteCurrencyList, setUserFavouriteCurrencyList] = useState([])
 
   const [baseCurrency, setBaseCurrency] = useState("JPY")
   const [prevCurrency, setPrevCurrency] = useState([])
@@ -139,7 +140,14 @@ const App = () => {
         input={input}
         baseCurrency={baseCurrency}
         currencyValuesListFiltered={currencyValuesListFiltered}
+        userFavouriteCurrencyList={userFavouriteCurrencyList}
+        setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
       />
+      {/* <ul>
+        {userFavouriteCurrencyList.map(({ currencyCode }) => (
+          <li>{currencyCode}</li>
+        ))}
+      </ul> */}
       <CurrencyAdd
         currencyContinentsFiltered={currencyContinentsFiltered}
         userCurrencyList={userCurrencyList}
