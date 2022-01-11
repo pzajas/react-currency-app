@@ -97,7 +97,6 @@ const App = () => {
 
   //-----------------------------PREPARE CURRENCY ARRAYS-----------------------------//
 
-  console.log(prevCurrency)
   useEffect(() => {
     setCurrencyCountryListWithValues(
       currencyCountryListFiltered

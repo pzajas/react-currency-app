@@ -1,9 +1,10 @@
 import { useState } from "react"
 import styled from "styled-components"
 
-import CurrencyDeleteButton from "../CurrencyButtons/CurrencyDeleteButton"
 import CurrencyFlag from "./CurrencyFlag"
 import CurrencySymbol from "./CurrencySymbol"
+
+import CurrencyButtons from "./CurrencyButtons"
 
 const StyledCard = styled.div`
   display: flex;
@@ -47,6 +48,7 @@ const StyledCard = styled.div`
     background-color: #565666;
   }
 `
+
 const CurrencyCard = ({
   currencyName,
   countryFlag,
@@ -72,7 +74,7 @@ const CurrencyCard = ({
       {!toggleDeleteButton ? (
         <CurrencySymbol currencyPriceRatioCalculated={currencyPriceRatioCalculated} currencySymbol={currencySymbol} />
       ) : (
-        <CurrencyDeleteButton
+        <CurrencyButtons
           userCurrencyList={userCurrencyList}
           setUserCurrencyList={setUserCurrencyList}
           currencyCode={currencyCode}
