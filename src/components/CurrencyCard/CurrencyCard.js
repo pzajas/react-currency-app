@@ -1,10 +1,10 @@
 import { useState } from "react"
 import styled from "styled-components"
+import CurrencyButtonDelete from "./CurrencyButtonDelete"
+import CurrencyButtonFavourite from "./CurrencyButtonFavourite"
 
 import CurrencyFlag from "./CurrencyFlag"
 import CurrencySymbol from "./CurrencySymbol"
-
-import CurrencyButtons from "./CurrencyButtons"
 
 const StyledCard = styled.div`
   display: flex;
@@ -18,7 +18,6 @@ const StyledCard = styled.div`
   margin-bottom: 1px;
   align-items: center;
   border-radius: 2px;
-  transition: all 0.4s ease-in-out;
 
   @media (max-width: 2500px) {
     width: 100%;
@@ -43,10 +42,14 @@ const StyledCard = styled.div`
     height: 4.5rem;
     margin-bottom: 3px;
   }
-
-  &:hover {
-    background-color: #565666;
-  }
+`
+const StyledButtonContainer = styled.div`
+  height: 4rem;
+  width: 2.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  // align-items: center;
 `
 
 const CurrencyCard = ({
@@ -58,6 +61,8 @@ const CurrencyCard = ({
   userCurrencyList,
   setUserCurrencyList,
   currencyValuesListFiltered,
+  userFavouriteCurrencyList,
+  setUserFavouriteCurrencyList,
 }) => {
   const [toggleDeleteButton, setToggleDeleteButton] = useState(false)
 
@@ -74,11 +79,19 @@ const CurrencyCard = ({
       {!toggleDeleteButton ? (
         <CurrencySymbol currencyPriceRatioCalculated={currencyPriceRatioCalculated} currencySymbol={currencySymbol} />
       ) : (
-        <CurrencyButtons
-          userCurrencyList={userCurrencyList}
-          setUserCurrencyList={setUserCurrencyList}
-          currencyCode={currencyCode}
-        />
+        <StyledButtonContainer>
+          <CurrencyButtonDelete
+            userCurrencyList={userCurrencyList}
+            setUserCurrencyList={setUserCurrencyList}
+            currencyCode={currencyCode}
+          />
+          <CurrencyButtonFavourite
+            userCurrencyList={userCurrencyList}
+            userFavouriteCurrencyList={userFavouriteCurrencyList}
+            setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
+            currencyCode={currencyCode}
+          />
+        </StyledButtonContainer>
       )}
     </StyledCard>
   )
