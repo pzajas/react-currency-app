@@ -1,4 +1,4 @@
-import Logo from "../../assets/Logo.jpg"
+import Logo from "../../assets/Logo6.jpg"
 import styled from "styled-components"
 
 const StyledNavbar = styled.nav`
@@ -6,24 +6,15 @@ const StyledNavbar = styled.nav`
   background-color: #2d2d37;
   color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: left;
   align-items: center;
   font-weight: 500;
   width: 100px;
   border-radius: 4px 4px 0px 0px;
 
-  & img {
-    width: 3rem;
-    color: white;
-    background-color: white;
-    border-radius: 50%;
-    padding: 2px;
-  }
-
   @media (max-width: 2500px) {
     width: 100%;
     height: 8rem;
-
     font-size: 40px;
   }
 
@@ -35,6 +26,14 @@ const StyledNavbar = styled.nav`
   @media (max-width: 750px) {
     height: 4.5rem;
     width: 100%;
+
+    & img {
+      width: 7rem;
+      margin-left: 0.5rem;
+      border-radius: 50%;
+
+      border: 6px solid grey;
+    }
   }
 `
 
@@ -42,7 +41,7 @@ const CurrencyNavbar = () => {
   return (
     <StyledNavbar>
       <img src={Logo} />
-      <img src={Logo} />
+      <div className="xxx"></div>
     </StyledNavbar>
   )
 }
