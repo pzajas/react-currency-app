@@ -26,7 +26,7 @@ const CurrencyButtonFavourite = ({
 
   return (
     <StyledAddFavouriteButton value={currencyCode} onClick={handleX}>
-      <img src={Plus} alt="An image to add to the favourite list" />
+      <img src={Plus} alt="" />
     </StyledAddFavouriteButton>
   )
 }

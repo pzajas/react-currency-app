@@ -19,7 +19,7 @@ const CurrencyButtonDelete = ({ currencyCode, userCurrencyList, setUserCurrencyL
   }
   return (
     <StyledDeleteButton value={currencyCode} onClick={handleDeleteCurrencyFromTheUserList}>
-      <img src={Minus} alt="An image of minus" />
+      <img src={Minus} alt="" />
     </StyledDeleteButton>
   )
 }
