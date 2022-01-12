@@ -1,4 +1,4 @@
-import Logo from "../../assets/Logo6.jpg"
+import Logo from "../../assets/Logo.jpg"
 import styled from "styled-components"
 
 const StyledNavbar = styled.nav`
@@ -40,8 +40,7 @@ const StyledNavbar = styled.nav`
 const CurrencyNavbar = () => {
   return (
     <StyledNavbar>
-      <img src={Logo} />
-      <div className="xxx"></div>
+      <img src={Logo} alt="" />
     </StyledNavbar>
   )
 }
