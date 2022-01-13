@@ -31,8 +31,6 @@ const StyledNavbar = styled.nav`
       width: 7rem;
       margin-left: 0.5rem;
       border-radius: 50%;
-
-      border: 6px solid grey;
     }
   }
 `
