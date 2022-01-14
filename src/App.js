@@ -122,6 +122,28 @@ const App = () => {
     setCurrencyContinentsFiltered(currencyCountryListWithValues)
   }, [currencyCountryListWithValues])
 
+  const saveCurrencyToLocal = () => {
+    if (userCurrencyList.length !== 0) localStorage.setItem("currency", JSON.stringify(userCurrencyList))
+    else localStorage.setItem("currency", JSON.stringify([]))
+  }
+
+  const getLocalCurrency = () => {
+    if (localStorage.getItem("currency") === null) {
+      localStorage.setItem("currency", JSON.stringify([]))
+    } else {
+      let xxx = JSON.parse(localStorage.getItem("currency"))
+      setUserCurrencyList(xxx)
+    }
+  }
+
+  useEffect(() => {
+    getLocalCurrency()
+  }, [])
+
+  useEffect(() => {
+    saveCurrencyToLocal()
+  }, [userCurrencyList])
+
   //-----------------------------JSX-----------------------------//
   return (
     <StyledContainer>
