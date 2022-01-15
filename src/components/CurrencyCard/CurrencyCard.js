@@ -66,7 +66,7 @@ const CurrencyCard = ({
 }) => {
   const [toggleDeleteButton, setToggleDeleteButton] = useState(false)
 
-  const currencyPriceRatioChange = currencyValuesListFiltered.find(item => item.nation === currencyCode).price
+  const currencyPriceRatioChange = currencyValuesListFiltered.find(item => item.nation === currencyCode)?.price
   const currencyPriceRatioCalculated = parseFloat(input * currencyPriceRatioChange).toFixed(2)
 
   const handleToggleDeleteButton = () => {

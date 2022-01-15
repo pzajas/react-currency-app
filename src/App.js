@@ -41,8 +41,11 @@ const StyledContainer = styled.div`
 `
 
 const App = () => {
+  const storedboards = JSON.parse(localStorage.getItem("currency")) || []
+  console.log(storedboards)
+
   const [input, setInput] = useState([])
-  const [userCurrencyList, setUserCurrencyList] = useState([])
+  const [userCurrencyList, setUserCurrencyList] = useState(storedboards)
   const [userFavouriteCurrencyList, setUserFavouriteCurrencyList] = useState([])
 
   const [baseCurrency, setBaseCurrency] = useState("JPY")
@@ -122,27 +125,18 @@ const App = () => {
     setCurrencyContinentsFiltered(currencyCountryListWithValues)
   }, [currencyCountryListWithValues])
 
-  const saveCurrencyToLocal = () => {
-    if (userCurrencyList.length !== 0) localStorage.setItem("currency", JSON.stringify(userCurrencyList))
-    else localStorage.setItem("currency", JSON.stringify([]))
-  }
+  useEffect(() => {
+    localStorage.setItem("currency", JSON.stringify(userCurrencyList))
+  }, [userCurrencyList])
 
-  const getLocalCurrency = () => {
+  useEffect(() => {
     if (localStorage.getItem("currency") === null) {
       localStorage.setItem("currency", JSON.stringify([]))
     } else {
-      let xxx = JSON.parse(localStorage.getItem("currency"))
-      setUserCurrencyList(xxx)
+      let localCurrencyList = JSON.parse(localStorage.getItem("currency"))
+      setUserCurrencyList(localCurrencyList)
     }
-  }
-
-  useEffect(() => {
-    getLocalCurrency()
   }, [])
-
-  useEffect(() => {
-    saveCurrencyToLocal()
-  }, [userCurrencyList])
 
   //-----------------------------JSX-----------------------------//
   return (
