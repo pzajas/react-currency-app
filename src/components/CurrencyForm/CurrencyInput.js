@@ -34,7 +34,6 @@ const StyledInput = styled.input`
 const CurrencyInput = ({ input, setInput }) => {
   const handleInputChange = event => {
     const num = event.target.value
-
     setInput(num.replace(/[^\d.]/g, ""))
   }
 
