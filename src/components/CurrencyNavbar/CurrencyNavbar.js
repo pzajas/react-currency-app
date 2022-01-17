@@ -1,5 +1,13 @@
 import Logo from "../../assets/Logo.jpg"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHome, faQuestionCircle, faHeart, faDotCircle } from "@fortawesome/free-solid-svg-icons"
+
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
 
 const StyledNavbar = styled.nav`
   height: 50px;
@@ -35,11 +43,47 @@ const StyledNavbar = styled.nav`
   }
 `
 
+const StyledLinkContainer = styled.div`
+  display: flex;
+  justify-content: right;
+  align-items: top;
+  width: 100%;
+  height: 100%;
+  gap: 0.5rem;
+  padding-right: 0.5rem;
+
+  padding-top: 0.5rem;
+  background-color: #2d2d37;
+`
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+`
+
 const CurrencyNavbar = () => {
   return (
-    <StyledNavbar>
-      <img src={Logo} alt="" />
-    </StyledNavbar>
+    <StyledContainer>
+      <StyledNavbar>
+        <img src={Logo} alt="" />
+
+        <StyledLinkContainer>
+          <StyledLink to="/">
+            <FontAwesomeIcon icon={faHome} />
+          </StyledLink>
+          <StyledLink to="/favourites">
+            <FontAwesomeIcon icon={faDotCircle} />
+          </StyledLink>
+          <StyledLink to="/favourites">
+            <FontAwesomeIcon icon={faHeart} />
+          </StyledLink>
+          <StyledLink to="/about">
+            <FontAwesomeIcon icon={faQuestionCircle} />
+          </StyledLink>
+        </StyledLinkContainer>
+      </StyledNavbar>
+    </StyledContainer>
   )
 }
 

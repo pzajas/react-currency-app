@@ -19,13 +19,13 @@ const CurrencyButtonFavourite = ({
   userFavouriteCurrencyList,
   setUserFavouriteCurrencyList,
 }) => {
-  const handleX = e => {
-    const xxx = userCurrencyList.filter(item => item.currencyCode === e.currentTarget.value)
-    setUserFavouriteCurrencyList([...userFavouriteCurrencyList, ...xxx])
+  const handleAddCurrencyToFavourieList = e => {
+    const userFavouriteCurrency = userCurrencyList.filter(item => item.currencyCode === e.currentTarget.value)
+    setUserFavouriteCurrencyList([...userFavouriteCurrencyList, ...userFavouriteCurrency])
   }
 
   return (
-    <StyledAddFavouriteButton value={currencyCode} onClick={handleX}>
+    <StyledAddFavouriteButton value={currencyCode} onClick={handleAddCurrencyToFavourieList}>
       <img src={Plus} alt="" />
     </StyledAddFavouriteButton>
   )

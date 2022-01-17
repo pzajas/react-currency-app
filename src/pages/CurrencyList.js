@@ -1,4 +1,4 @@
-import CurrencyCard from "./CurrencyCard/CurrencyCard"
+import CurrencyCard from "../components/CurrencyCard/CurrencyCard"
 import styled from "styled-components"
 
 const StyledList = styled.ul`
