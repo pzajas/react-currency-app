@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react"
 
 import axios from "axios"
+import { Routes, Route } from "react-router-dom"
 import styled from "styled-components"
 
 import CurrencyNavbar from "./components/CurrencyNavbar/CurrencyNavbar"
 import CurrencyForm from "./components/CurrencyForm/CurrencyForm"
-import CurrencyList from "./components/CurrencyList"
+import CurrencyList from "./pages/CurrencyList"
 import CurrencyAdd from "./components/DropDownMenus/CurrencyAdd"
 import CurrencyFilter from "./components/CurrencyFilter/CurrencyFilter"
+import Favourite from "./pages/CurrencyFavourite"
+import About from "./pages/About"
 
 const StyledContainer = styled.div`
   box-sizing: border-box;
@@ -47,7 +50,7 @@ const App = () => {
   const [input, setInput] = useState([])
 
   const [userCurrencyList, setUserCurrencyList] = useState(USER_CURENCY_LIST_INITIAL_STATE)
-  const [userFavouriteCurrencyList, setUserFavouriteCurrencyList] = useState([])
+  const [userFavouriteCurrencyList, setUserFavouriteCurrencyList] = useState([userCurrencyList])
 
   const [baseCurrency, setBaseCurrency] = useState(BASE_CURENCY_INITIAL_STATE)
   const [prevCurrency, setPrevCurrency] = useState([])
@@ -152,20 +155,25 @@ const App = () => {
         setBaseCurrency={setBaseCurrency}
         currencyCountryListWithValues={currencyCountryListWithValues}
       />
-      <CurrencyList
-        userCurrencyList={userCurrencyList}
-        setUserCurrencyList={setUserCurrencyList}
-        input={input}
-        baseCurrency={baseCurrency}
-        currencyValuesListFiltered={currencyValuesListFiltered}
-        userFavouriteCurrencyList={userFavouriteCurrencyList}
-        setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
-      />
-      {/* <ul>
-        {userFavouriteCurrencyList.map(({ currencyCode }) => (
-          <li>{currencyCode}</li>
-        ))}
-      </ul> */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <CurrencyList
+              userCurrencyList={userCurrencyList}
+              setUserCurrencyList={setUserCurrencyList}
+              input={input}
+              baseCurrency={baseCurrency}
+              currencyValuesListFiltered={currencyValuesListFiltered}
+              userFavouriteCurrencyList={userFavouriteCurrencyList}
+              setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
+            />
+          }
+        ></Route>
+        <Route path="/favourites" element={<Favourite userFavouriteCurrencyList={userFavouriteCurrencyList} />}></Route>
+        <Route path="/favourites" element={<Favourite userFavouriteCurrencyList={userFavouriteCurrencyList} />}></Route>
+        <Route path="/About" element={<About />}></Route>
+      </Routes>
       <CurrencyAdd
         currencyContinentsFiltered={currencyContinentsFiltered}
         userCurrencyList={userCurrencyList}
