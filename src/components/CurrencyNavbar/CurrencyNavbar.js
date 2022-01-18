@@ -63,8 +63,6 @@ const StyledLinkContainer = styled.div`
   gap: 0.5rem;
   padding-top: 0.5rem;
   padding-right: 0.5rem;
-
-  //padding-top: 0.1rem;
   background-color: #2d2d37;
 `
 
@@ -74,7 +72,11 @@ const StyledLink = styled(Link)`
   font-size: 1.5rem;
 `
 
-const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFiltered }) => {
+const CurrencyNavbar = ({
+  currencyCountryListWithValues,
+  setCurrencyContinentsFiltered,
+  currencyContinentsFiltered,
+}) => {
   const [counter, setCounter] = useState(1)
   const filterValues = ["World", "Europe", "Asia", "Africa", "North America", "South America"]
 
@@ -90,6 +92,8 @@ const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFi
     )
     if (counter >= 5) setCounter(0)
   }
+
+  console.log(currencyContinentsFiltered)
   return (
     <StyledContainer>
       <StyledNavbar>
@@ -101,8 +105,9 @@ const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFi
           <StyledLink to="/favourites">
             <FontAwesomeIcon icon={faGrinHearts} />
           </StyledLink>
-          <StyledLink to="/" onClick={handleFilterContinents}>
+          <StyledLink to="/">
             <FontAwesomeIcon
+              onClick={handleFilterContinents}
               icon={
                 counter === 1
                   ? faGlobe
