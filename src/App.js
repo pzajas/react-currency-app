@@ -8,7 +8,6 @@ import CurrencyNavbar from "./components/CurrencyNavbar/CurrencyNavbar"
 import CurrencyForm from "./components/CurrencyForm/CurrencyForm"
 import CurrencyList from "./pages/CurrencyList"
 import CurrencyAdd from "./components/DropDownMenus/CurrencyAdd"
-import CurrencyFilter from "./components/CurrencyFilter/CurrencyFilter"
 import Favourite from "./pages/CurrencyFavourite"
 import About from "./pages/About"
 
@@ -119,7 +118,7 @@ const App = () => {
         .filter(({ nation }) => nation)
         .filter(item => item.currencyCode !== baseCurrency)
         .filter(item => item.currencyCode !== prevCurrency.includes(item))
-        .filter(item => item.currencyContinent === "Europe")
+        //.filter(item => item.currencyContinent === "Europe")
         .filter((v, i, a) => a.findIndex(t => t.currencyCode === v.currencyCode) === i)
         .sort((a, b) => a.currencyCode.localeCompare(b.currencyCode))
     )
@@ -142,11 +141,12 @@ const App = () => {
   //-----------------------------JSX-----------------------------//
   return (
     <StyledContainer>
-      <CurrencyNavbar />
-      {/* <CurrencyFilter
+      <CurrencyNavbar
         setCurrencyContinentsFiltered={setCurrencyContinentsFiltered}
         currencyCountryListWithValues={currencyCountryListWithValues}
-      /> */}
+        currencyCountryListFiltered={currencyCountryListFiltered}
+        currencyContinentsFiltered={currencyContinentsFiltered}
+      />
       <CurrencyForm
         value={input}
         setInput={setInput}

@@ -1,8 +1,19 @@
+import React, { useState, useEffect } from "react"
+
 import Logo from "../../assets/Logo.jpg"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHome, faQuestionCircle, faHeart, faDotCircle } from "@fortawesome/free-solid-svg-icons"
+import {
+  faGlobe,
+  faGlobeEurope,
+  faGlobeAsia,
+  faGlobeAfrica,
+  faGlobeAmericas,
+  faQuestionCircle,
+  faGrinHearts,
+  faUserCircle,
+} from "@fortawesome/free-solid-svg-icons"
 
 const StyledContainer = styled.div`
   display: flex;
@@ -50,33 +61,62 @@ const StyledLinkContainer = styled.div`
   width: 100%;
   height: 100%;
   gap: 0.5rem;
+  padding-top: 0.5rem;
   padding-right: 0.5rem;
 
-  padding-top: 0.5rem;
+  //padding-top: 0.1rem;
   background-color: #2d2d37;
 `
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
 `
 
-const CurrencyNavbar = () => {
+const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFiltered }) => {
+  const [counter, setCounter] = useState(1)
+  const filterValues = ["World", "Europe", "Asia", "Africa", "North America", "South America"]
+
+  const handleFilterContinents = () => {
+    setCounter(counter + 1)
+
+    setCurrencyContinentsFiltered(
+      filterValues[counter] === "World"
+        ? currencyCountryListWithValues
+        : currencyCountryListWithValues.filter(
+            item => item.currencyContinent === filterValues[counter] || item.currencyCode === "EUR"
+          )
+    )
+    if (counter >= 5) setCounter(0)
+  }
   return (
     <StyledContainer>
       <StyledNavbar>
         <img src={Logo} alt="" />
-
         <StyledLinkContainer>
           <StyledLink to="/">
-            <FontAwesomeIcon icon={faHome} />
+            <FontAwesomeIcon icon={faUserCircle} />
           </StyledLink>
           <StyledLink to="/favourites">
-            <FontAwesomeIcon icon={faDotCircle} />
+            <FontAwesomeIcon icon={faGrinHearts} />
           </StyledLink>
-          <StyledLink to="/favourites">
-            <FontAwesomeIcon icon={faHeart} />
+          <StyledLink to="/" onClick={handleFilterContinents}>
+            <FontAwesomeIcon
+              icon={
+                counter === 1
+                  ? faGlobe
+                  : counter === 2
+                  ? faGlobeEurope
+                  : counter === 3
+                  ? faGlobeAsia
+                  : counter === 4
+                  ? faGlobeAfrica
+                  : counter === 5
+                  ? faGlobeAmericas
+                  : faGlobeAmericas
+              }
+            />
           </StyledLink>
           <StyledLink to="/about">
             <FontAwesomeIcon icon={faQuestionCircle} />
