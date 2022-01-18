@@ -44,12 +44,13 @@ const StyledContainer = styled.div`
 
 const App = () => {
   const USER_CURENCY_LIST_INITIAL_STATE = JSON.parse(localStorage.getItem("currency")) || []
+  const USER_FAVOURITE_CURRENCY_INITIAL_STATE = JSON.parse(localStorage.getItem("favourite")) || []
   const BASE_CURENCY_INITIAL_STATE = JSON.parse(localStorage.getItem("base_currency")) || ["JPY"]
 
   const [input, setInput] = useState([])
 
   const [userCurrencyList, setUserCurrencyList] = useState(USER_CURENCY_LIST_INITIAL_STATE)
-  const [userFavouriteCurrencyList, setUserFavouriteCurrencyList] = useState([userCurrencyList])
+  const [userFavouriteCurrencyList, setUserFavouriteCurrencyList] = useState(USER_FAVOURITE_CURRENCY_INITIAL_STATE)
 
   const [baseCurrency, setBaseCurrency] = useState(BASE_CURENCY_INITIAL_STATE)
   const [prevCurrency, setPrevCurrency] = useState([])
@@ -135,6 +136,10 @@ const App = () => {
   }, [userCurrencyList])
 
   useEffect(() => {
+    localStorage.setItem("favourite", JSON.stringify(userFavouriteCurrencyList))
+  }, [userFavouriteCurrencyList])
+
+  useEffect(() => {
     localStorage.setItem("base_currency", JSON.stringify(baseCurrency))
   }, [baseCurrency])
 
@@ -144,7 +149,6 @@ const App = () => {
       <CurrencyNavbar
         setCurrencyContinentsFiltered={setCurrencyContinentsFiltered}
         currencyCountryListWithValues={currencyCountryListWithValues}
-        currencyCountryListFiltered={currencyCountryListFiltered}
         currencyContinentsFiltered={currencyContinentsFiltered}
       />
       <CurrencyForm
@@ -170,9 +174,17 @@ const App = () => {
             />
           }
         ></Route>
-        <Route path="/favourites" element={<Favourite userFavouriteCurrencyList={userFavouriteCurrencyList} />}></Route>
-        <Route path="/favourites" element={<Favourite userFavouriteCurrencyList={userFavouriteCurrencyList} />}></Route>
-        <Route path="/About" element={<About />}></Route>
+        <Route
+          path="/favourites"
+          element={
+            <Favourite
+              userFavouriteCurrencyList={userFavouriteCurrencyList}
+              currencyValuesListFiltered={currencyValuesListFiltered}
+              input={input}
+            />
+          }
+        ></Route>
+        <Route path="/about" element={<About />}></Route>
       </Routes>
       <CurrencyAdd
         currencyContinentsFiltered={currencyContinentsFiltered}

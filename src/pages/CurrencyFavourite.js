@@ -1,3 +1,4 @@
+import CurrencyCard from "../../src/components/CurrencyCard/CurrencyCard"
 import styled from "styled-components"
 
 const StyledList = styled.ul`
@@ -20,11 +21,20 @@ const StyledList = styled.ul`
   }
 `
 
-const Favourite = ({ userFavouriteCurrencyList }) => {
+const Favourite = ({ userFavouriteCurrencyList, currencyValuesListFiltered, input }) => {
   return (
     <StyledList>
-      {userFavouriteCurrencyList.map(({ currencyCode }) => (
-        <li>{currencyCode}</li>
+      {userFavouriteCurrencyList.map(({ currencyCode, currencyName, currencySymbol, countryFlag }) => (
+        <li>
+          <CurrencyCard
+            countryFlag={countryFlag}
+            currencyCode={currencyCode}
+            currencyName={currencyName}
+            currencySymbol={currencySymbol}
+            currencyValuesListFiltered={currencyValuesListFiltered}
+            input={input}
+          />
+        </li>
       ))}
     </StyledList>
   )
