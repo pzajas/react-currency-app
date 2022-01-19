@@ -49,6 +49,8 @@ const App = () => {
 
   const [input, setInput] = useState([])
 
+  const [xxx, setXxx] = useState(true)
+
   const [userCurrencyList, setUserCurrencyList] = useState(USER_CURENCY_LIST_INITIAL_STATE)
   const [userFavouriteCurrencyList, setUserFavouriteCurrencyList] = useState(USER_FAVOURITE_CURRENCY_INITIAL_STATE)
 
@@ -143,6 +145,7 @@ const App = () => {
     localStorage.setItem("base_currency", JSON.stringify(baseCurrency))
   }, [baseCurrency])
 
+  const yyy = JSON.parse(localStorage.getItem("favourite"))
   //-----------------------------JSX-----------------------------//
   return (
     <StyledContainer>
@@ -164,6 +167,8 @@ const App = () => {
           path="/"
           element={
             <CurrencyList
+              yyy={yyy}
+              xxx={xxx}
               userCurrencyList={userCurrencyList}
               setUserCurrencyList={setUserCurrencyList}
               input={input}
@@ -178,6 +183,7 @@ const App = () => {
           path="/favourites"
           element={
             <Favourite
+              yyy={yyy}
               userFavouriteCurrencyList={userFavouriteCurrencyList}
               currencyValuesListFiltered={currencyValuesListFiltered}
               input={input}

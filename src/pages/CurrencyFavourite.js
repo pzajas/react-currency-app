@@ -21,12 +21,13 @@ const StyledList = styled.ul`
   }
 `
 
-const Favourite = ({ userFavouriteCurrencyList, currencyValuesListFiltered, input }) => {
+const Favourite = ({ yyy, userFavouriteCurrencyList, currencyValuesListFiltered, input }) => {
   return (
     <StyledList>
       {userFavouriteCurrencyList.map(({ currencyCode, currencyName, currencySymbol, countryFlag }) => (
         <li>
           <CurrencyCard
+            yyy={yyy}
             countryFlag={countryFlag}
             currencyCode={currencyCode}
             currencyName={currencyName}

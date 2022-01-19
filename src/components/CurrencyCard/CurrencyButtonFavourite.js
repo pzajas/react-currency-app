@@ -1,5 +1,4 @@
 import Plus from "../../assets/Plus.png"
-
 import styled from "styled-components"
 
 const StyledAddFavouriteButton = styled.button`
