@@ -2,6 +2,7 @@ import { useState } from "react"
 import styled from "styled-components"
 import CurrencyButtonDelete from "./CurrencyButtonDelete"
 import CurrencyButtonFavourite from "./CurrencyButtonFavourite"
+import CurrencyButtonDeleteFavourite from "./CurrencyButtonDeleteFavourite"
 
 import CurrencyFlag from "./CurrencyFlag"
 import CurrencySymbol from "./CurrencySymbol"
@@ -52,6 +53,15 @@ const StyledButtonContainer = styled.div`
   // align-items: center;
 `
 
+const StyledButtonContainerDel = styled.div`
+  height: 4rem;
+  width: 2.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  // align-items: center;
+`
+
 const CurrencyCard = ({
   currencyName,
   countryFlag,
@@ -63,6 +73,8 @@ const CurrencyCard = ({
   currencyValuesListFiltered,
   userFavouriteCurrencyList,
   setUserFavouriteCurrencyList,
+  xxx,
+  yyy,
 }) => {
   const [toggleDeleteButton, setToggleDeleteButton] = useState(false)
 
@@ -78,7 +90,7 @@ const CurrencyCard = ({
       <CurrencyFlag currencyCode={currencyCode} countryFlag={countryFlag} currencyName={currencyName}></CurrencyFlag>
       {!toggleDeleteButton ? (
         <CurrencySymbol currencyPriceRatioCalculated={currencyPriceRatioCalculated} currencySymbol={currencySymbol} />
-      ) : (
+      ) : xxx ? (
         <StyledButtonContainer>
           <CurrencyButtonDelete
             userCurrencyList={userCurrencyList}
@@ -92,6 +104,15 @@ const CurrencyCard = ({
             currencyCode={currencyCode}
           />
         </StyledButtonContainer>
+      ) : (
+        <StyledButtonContainerDel>
+          <CurrencyButtonDeleteFavourite
+            userFavouriteCurrencyList={userFavouriteCurrencyList}
+            setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
+            currencyCode={currencyCode}
+            yyy={yyy}
+          />
+        </StyledButtonContainerDel>
       )}
     </StyledCard>
   )
