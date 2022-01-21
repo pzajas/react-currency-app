@@ -50,7 +50,6 @@ const StyledButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: right;
-  // align-items: center;
 `
 
 const StyledButtonContainerDel = styled.div`
@@ -59,7 +58,6 @@ const StyledButtonContainerDel = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: right;
-  // align-items: center;
 `
 
 const CurrencyCard = ({
