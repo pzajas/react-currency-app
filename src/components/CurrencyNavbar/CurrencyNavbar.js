@@ -93,7 +93,6 @@ const CurrencyNavbar = ({
     if (counter >= 5) setCounter(0)
   }
 
-  console.log(currencyContinentsFiltered)
   return (
     <StyledContainer>
       <StyledNavbar>
@@ -119,7 +118,7 @@ const CurrencyNavbar = ({
                   ? faGlobeAfrica
                   : counter === 5
                   ? faGlobeAmericas
-                  : faGlobeAmericas
+                  : faGlobeAsia
               }
             />
           </StyledLink>

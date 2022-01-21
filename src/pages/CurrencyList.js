@@ -28,8 +28,6 @@ const CurrencyList = ({
   userFavouriteCurrencyList,
   setUserFavouriteCurrencyList,
   currencyValuesListFiltered,
-  xxx,
-  yyy,
 }) => {
   return (
     <div>
@@ -37,8 +35,6 @@ const CurrencyList = ({
         <StyledList key={currencyCode}>
           <li>
             <CurrencyCard
-              xxx={xxx}
-              yyy={yyy}
               countryFlag={countryFlag}
               currencyCode={currencyCode}
               currencyName={currencyName}
