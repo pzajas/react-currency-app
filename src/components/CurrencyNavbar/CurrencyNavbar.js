@@ -72,6 +72,12 @@ const StyledLink = styled(Link)`
   font-size: 1.5rem;
 `
 
+const StyledIcon = styled(FontAwesomeIcon)`
+  &:hover {
+    color: orange;
+  }
+`
+
 const CurrencyNavbar = ({
   currencyCountryListWithValues,
   setCurrencyContinentsFiltered,
@@ -99,13 +105,13 @@ const CurrencyNavbar = ({
         <img src={Logo} alt="" />
         <StyledLinkContainer>
           <StyledLink to="/">
-            <FontAwesomeIcon icon={faUserCircle} />
+            <StyledIcon icon={faUserCircle} />
           </StyledLink>
           <StyledLink to="/favourites">
-            <FontAwesomeIcon icon={faGrinHearts} />
+            <StyledIcon icon={faGrinHearts} />
           </StyledLink>
           <StyledLink to="/">
-            <FontAwesomeIcon
+            <StyledIcon
               onClick={handleFilterContinents}
               icon={
                 counter === 1
@@ -123,7 +129,7 @@ const CurrencyNavbar = ({
             />
           </StyledLink>
           <StyledLink to="/about">
-            <FontAwesomeIcon icon={faQuestionCircle} />
+            <StyledIcon icon={faQuestionCircle} />
           </StyledLink>
         </StyledLinkContainer>
       </StyledNavbar>
