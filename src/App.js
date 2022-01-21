@@ -142,6 +142,7 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem("base_currency", JSON.stringify(baseCurrency))
   }, [baseCurrency])
+
   //-----------------------------JSX-----------------------------//
   return (
     <StyledContainer>
