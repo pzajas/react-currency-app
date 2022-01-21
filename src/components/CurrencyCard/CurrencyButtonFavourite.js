@@ -20,7 +20,10 @@ const CurrencyButtonFavourite = ({
 }) => {
   const handleAddCurrencyToFavourieList = e => {
     const userFavouriteCurrency = userCurrencyList.filter(item => item.currencyCode === e.currentTarget.value)
-    setUserFavouriteCurrencyList([...userFavouriteCurrencyList, ...userFavouriteCurrency])
+
+    if (userFavouriteCurrencyList.find(item => item.currencyCode === e.currentTarget.value))
+      alert("This currency is already on the fav list!")
+    else setUserFavouriteCurrencyList([...userFavouriteCurrencyList, ...userFavouriteCurrency])
   }
 
   return (
