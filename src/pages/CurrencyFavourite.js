@@ -21,23 +21,26 @@ const StyledList = styled.ul`
   }
 `
 
-const Favourite = ({ yyy, userFavouriteCurrencyList, currencyValuesListFiltered, input }) => {
+const Favourite = ({ userFavouriteCurrencyList, currencyValuesListFiltered, input, setUserFavouriteCurrencyList }) => {
   return (
-    <StyledList>
+    <div>
       {userFavouriteCurrencyList.map(({ currencyCode, currencyName, currencySymbol, countryFlag }) => (
-        <li>
-          <CurrencyCard
-            yyy={yyy}
-            countryFlag={countryFlag}
-            currencyCode={currencyCode}
-            currencyName={currencyName}
-            currencySymbol={currencySymbol}
-            currencyValuesListFiltered={currencyValuesListFiltered}
-            input={input}
-          />
-        </li>
+        <StyledList>
+          <li>
+            <CurrencyCard
+              setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
+              userFavouriteCurrencyList={userFavouriteCurrencyList}
+              countryFlag={countryFlag}
+              currencyCode={currencyCode}
+              currencyName={currencyName}
+              currencySymbol={currencySymbol}
+              currencyValuesListFiltered={currencyValuesListFiltered}
+              input={input}
+            />
+          </li>
+        </StyledList>
       ))}
-    </StyledList>
+    </div>
   )
 }
 

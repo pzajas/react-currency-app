@@ -13,19 +13,13 @@ const StyledDeleteButtonFav = styled.button`
   }
 `
 
-const CurrencyButtonDeleteFavourite = ({
-  yyy,
-  currencyCode,
-  userFavouriteCurrencyList,
-  setUserFavouriteCurrencyList,
-}) => {
+const CurrencyButtonDeleteFavourite = ({ currencyCode, userFavouriteCurrencyList, setUserFavouriteCurrencyList }) => {
   const carr = e => {
-    //setUserFavouriteCurrencyList(yyy.filter(item => item.currencyCode !== e.currentTarget.value))
-    console.log(yyy.find(item => item.currencyCode === "AUD"))
+    setUserFavouriteCurrencyList(userFavouriteCurrencyList.filter(item => item.currencyCode !== e.currentTarget.value))
   }
   return (
     <StyledDeleteButtonFav value={currencyCode} onClick={carr}>
-      <img src={Minus} alt="" />
+      <img src={Minus} value={currencyCode} alt="" />
     </StyledDeleteButtonFav>
   )
 }

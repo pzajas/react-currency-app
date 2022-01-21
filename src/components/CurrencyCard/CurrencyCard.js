@@ -73,8 +73,6 @@ const CurrencyCard = ({
   currencyValuesListFiltered,
   userFavouriteCurrencyList,
   setUserFavouriteCurrencyList,
-  xxx,
-  yyy,
 }) => {
   const [toggleDeleteButton, setToggleDeleteButton] = useState(false)
 
@@ -90,7 +88,7 @@ const CurrencyCard = ({
       <CurrencyFlag currencyCode={currencyCode} countryFlag={countryFlag} currencyName={currencyName}></CurrencyFlag>
       {!toggleDeleteButton ? (
         <CurrencySymbol currencyPriceRatioCalculated={currencyPriceRatioCalculated} currencySymbol={currencySymbol} />
-      ) : xxx ? (
+      ) : userCurrencyList ? (
         <StyledButtonContainer>
           <CurrencyButtonDelete
             userCurrencyList={userCurrencyList}
@@ -110,7 +108,6 @@ const CurrencyCard = ({
             userFavouriteCurrencyList={userFavouriteCurrencyList}
             setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
             currencyCode={currencyCode}
-            yyy={yyy}
           />
         </StyledButtonContainerDel>
       )}
