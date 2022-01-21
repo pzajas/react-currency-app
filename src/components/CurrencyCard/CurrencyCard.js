@@ -1,9 +1,11 @@
 import { useState } from "react"
-import styled from "styled-components"
-import CurrencyButtonDelete from "./CurrencyButtonDelete"
-import CurrencyButtonFavourite from "./CurrencyButtonFavourite"
-import CurrencyButtonDeleteFavourite from "./CurrencyButtonDeleteFavourite"
 
+import styled from "styled-components"
+
+import plus from "../../assets/Plus.png"
+import minus from "../../assets/Minus.png"
+
+import CurrencyButton from "./CurrencyButton"
 import CurrencyFlag from "./CurrencyFlag"
 import CurrencySymbol from "./CurrencySymbol"
 
@@ -52,14 +54,6 @@ const StyledButtonContainer = styled.div`
   justify-content: right;
 `
 
-const StyledButtonContainerDel = styled.div`
-  height: 4rem;
-  width: 2.6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: right;
-`
-
 const CurrencyCard = ({
   currencyName,
   countryFlag,
@@ -81,6 +75,22 @@ const CurrencyCard = ({
     setToggleDeleteButton(toggleDeleteButton === true ? false : true)
   }
 
+  const handleAddCurrencyToFavourieList = e => {
+    const userFavouriteCurrency = userCurrencyList.filter(item => item.currencyCode === e.currentTarget.value)
+
+    if (userFavouriteCurrencyList.find(item => item.currencyCode === e.currentTarget.value))
+      alert("This currency is already on the fav list!")
+    else setUserFavouriteCurrencyList([...userFavouriteCurrencyList, ...userFavouriteCurrency])
+  }
+
+  const handleDeleteCurrencyFromTheUserList = e => {
+    setUserCurrencyList(userCurrencyList.filter(item => item.currencyCode !== e.currentTarget.value))
+  }
+
+  const handleDeleteCurrencyFromTheFavouritesList = e => {
+    setUserFavouriteCurrencyList(userFavouriteCurrencyList.filter(item => item.currencyCode !== e.currentTarget.value))
+  }
+
   return (
     <StyledCard onClick={handleToggleDeleteButton}>
       <CurrencyFlag currencyCode={currencyCode} countryFlag={countryFlag} currencyName={currencyName}></CurrencyFlag>
@@ -88,12 +98,16 @@ const CurrencyCard = ({
         <CurrencySymbol currencyPriceRatioCalculated={currencyPriceRatioCalculated} currencySymbol={currencySymbol} />
       ) : userCurrencyList ? (
         <StyledButtonContainer>
-          <CurrencyButtonDelete
+          <CurrencyButton
+            plusMinusSign={minus}
+            onClick={handleDeleteCurrencyFromTheUserList}
             userCurrencyList={userCurrencyList}
             setUserCurrencyList={setUserCurrencyList}
             currencyCode={currencyCode}
           />
-          <CurrencyButtonFavourite
+          <CurrencyButton
+            plusMinusSign={plus}
+            onClick={handleAddCurrencyToFavourieList}
             userCurrencyList={userCurrencyList}
             userFavouriteCurrencyList={userFavouriteCurrencyList}
             setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
@@ -101,13 +115,15 @@ const CurrencyCard = ({
           />
         </StyledButtonContainer>
       ) : (
-        <StyledButtonContainerDel>
-          <CurrencyButtonDeleteFavourite
+        <StyledButtonContainer>
+          <CurrencyButton
+            plusMinusSign={minus}
+            onClick={handleDeleteCurrencyFromTheFavouritesList}
             userFavouriteCurrencyList={userFavouriteCurrencyList}
             setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
             currencyCode={currencyCode}
           />
-        </StyledButtonContainerDel>
+        </StyledButtonContainer>
       )}
     </StyledCard>
   )
