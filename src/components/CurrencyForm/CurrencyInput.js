@@ -34,9 +34,17 @@ const StyledInput = styled.input`
 const CurrencyInput = ({ input, setInput }) => {
   const handleInputChange = event => {
     const num = event.target.value
+
     setInput(num.replace(/[^\d.]/g, ""))
   }
 
-  return <StyledInput placeholder="Enter the amount to convert..." value={input} onChange={handleInputChange} />
+  return (
+    <StyledInput
+      type="number"
+      placeholder="Enter the amount to convert..."
+      value={input}
+      onChange={handleInputChange}
+    />
+  )
 }
 export default CurrencyInput

@@ -78,11 +78,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
   }
 `
 
-const CurrencyNavbar = ({
-  currencyCountryListWithValues,
-  setCurrencyContinentsFiltered,
-  currencyContinentsFiltered,
-}) => {
+const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFiltered }) => {
   const [counter, setCounter] = useState(1)
   const filterValues = ["World", "Europe", "Asia", "Africa", "North America", "South America"]
 
