@@ -1,9 +1,12 @@
+import { useState } from "react"
+
 import Select from "react-select"
 import styled from "styled-components"
 
 const StyledSelect = styled(Select)`
   .select-option {
     display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -121,10 +124,11 @@ const colourStyles = {
 }
 
 const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinentsFiltered }) => {
+  const [selectInput, setSelectInput] = useState()
+
   const addCurrencySelectOptions = currencyContinentsFiltered.filter(
     item => !userCurrencyList.find(({ currencyCode }) => item.currencyCode === currencyCode)
   )
-
   const handleAddToTheList = data => {
     const mappedUserCurrencyList = currencyContinentsFiltered.map(item => item.currencyCode)
     mappedUserCurrencyList.includes(data.currencyCode)
@@ -143,20 +147,27 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
   }
   const onKeyDown = e => {
     if (!e.key.match(/[a-zA-Z]/)) e.preventDefault()
+
+    setSelectInput(e.target.value.toLowerCase())
   }
 
   return (
     <div className="custom-select">
       <StyledSelect
         onKeyDown={onKeyDown}
-        //isSearchable={false}
         value="placeholder"
         styles={colourStyles}
         menuPlacement="auto"
         menuPosition="absolute"
         options={addCurrencySelectOptions}
         onChange={handleAddToTheList}
-        getOptionValue={option => option.currencyCode}
+        getOptionValue={option =>
+          option.currencyCode.toLowerCase().includes(selectInput)
+            ? option.currencyCode
+            : option.currencyName.toLowerCase().includes(selectInput)
+            ? option.currencyName
+            : null
+        }
         getOptionLabel={option => (
           <div className="select-option">
             <img
@@ -174,7 +185,8 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
                   : option.countryFlag
               }
             />
-            <div className="select-text">{option.currencyCode}</div>
+            <div>{option.currencyName}</div>
+            <div>{option.currencyCode}</div>
           </div>
         )}
       />
