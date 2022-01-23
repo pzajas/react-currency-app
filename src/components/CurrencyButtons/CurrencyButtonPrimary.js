@@ -5,16 +5,14 @@ const StyledButton = styled.button`
   border-radius: 0.1rem;
   height: 1.5rem;
   cursor: pointer;
+  z-index: 1000;
 
   @media (max-width: 750px) {
     background-color: transparent;
-    color: #eee;
+    color: white;
     font-size: 2rem;
     &:hover {
       color: white;
-      /* font-size: 2.2rem; */
-      border: 1px solid white;
-      height: 4rem;
     }
   }
 `
