@@ -14,9 +14,10 @@ const StyledSelect = styled(Select)`
     justify-self: start;
     height: 3rem;
     width: 5rem;
+    border-radius: 0.1rem;
 
     @media (max-width: 750px) {
-      height: 2rem;
+      height: 2.2rem;
       width: 3.5rem;
     }
   }

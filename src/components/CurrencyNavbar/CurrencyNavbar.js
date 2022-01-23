@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from "react"
-
-import Logo from "../../assets/Logo.jpg"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import styled from "styled-components"
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faGlobe,
-  faGlobeEurope,
-  faGlobeAsia,
-  faGlobeAfrica,
-  faGlobeAmericas,
-  faQuestionCircle,
-  faGrinHearts,
-  faUserCircle,
-} from "@fortawesome/free-solid-svg-icons"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
+
+import CurrencyButtonPrimary from "../CurrencyButtons/CurrencyButtonPrimary"
+
+import styled from "styled-components"
 
 const StyledContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  .test {
+    display: flex;
+    justify-content: right;
+    z-index: 1100;
+    cursor: pointer;
+  }
+
+  * {
+    transition: all 0.5s linear;
+  }
 `
 
 const StyledNavbar = styled.nav`
@@ -25,11 +28,11 @@ const StyledNavbar = styled.nav`
   background-color: #2d2d37;
   color: white;
   display: flex;
-  justify-content: left;
-  align-items: center;
+  justify-content: right;
   font-weight: 500;
   width: 100px;
   border-radius: 4px 4px 0px 0px;
+  transition: all 0.5s linear;
 
   @media (max-width: 2500px) {
     width: 100%;
@@ -45,25 +48,46 @@ const StyledNavbar = styled.nav`
   @media (max-width: 750px) {
     height: 4.5rem;
     width: 100%;
+    transition: all 0.5s linear;
 
     & img {
       width: 7rem;
+      align-items: center;
+      overflow: hidden;
       margin-left: 0.5rem;
       border-radius: 50%;
+
+      z-index: 1001;
+    }
+
+    .test {
+      margin: 1rem 1rem 1rem 1rem;
+    }
+    .test:hover {
+      transform: rotate(360deg);
     }
   }
 `
 
 const StyledLinkContainer = styled.div`
-  display: flex;
-  justify-content: right;
-  align-items: top;
-  width: 100%;
-  height: 100%;
-  gap: 0.5rem;
-  padding-top: 0.5rem;
-  padding-right: 0.5rem;
-  background-color: #2d2d37;
+  height: 2rem;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  @media (max-width: 750px) {
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+  }
 `
 
 const StyledLink = styled(Link)`
@@ -72,14 +96,10 @@ const StyledLink = styled(Link)`
   font-size: 1.5rem;
 `
 
-const StyledIcon = styled(FontAwesomeIcon)`
-  &:hover {
-    color: orange;
-  }
-`
-
 const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFiltered }) => {
   const [counter, setCounter] = useState(1)
+  const [countryNameOnButton, setCountryNameOnButton] = useState("World")
+  const [toggleBurgerMenu, setToggleBurgerMenu] = useState(false)
   const filterValues = ["World", "Europe", "Asia", "Africa", "North America", "South America"]
 
   const handleFilterContinents = () => {
@@ -92,43 +112,45 @@ const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFi
             item => item.currencyContinent === filterValues[counter] || item.currencyCode === "EUR"
           )
     )
+    setCountryNameOnButton(filterValues[counter])
     if (counter >= 5) setCounter(0)
   }
 
+  const handleToggleBurgerMenu = () => {
+    setToggleBurgerMenu(!toggleBurgerMenu)
+  }
   return (
     <StyledContainer>
-      <StyledNavbar>
-        <img src={Logo} alt="" />
-        <StyledLinkContainer>
-          <StyledLink to="/">
-            <StyledIcon icon={faUserCircle} />
-          </StyledLink>
-          <StyledLink to="/favourites">
-            <StyledIcon icon={faGrinHearts} />
-          </StyledLink>
-          <StyledLink to="/">
-            <StyledIcon
-              onClick={handleFilterContinents}
-              icon={
-                counter === 1
-                  ? faGlobe
-                  : counter === 2
-                  ? faGlobeEurope
-                  : counter === 3
-                  ? faGlobeAsia
-                  : counter === 4
-                  ? faGlobeAfrica
-                  : counter === 5
-                  ? faGlobeAmericas
-                  : faGlobeAsia
-              }
-            />
-          </StyledLink>
-          <StyledLink to="/about">
-            <StyledIcon icon={faQuestionCircle} />
-          </StyledLink>
-        </StyledLinkContainer>
-      </StyledNavbar>
+      {toggleBurgerMenu === true ? (
+        <StyledNavbar>
+          <div className="test" onClick={handleToggleBurgerMenu}>
+            <FontAwesomeIcon icon={faBars} />
+          </div>
+          <StyledLinkContainer>
+            <StyledLink to="/">
+              <CurrencyButtonPrimary value="Currency" />
+            </StyledLink>
+            <StyledLink to="/favourites">
+              <CurrencyButtonPrimary value="Favourite" />
+            </StyledLink>
+            <StyledLink to="/about">
+              <CurrencyButtonPrimary value="About" />
+            </StyledLink>
+            <StyledLink to="/">
+              <CurrencyButtonPrimary
+                onClick={handleFilterContinents}
+                value={countryNameOnButton}
+              ></CurrencyButtonPrimary>
+            </StyledLink>
+          </StyledLinkContainer>
+        </StyledNavbar>
+      ) : (
+        <StyledNavbar>
+          <div className="test" onClick={handleToggleBurgerMenu}>
+            <FontAwesomeIcon icon={faBars} />
+          </div>
+        </StyledNavbar>
+      )}
     </StyledContainer>
   )
 }
