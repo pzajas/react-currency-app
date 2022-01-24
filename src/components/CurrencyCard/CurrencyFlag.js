@@ -42,6 +42,7 @@ const StyledFlag = styled.div`
   @media (max-width: 750px) {
     width: 100%;
     font-size: 0.9rem;
+    line-height: 1.8;
 
     & img {
       height: 3.7rem;
