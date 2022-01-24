@@ -3,16 +3,17 @@ import styled from "styled-components"
 const StyledButton = styled.button`
   border: none;
   border-radius: 0.1rem;
-  height: 1.5rem;
+  height: 2.5rem;
+  width: 14rem;
   cursor: pointer;
   z-index: 1000;
 
   @media (max-width: 750px) {
-    background-color: transparent;
-    color: white;
+    background-color: white;
+    color: black;
     font-size: 2rem;
     &:hover {
-      color: white;
+      color: black;
     }
   }
 `
