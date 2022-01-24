@@ -67,6 +67,8 @@ const StyledNavbar = styled.nav`
     }
 
     .test {
+      align-items: center;
+      font-size: 2rem;
       margin: 1rem 1rem 1rem 1rem;
       color: white;
     }

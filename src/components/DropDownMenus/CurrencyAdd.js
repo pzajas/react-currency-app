@@ -186,7 +186,19 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
                   : option.countryFlag
               }
             />
-            <div>{option.currencyName}</div>
+            <div>
+              {option.currencyCode === "DKK"
+                ? "Danish Krone"
+                : option.currencyCode === "NOK"
+                ? "Norwegian Krone"
+                : option.currencyCode === "GEL"
+                ? "Georgian Lari"
+                : option.currencyCode === "GMD"
+                ? "Gambian Dalasi"
+                : option.currencyCode === "MKD"
+                ? "Macedonian Denar"
+                : option.currencyName}
+            </div>
             <div>{option.currencyCode}</div>
           </div>
         )}
