@@ -42,33 +42,43 @@ const StyledNavbar = styled.nav`
 
   @media (max-width: 2500px) {
     width: 100%;
-    height: 8rem;
+    height: 6rem;
     font-size: 40px;
+
+    .test {
+      align-items: center;
+      font-size: 3rem;
+      margin: 2rem 2rem 2rem 2rem;
+      color: white;
+    }
+    .test:hover {
+      transform: rotate(360deg);
+    }
   }
 
   @media (max-width: 1025px) {
     width: 100%;
-    height: 5.6rem;
-  }
-
-  @media (max-width: 750px) {
-    height: 4.5rem;
-    width: 100%;
-    transition: all 0.5s linear;
-
-    & img {
-      width: 7rem;
-      align-items: center;
-      overflow: hidden;
-      margin-left: 0.5rem;
-      border-radius: 50%;
-
-      z-index: 1001;
-    }
+    height: 5rem;
 
     .test {
       align-items: center;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      margin: 1.5rem 1.5rem 1.5rem 1.5rem;
+      color: white;
+    }
+    .test:hover {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (max-width: 750px) {
+    height: 4rem;
+    width: 100%;
+    transition: all 0.5s linear;
+
+    .test {
+      align-items: center;
+      font-size: 2.2rem;
       margin: 1rem 1rem 1rem 1rem;
       color: white;
     }
@@ -84,9 +94,45 @@ const StyledLinkContainer = styled.div`
   left: 0;
   right: 0;
 
+  @media (max-width: 2500px) {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position-x: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: darken;
+  }
+
+  @media (max-width: 1025px) {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position-x: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: darken;
+  }
+
   @media (max-width: 750px) {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -106,7 +152,6 @@ const StyledLinkContainer = styled.div`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: white;
-  font-size: 1.5rem;
 `
 
 const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFiltered }) => {
@@ -180,7 +225,6 @@ const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFi
           <div className="test" onClick={handleToggleBurgerMenu}>
             <FontAwesomeIcon icon={faBars} />
           </div>
-          <div className="bcg"></div>
         </StyledNavbar>
       )}
     </StyledContainer>
