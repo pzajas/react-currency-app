@@ -1,9 +1,29 @@
 import Select from "react-select"
 import styled from "styled-components"
 
+// const StyledSelect = styled(Select)`
+//   @media (max-width: 750px) {
+//     width: 10rem;
+//   }
+// `
+
 const StyledSelect = styled(Select)`
-  @media (max-width: 750px) {
-    width: 10rem;
+  .select-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .select-flag {
+    justify-self: start;
+    height: 1rem;
+    width: 2rem;
+    border-radius: 0.1rem;
+
+    @media (max-width: 750px) {
+      height: 1.2rem;
+      width: 2rem;
+    }
   }
 `
 
@@ -126,8 +146,27 @@ const CurrencyChange = ({ currencyCountryListWithValues, baseCurrency, setBaseCu
         onChange={handleSelectChange}
         styles={colourStyles}
         options={currencyCountryListWithValues}
-        getOptionLabel={option => option.currencyCode}
-        getOptionValue={option => option.currencyName}
+        getOptionLabel={option => (
+          <div className="select-option">
+            <img
+              className="select-flag"
+              alt="country flag"
+              src={
+                option.currencyCode === "EUR"
+                  ? "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png"
+                  : option.currencyCode === "GBP"
+                  ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png"
+                  : option.currencyCode === "USD"
+                  ? `https://flagcdn.com/w320/us.png`
+                  : option.currencyCode === "AUD"
+                  ? `https://flagcdn.com/w320/au.png`
+                  : option.countryFlag
+              }
+            />
+            <div>{option.currencyCode}</div>
+          </div>
+        )}
+        getOptionValue={option => option.currencyCode}
       />
     </div>
   )
