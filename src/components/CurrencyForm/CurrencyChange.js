@@ -19,11 +19,48 @@ const StyledSelect = styled(Select)`
     height: 1rem;
     width: 2rem;
     border-radius: 0.1rem;
+    margin-right: 0.4rem;
+
+    @media (max-width: 2500px) {
+      height: 2.1rem;
+      width: 3.5rem;
+    }
+
+    @media (max-width: 1025px) {
+      height: 1.8rem;
+      width: 3rem;
+    }
 
     @media (max-width: 750px) {
-      height: 1.2rem;
-      width: 2rem;
+      height: 1.5rem;
+      width: 2.8rem;
     }
+  }
+`
+const StyledCode = styled.div`
+  display: flex;
+  align-items: center;
+  width: 2rem;
+
+  @media (max-width: 2500px) {
+    height: 2.1rem;
+    width: 3.5rem;
+
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 1025px) {
+    height: 1.8rem;
+    width: 3rem;
+
+    font-size: 1rem;
+  }
+
+  @media (max-width: 750px) {
+    height: 1.5rem;
+    width: 2.5rem;
+
+    font-size: 0.8rem;
   }
 `
 
@@ -36,15 +73,14 @@ const colourStyles = {
       color: "black",
     },
     "@media (max-width: 2500px)": {
-      width: "25rem",
+      maxWidth: "9.6rem",
     },
     "@media (max-width: 1025px)": {
-      width: "12rem",
+      maxWidth: "9rem",
     },
     "@media (max-width: 750px)": {
       height: "2rem",
       maxWidth: "8.4rem",
-      fontSize: "1rem",
     },
   }),
   control: () => ({
@@ -62,12 +98,14 @@ const colourStyles = {
     alignText: "center",
     "@media (max-width: 2500px)": {
       height: "3rem",
-      width: "24.6rem",
+      minWidth: "8rem",
+      maxWidth: "9.2rem",
       fontSize: "2rem",
     },
     "@media (max-width: 1025px)": {
       height: "2.5rem",
-      width: "11.6rem",
+      minWidth: "8rem",
+      maxWidth: "8.6rem",
       fontSize: "1.5rem",
     },
     "@media (max-width: 750px)": {
@@ -163,7 +201,7 @@ const CurrencyChange = ({ currencyCountryListWithValues, baseCurrency, setBaseCu
                   : option.countryFlag
               }
             />
-            <div>{option.currencyCode}</div>
+            <StyledCode className="select-code">{option.currencyCode}</StyledCode>
           </div>
         )}
         getOptionValue={option => option.currencyCode}
