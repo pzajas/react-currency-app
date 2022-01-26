@@ -11,7 +11,7 @@ const StyledFlag = styled.div`
     height: 30px;
     width: 45px;
     margin: 0px 4px 0px 4px;
-    border-radius: 2px;
+    border-radius: 0.3rem;
   }
 
   @media (max-width: 2500px) {
@@ -63,8 +63,6 @@ const CurrencyFlag = ({ currencyCode, countryFlag, currencyName }) => {
         src={
           currencyCode === "EUR"
             ? EU_FLAG
-            : currencyCode === "GBP"
-            ? UK_FLAG
             : currencyCode === "USD"
             ? US_FLAG
             : currencyCode === "AUD"
