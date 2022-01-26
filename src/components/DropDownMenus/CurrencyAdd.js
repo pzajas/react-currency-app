@@ -146,16 +146,17 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
         ])
       : alert("To do: use SweetAlert")
   }
-  const onKeyDown = e => {
-    if (!e.key.match(/[a-zA-Z]/)) e.preventDefault()
 
-    setSelectInput(e.target.value.toLowerCase())
+  const handleSelectInputChange = characters => {
+    //if (!e.key.match(/[a-zA-Z]/))
+    setSelectInput(characters.toLowerCase())
   }
 
+  console.log(addCurrencySelectOptions)
   return (
     <div className="custom-select">
       <StyledSelect
-        onKeyDown={onKeyDown}
+        onInputChange={handleSelectInputChange}
         value="placeholder"
         styles={colourStyles}
         menuPlacement="auto"
@@ -177,9 +178,9 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
               src={
                 option.currencyCode === "EUR"
                   ? "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png"
-                  : option.currencyCode === "GBP"
-                  ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png"
-                  : option.currencyCode === "USD"
+                  : //   : option.currencyCode === "GBP"
+                  //   ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png"
+                  option.currencyCode === "USD"
                   ? `https://flagcdn.com/w320/us.png`
                   : option.currencyCode === "AUD"
                   ? `https://flagcdn.com/w320/au.png`
@@ -187,16 +188,16 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
               }
             />
             <div>
-              {option.currencyCode === "DKK"
-                ? "Danish Krone"
-                : option.currencyCode === "NOK"
-                ? "Norwegian Krone"
-                : option.currencyCode === "GEL"
-                ? "Georgian Lari"
-                : option.currencyCode === "GMD"
-                ? "Gambian Dalasi"
-                : option.currencyCode === "MKD"
-                ? "Macedonian Denar"
+              {option.currencyCode === "MKD"
+                ? // ? "Danish Krone"
+                  // : option.currencyCode === "NOK"
+                  // ? "Norwegian Krone"
+                  // : option.currencyCode === "GEL"
+                  // ? "Georgian Lari"
+                  // : option.currencyCode === "GMD"
+                  // ? "Gambian Dalasi"
+                  // : option.currencyCode === "MKD"
+                  "Macedonian Denar"
                 : option.currencyName}
             </div>
             <div>{option.currencyCode}</div>

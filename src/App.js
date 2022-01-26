@@ -25,9 +25,6 @@ const StyledContainer = styled.div`
   border-radius: 2px;
   font-family: "Roboto", sans-serif;
 
-  body {
-    background-color: red;
-  }
   @media (max-width: 2500px) {
     width: 80%;
   }
@@ -45,7 +42,7 @@ const StyledContainer = styled.div`
 const App = () => {
   const USER_CURENCY_LIST_INITIAL_STATE = JSON.parse(localStorage.getItem("currency")) || []
   const USER_FAVOURITE_CURRENCY_INITIAL_STATE = JSON.parse(localStorage.getItem("favourite")) || []
-  const BASE_CURENCY_INITIAL_STATE = JSON.parse(localStorage.getItem("base_currency")) || ["JPY"]
+  const BASE_CURENCY_INITIAL_STATE = JSON.parse(localStorage.getItem("base_currency")) || ["USD"]
 
   const [input, setInput] = useState([])
 
@@ -78,6 +75,7 @@ const App = () => {
           currencyContinent: item.continents[0],
         }))
       setCurrencyCountryListFiltered([...currencyCountryListArray])
+      console.log(response.data)
     })
   }, [baseCurrency, CURRENCY_COUNTRY_API_URL])
 
@@ -120,6 +118,7 @@ const App = () => {
         .filter(item => item.currencyCode !== baseCurrency)
         .filter(item => item.currencyCode !== prevCurrency.includes(item))
         //.filter(item => item.currencyContinent === "Europe")
+        .filter(item => item.currencyName !== "krone")
         .filter((v, i, a) => a.findIndex(t => t.currencyCode === v.currencyCode) === i)
         .sort((a, b) => a.currencyCode.localeCompare(b.currencyCode))
     )

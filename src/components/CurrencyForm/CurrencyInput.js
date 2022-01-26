@@ -21,9 +21,9 @@ const StyledInput = styled.input`
   }
 
   @media (max-width: 750px) {
-    height: 2rem;
+    height: 2.5rem;
     width: 80%;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
   &:focus {

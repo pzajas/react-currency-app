@@ -1,11 +1,7 @@
+import { useState } from "react"
+
 import Select from "react-select"
 import styled from "styled-components"
-
-// const StyledSelect = styled(Select)`
-//   @media (max-width: 750px) {
-//     width: 10rem;
-//   }
-// `
 
 const StyledSelect = styled(Select)`
   .select-option {
@@ -15,25 +11,26 @@ const StyledSelect = styled(Select)`
   }
 
   .select-flag {
-    justify-self: start;
+    display: flex;
+    justify-content: center;
+
     height: 1rem;
     width: 2rem;
     border-radius: 0.1rem;
-    margin-right: 0.4rem;
 
     @media (max-width: 2500px) {
       height: 2.1rem;
-      width: 3.5rem;
+      width: 3rem;
     }
 
     @media (max-width: 1025px) {
       height: 1.8rem;
-      width: 3rem;
+      width: 2.7rem;
     }
 
     @media (max-width: 750px) {
-      height: 1.5rem;
-      width: 2.8rem;
+      height: 2.4rem;
+      width: 4.2rem;
     }
   }
 `
@@ -57,9 +54,8 @@ const StyledCode = styled.div`
   }
 
   @media (max-width: 750px) {
-    height: 1.5rem;
+    /* height: 1.5rem; */
     width: 2.5rem;
-
     font-size: 0.8rem;
   }
 `
@@ -68,7 +64,7 @@ const colourStyles = {
   container: styles => ({
     ...styles,
     width: "17rem",
-    height: "20px",
+    // height: "20px",
     "&:hover": {
       color: "black",
     },
@@ -79,7 +75,7 @@ const colourStyles = {
       maxWidth: "9rem",
     },
     "@media (max-width: 750px)": {
-      height: "2rem",
+      height: "2.5rem",
       maxWidth: "8.4rem",
     },
   }),
@@ -91,7 +87,7 @@ const colourStyles = {
     color: "white",
     boxShadow: "none",
     fontSize: "10px",
-    height: 24,
+    height: "2.5rem",
     minHeight: 10,
     display: "flex",
     alignItems: "center",
@@ -109,7 +105,7 @@ const colourStyles = {
       fontSize: "1.5rem",
     },
     "@media (max-width: 750px)": {
-      height: "2rem",
+      height: "2.5rem",
       minWidth: "4rem",
       maxWidth: "8rem",
       fontSize: "1rem",
@@ -125,8 +121,8 @@ const colourStyles = {
       fontSize: 25,
     },
     "@media (max-width: 750px)": {
-      height: "34px",
-      fontSize: "1rem",
+      height: "2.5rem",
+      fontSize: "1.5rem",
     },
   }),
   dropdownIndicator: styles => ({
@@ -143,6 +139,7 @@ const colourStyles = {
   menuList: styles => ({
     ...styles,
     zIndex: 9999,
+    // alignItems: "center",
   }),
   singleValue: styles => ({
     ...styles,
@@ -154,8 +151,6 @@ const colourStyles = {
       fontSize: "10px",
       color: "white",
       justifyContent: "center",
-      alignItems: "center",
-      alignText: "center",
       backgroundColor: "#2d2d37",
       "&:hover": {
         backgroundColor: "grey",
@@ -165,7 +160,7 @@ const colourStyles = {
         fontSize: 25,
       },
       "@media (max-width: 750px)": {
-        height: "34px",
+        height: "3.4rem",
         fontSize: 16,
       },
       cursor: isDisabled ? "not-allowed" : "default",
@@ -177,10 +172,16 @@ const CurrencyChange = ({ currencyCountryListWithValues, baseCurrency, setBaseCu
   const handleSelectChange = event => {
     setBaseCurrency(event.currencyCode)
   }
+  const [selectInput, setSelectInput] = useState()
+
+  const handleSelectInputChange = characters => {
+    //if (!e.key.match(/[a-zA-Z]/))
+    setSelectInput(characters.toLowerCase())
+  }
   return (
     <div>
       <StyledSelect
-        defaultValue={{ currencyCode: baseCurrency }}
+        onInputChange={handleSelectInputChange}
         onChange={handleSelectChange}
         styles={colourStyles}
         options={currencyCountryListWithValues}
@@ -192,19 +193,25 @@ const CurrencyChange = ({ currencyCountryListWithValues, baseCurrency, setBaseCu
               src={
                 option.currencyCode === "EUR"
                   ? "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png"
-                  : option.currencyCode === "GBP"
-                  ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png"
-                  : option.currencyCode === "USD"
+                  : //   : option.currencyCode === "GBP"
+                  //   ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png"
+                  option.currencyCode === "USD"
                   ? `https://flagcdn.com/w320/us.png`
                   : option.currencyCode === "AUD"
                   ? `https://flagcdn.com/w320/au.png`
                   : option.countryFlag
               }
             />
-            <StyledCode className="select-code">{option.currencyCode}</StyledCode>
+            {/* <StyledCode className="select-code">{option.currencyCode}</StyledCode> */}
           </div>
         )}
-        getOptionValue={option => option.currencyCode}
+        getOptionValue={option =>
+          option.currencyCode.toLowerCase().includes(selectInput)
+            ? option.currencyCode
+            : option.currencyName.toLowerCase().includes(selectInput)
+            ? option.currencyName
+            : null
+        }
       />
     </div>
   )
