@@ -1,14 +1,10 @@
 import styled from "styled-components"
 
 const StyledInput = styled.input`
-  margin: 4px;
-  width: 70%;
-  height: 20px;
+  margin: 0.25rem;
   font-size: 1.2rem;
 
   border: none;
-  border-radius: 0rem;
-
   @media (max-width: 2500px) {
     height: 2.5rem;
     width: 90%;
@@ -40,12 +36,7 @@ const CurrencyInput = ({ input, setInput }) => {
   }
 
   return (
-    <StyledInput
-      type="number"
-      placeholder="Enter the amount to convert..."
-      value={input}
-      onChange={handleInputChange}
-    />
+    <StyledInput type="number" placeholder="Type the amount to convert..." value={input} onChange={handleInputChange} />
   )
 }
 export default CurrencyInput

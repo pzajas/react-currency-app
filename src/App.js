@@ -49,7 +49,7 @@ const StyledContainer = styled.div`
     width: 95%;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 750px) {
     width: 100%;
   }
 `

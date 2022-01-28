@@ -1,6 +1,21 @@
 import CurrencyCard from "../components/CurrencyCard/CurrencyCard"
 import styled from "styled-components"
 
+const StyledListContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 750px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 280px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+`
+
 const StyledList = styled.ul`
   box-sizing: border-box;
   margin: 0;
@@ -18,21 +33,6 @@ const StyledList = styled.ul`
   }
 `
 
-const StyledDiv = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  @media (max-width: 750px) {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  @media (max-width: 280px) {
-    display: flex;
-    flex-wrap: wrap;
-  }
-`
-
 const CurrencyList = ({
   baseCurrency,
   input,
@@ -43,7 +43,7 @@ const CurrencyList = ({
   currencyValuesListFiltered,
 }) => {
   return (
-    <StyledDiv>
+    <StyledListContainer>
       {userCurrencyList.map(({ currencyCode, currencyName, currencySymbol, countryFlag }) => (
         <StyledList key={currencyCode}>
           <li>
@@ -63,7 +63,7 @@ const CurrencyList = ({
           </li>
         </StyledList>
       ))}
-    </StyledDiv>
+    </StyledListContainer>
   )
 }
 

@@ -47,15 +47,6 @@ const colourStyles = {
     alignItems: "center",
     alignText: "center",
     type: "number",
-    "@media (max-width: 2500px)": {
-      fontSize: "1.6rem",
-    },
-    "@media (max-width: 1025px)": {
-      fontSize: "1.5rem",
-    },
-    "@media (max-width: 750px)": {
-      fontSize: "1.2rem",
-    },
   }),
   input: styles => ({
     ...styles,
@@ -69,7 +60,6 @@ const colourStyles = {
       height: "2rem",
     },
   }),
-
   dropdownIndicator: styles => ({
     ...styles,
     "&:hover": {
@@ -96,21 +86,25 @@ const colourStyles = {
       },
       "@media (max-width: 2500px)": {
         height: "4rem",
-        fontSize: "2rem",
         marginBottom: "3px",
         marginRight: "1rem",
       },
       "@media (max-width: 1500px)": {
         height: "4rem",
-        fontSize: "2rem",
         marginBottom: "3px",
         marginRight: "1rem",
       },
       "@media (max-width: 750px)": {
-        fontSize: "1rem",
         height: "3rem",
         marginRight: "1rem",
       },
+      "@media (max-width: 500px)": {
+        fontSize: "0.9rem",
+      },
+      "@media (max-width: 400px)": {
+        fontSize: "0.8rem",
+      },
+
       cursor: isDisabled ? "not-allowed" : "default",
     }
   },

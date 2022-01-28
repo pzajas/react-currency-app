@@ -19,29 +19,19 @@ const StyledCard = styled.div`
   box-sizing: border-box;
   background-color: #343441;
   color: white;
-  width: 100%;
-  margin-right: 3px;
   border-radius: 2px;
-
+  margin-bottom: 1px;
   align-items: center;
+  font-size: 1rem;
 
-  .flag {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .flag-container {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 3;
   }
 
-  .container {
-    display: flex;
-    flex-direction: row;
-    align-items: top;
-  }
-
-  .container2 {
+  .code-container {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
@@ -58,7 +48,6 @@ const StyledCard = styled.div`
   }
 
   .symbol-container {
-    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -75,37 +64,27 @@ const StyledCard = styled.div`
     padding-bottom: 0.5rem;
   }
   @media (max-width: 2500px) {
-    width: 100%;
     height: 4.5rem;
-    margin-bottom: 3px;
   }
 
   @media (max-width: 1200px) {
-    width: 100%;
     height: 4.3rem;
-    font-size: 1rem;
   }
 
   @media (max-width: 1000px) {
-    width: 100%;
     height: 4.1rem;
-    font-size: 1rem;
   }
 
   @media (max-width: 750px) {
-    width: 100%;
     height: 3.9rem;
-    font-size: 1rem;
   }
 
   @media (max-width: 500px) {
-    width: 100%;
     height: 3.7rem;
     font-size: 0.9rem;
   }
 
   @media (max-width: 400px) {
-    width: 100%;
     height: 3.5rem;
     font-size: 0.8rem;
   }
@@ -150,11 +129,11 @@ const CurrencyCard = ({
 
   return (
     <StyledCard onClick={handleToggleDeleteButton}>
-      <div className="flag">
+      <div className="flag-container">
         <CurrencyFlag currencyCode={currencyCode} countryFlag={countryFlag} currencyName={currencyName}></CurrencyFlag>
       </div>
 
-      <div className="container2">
+      <div className="code-container">
         <CurrencyCode currencyCode={currencyCode} currencyName={currencyName} currencySymbol={currencySymbol} />
       </div>
 
