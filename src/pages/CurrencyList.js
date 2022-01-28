@@ -22,13 +22,7 @@ const StyledDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  @media (max-width: 1200px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-size: 1rem;
-  }
-
-  @media (max-width: 900px) {
+  @media (max-width: 750px) {
     display: flex;
     flex-wrap: wrap;
   }

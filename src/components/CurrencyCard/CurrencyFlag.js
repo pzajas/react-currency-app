@@ -19,34 +19,64 @@ const StyledFlag = styled.div`
     font-size: 2rem;
 
     & img {
-      height: 5rem;
-      width: 8rem;
+      height: 4rem;
+      width: 5.5rem;
       margin-right: 1rem;
     }
   }
 
   @media (max-width: 1200px) {
     width: 100%;
-    font-size: 1.5rem;
-    height: 6rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.8;
 
     & img {
-      height: 4.4rem;
-      width: 7rem;
-
-      margin-right: 1rem;
+      height: 3.8rem;
+      width: 5.3rem;
     }
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 1000px) {
     width: 100%;
     font-size: 0.9rem;
     line-height: 1.8;
 
     & img {
-      height: 3.7rem;
-      width: 6rem;
+      height: 3.6rem;
+      width: 5.1rem;
+    }
+  }
+
+  @media (max-width: 750px) {
+    width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.8;
+
+    & img {
+      height: 3.4rem;
+      width: 4.9rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.8;
+
+    & img {
+      height: 3.2rem;
+      width: 4.7rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.8;
+
+    & img {
+      height: 3rem;
+      width: 4.5rem;
     }
   }
 `
