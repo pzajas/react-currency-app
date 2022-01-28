@@ -7,24 +7,23 @@ import minus from "../../assets/Minus.png"
 
 import CurrencyButton from "./CurrencyButton"
 import CurrencyFlag from "./CurrencyFlag"
-import CurrencySymbol from "./CurrencySymbol"
+import CurrencyCode from "./CurrencyCode"
+import CurrencyPrice from "./CurrencyPrice"
 import CurrencyName from "./CurrencyName"
+import CurrencySymbol from "./CurrencySymbol"
 
 const StyledCard = styled.div`
-  /* display: flex;
-  justify-content: space-between;
-  flex-direction: row; */
-
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 36px 36px;
+  grid-template-columns: 0.2fr 0.1fr 1fr 0.1fr;
+  grid-template-rows: 50% 50%;
   box-sizing: border-box;
   background-color: #343441;
   color: white;
   width: 100%;
   margin-right: 3px;
   border-radius: 2px;
-  /* height: 2rem; */
+
+  align-items: center;
 
   .flag {
     display: flex;
@@ -40,30 +39,76 @@ const StyledCard = styled.div`
     display: flex;
     flex-direction: row;
     align-items: top;
-    background: green;
   }
 
+  .container2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    padding-top: 0.5rem;
+  }
+
+  .name-container {
+    display: flex;
+    align-items: center;
+
+    padding-top: 0.5rem;
+  }
+
+  .symbol-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .price-container {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    padding-bottom: 0.5rem;
+  }
   @media (max-width: 2500px) {
-    width: 100%;
-    height: 8rem;
-    margin-bottom: 3px;
-  }
-
-  @media (max-width: 1025px) {
     width: 100%;
     height: 5.6rem;
     margin-bottom: 3px;
   }
 
-  @media (max-width: 750px) {
+  /* @media (max-width: 1025px) {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 50% 50%;
     width: 100%;
-    height: 4.5rem;
-    //margin-bottom: 3px;
+    height: 5.6rem;
+    margin-bottom: 3px;
+  } */
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: 5rem;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     width: 100%;
     height: 4.5rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 360px) {
+    width: 100%;
+    height: 4.5rem;
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 280px) {
+    width: 100%;
+    height: 4.5rem;
+    font-size: 0.5rem;
   }
 `
 const StyledButtonContainer = styled.div``
@@ -112,10 +157,22 @@ const CurrencyCard = ({
       </div>
 
       <div className="container2">
-        <CurrencyName currencyCode={currencyCode} currencyName={currencyName} />
+        <CurrencyCode currencyCode={currencyCode} currencyName={currencyName} currencySymbol={currencySymbol} />
       </div>
 
-      <div className="container">
+      <div className="name-container">
+        <CurrencyName currencyName={currencyName} />
+      </div>
+
+      <div className="symbol-container">
+        <CurrencySymbol currencySymbol={currencySymbol} />
+      </div>
+
+      <div className="price-container">
+        <CurrencyPrice currencyPriceRatioCalculated={currencyPriceRatioCalculated} />
+      </div>
+
+      {/* <div className="container">
         {!toggleDeleteButton ? (
           <CurrencySymbol
             className="CurrencySymbol"
@@ -151,7 +208,7 @@ const CurrencyCard = ({
             />
           </StyledButtonContainer>
         )}
-      </div>
+      </div> */}
     </StyledCard>
   )
 }

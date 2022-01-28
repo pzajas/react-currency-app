@@ -64,7 +64,7 @@ const colourStyles = {
   container: styles => ({
     ...styles,
     width: "17rem",
-    // height: "20px",
+    height: "2.5rem",
     "&:hover": {
       color: "black",
     },
@@ -75,7 +75,6 @@ const colourStyles = {
       maxWidth: "9rem",
     },
     "@media (max-width: 750px)": {
-      height: "2.5rem",
       maxWidth: "8.4rem",
     },
   }),
@@ -86,43 +85,35 @@ const colourStyles = {
     backgroundColor: "#2d2d37",
     color: "white",
     boxShadow: "none",
-    fontSize: "10px",
+    fontSize: "1.2rem",
     height: "2.5rem",
     minHeight: 10,
     display: "flex",
     alignItems: "center",
     alignText: "center",
     "@media (max-width: 2500px)": {
-      height: "3rem",
       minWidth: "8rem",
       maxWidth: "9.2rem",
-      fontSize: "2rem",
     },
     "@media (max-width: 1025px)": {
-      height: "2.5rem",
       minWidth: "8rem",
       maxWidth: "8.6rem",
-      fontSize: "1.5rem",
     },
     "@media (max-width: 750px)": {
-      height: "2.5rem",
       minWidth: "4rem",
       maxWidth: "8rem",
-      fontSize: "1rem",
     },
   }),
   input: styles => ({
     ...styles,
     color: "white",
-    fontSize: "12px",
+    fontSize: "1.2rem",
     maxLength: "3",
     "@media (max-width: 2500px)": {
       height: "44px",
-      fontSize: 25,
     },
     "@media (max-width: 750px)": {
       height: "2.5rem",
-      fontSize: "1.5rem",
     },
   }),
   dropdownIndicator: styles => ({

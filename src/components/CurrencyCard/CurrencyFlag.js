@@ -19,27 +19,27 @@ const StyledFlag = styled.div`
     font-size: 2rem;
 
     & img {
-      height: 7rem;
-      width: 10rem;
+      height: 5rem;
+      width: 8rem;
       margin-right: 1rem;
     }
   }
 
-  @media (max-width: 1025px) {
+  @media (max-width: 1200px) {
     width: 100%;
     font-size: 1.5rem;
     height: 6rem;
     line-height: 1.5;
 
     & img {
-      height: 5rem;
-      width: 8rem;
+      height: 4.4rem;
+      width: 7rem;
 
       margin-right: 1rem;
     }
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 850px) {
     width: 100%;
     font-size: 0.9rem;
     line-height: 1.8;

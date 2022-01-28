@@ -39,42 +39,34 @@ const colourStyles = {
     border: "1px solid #2d2d37",
     backgroundColor: "#2d2d37",
     color: "white",
-    borderRadius: "0px 0px 4px 4px",
     boxShadow: "none",
-    fontSize: "10px",
-    height: 30,
+    fontSize: "1.2rem",
+    height: "2.5rem",
     minHeight: 10,
     display: "flex",
     alignItems: "center",
     alignText: "center",
     type: "number",
     "@media (max-width: 2500px)": {
-      height: "3rem",
-      fontSize: "2rem",
+      fontSize: "1.6rem",
     },
     "@media (max-width: 1025px)": {
-      height: "2.5rem",
       fontSize: "1.5rem",
     },
     "@media (max-width: 750px)": {
-      height: "2rem",
-      fontSize: "1rem",
+      fontSize: "1.2rem",
     },
   }),
   input: styles => ({
     ...styles,
     color: "white",
-    fontSize: "15px",
+    fontSize: "1.2rem",
     "@media (max-width: 2500px)": {
       height: "4rem",
-      fontSize: "2rem",
     },
-    "@media (max-width: 1025px)": {
-      fontSize: "1.5rem",
-    },
+    "@media (max-width: 1025px)": {},
     "@media (max-width: 750px)": {
       height: "2rem",
-      fontSize: "1rem",
     },
   }),
 
@@ -189,15 +181,13 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
             />
             <div>
               {option.currencyCode === "MKD"
-                ? // ? "Danish Krone"
-                  // : option.currencyCode === "NOK"
-                  // ? "Norwegian Krone"
-                  // : option.currencyCode === "GEL"
-                  // ? "Georgian Lari"
-                  // : option.currencyCode === "GMD"
-                  // ? "Gambian Dalasi"
-                  // : option.currencyCode === "MKD"
-                  "Macedonian Denar"
+                ? "Macedonian Denar" // ? "Danish Krone"
+                : // : option.currencyCode === "NOK"
+                // ? "Norwegian Krone"
+                option.currencyCode === "GEL"
+                ? "Georgian Lari"
+                : option.currencyCode === "GMD"
+                ? "Gambian Dalasi"
                 : option.currencyName}
             </div>
             <div>{option.currencyCode}</div>
