@@ -89,64 +89,24 @@ const StyledNavbar = styled.nav`
 `
 
 const StyledLinkContainer = styled.div`
-  height: 20rem;
-  width: 20rem;
   left: 0;
   right: 0;
 
-  @media (max-width: 2500px) {
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 1000;
-    left: 0;
-    right: 0;
-    background-size: cover;
-    background-position-x: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    background-blend-mode: darken;
-  }
-
-  @media (max-width: 1025px) {
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 1000;
-    left: 0;
-    right: 0;
-    background-size: cover;
-    background-position-x: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    background-blend-mode: darken;
-  }
-
-  @media (max-width: 750px) {
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 1000;
-    left: 0;
-    right: 0;
-    background-size: cover;
-    background-position-x: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    background-blend-mode: darken;
-  }
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position-x: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: darken;
 `
 
 const StyledLink = styled(Link)`
@@ -186,21 +146,21 @@ const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFi
           </div>
 
           <StyledLinkContainer
-            style={{
-              backgroundImage: `${
-                counter === 1
-                  ? 'url("https://upload.wikimedia.org/wikipedia/commons/e/e8/Flag-map_of_the_world_%282018%29.png")'
-                  : counter === 2
-                  ? `url(${Europe})`
-                  : counter === 3
-                  ? `url(${Asia})`
-                  : counter === 4
-                  ? `url(${Africa})`
-                  : counter === 5
-                  ? `url(${NorthAmerica})`
-                  : `url(${SouthAmerica})`
-              }`,
-            }}
+          // style={{
+          //   backgroundImage: `${
+          //     counter === 1
+          //       ? 'url("https://upload.wikimedia.org/wikipedia/commons/e/e8/Flag-map_of_the_world_%282018%29.png")'
+          //       : counter === 2
+          //       ? `url(${Europe})`
+          //       : counter === 3
+          //       ? `url(${Asia})`
+          //       : counter === 4
+          //       ? `url(${Africa})`
+          //       : counter === 5
+          //       ? `url(${NorthAmerica})`
+          //       : `url(${SouthAmerica})`
+          //   }`,
+          // }}
           >
             <div></div>
             <StyledLink onClick={handleToggleBurgerMenu} to="/">

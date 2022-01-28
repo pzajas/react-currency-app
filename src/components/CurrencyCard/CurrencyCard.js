@@ -14,7 +14,7 @@ import CurrencySymbol from "./CurrencySymbol"
 
 const StyledCard = styled.div`
   display: grid;
-  grid-template-columns: 0.2fr 0.1fr 1fr 0.1fr;
+  grid-template-columns: 0.2fr 0.1fr 1fr;
   grid-template-rows: 50% 50%;
   box-sizing: border-box;
   background-color: #343441;
@@ -76,42 +76,40 @@ const StyledCard = styled.div`
   }
   @media (max-width: 2500px) {
     width: 100%;
-    height: 5.6rem;
+    height: 4.5rem;
     margin-bottom: 3px;
   }
-
-  /* @media (max-width: 1025px) {
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 50% 50%;
-    width: 100%;
-    height: 5.6rem;
-    margin-bottom: 3px;
-  } */
 
   @media (max-width: 1200px) {
     width: 100%;
-    height: 5rem;
+    height: 4.3rem;
+    font-size: 1rem;
   }
 
-  @media (max-width: 550px) {
+  @media (max-width: 1000px) {
     width: 100%;
-    height: 4.5rem;
+    height: 4.1rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 750px) {
+    width: 100%;
+    height: 3.9rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+    height: 3.7rem;
     font-size: 0.9rem;
   }
 
-  @media (max-width: 360px) {
+  @media (max-width: 400px) {
     width: 100%;
-    height: 4.5rem;
-    font-size: 0.7rem;
-  }
-
-  @media (max-width: 280px) {
-    width: 100%;
-    height: 4.5rem;
-    font-size: 0.5rem;
+    height: 3.5rem;
+    font-size: 0.8rem;
   }
 `
-const StyledButtonContainer = styled.div``
 
 const CurrencyCard = ({
   currencyName,
