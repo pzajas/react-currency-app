@@ -26,16 +26,31 @@ const StyledContainer = styled.div`
   font-family: "Roboto", sans-serif;
 
   @media (max-width: 2500px) {
+    width: 60%;
+  }
+
+  @media (max-width: 1800px) {
+    width: 70%;
+  }
+
+  @media (max-width: 1600px) {
+    width: 75%;
+  }
+
+  @media (max-width: 1400px) {
     width: 80%;
   }
 
-  @media (max-width: 1500px) {
-    width: 100%;
+  @media (max-width: 1200px) {
+    width: 85%;
   }
 
-  @media (max-width: 750px) {
-    width: 100%;
-    height: 100%;
+  @media (max-width: 1000px) {
+    width: 95%;
+  }
+
+  @media (max-width: 900px) {
+    width: 75%;
   }
 `
 

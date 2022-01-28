@@ -12,7 +12,7 @@ const StyledList = styled.ul`
 
   & li {
     box-sizing: border-box;
-    //padding: 0px 4px 2px 4px;
+    padding: 0px 4px 2px 4px;
     list-style: none;
     width: 100%;
   }
@@ -21,6 +21,22 @@ const StyledList = styled.ul`
 const StyledDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 1200px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 280px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
 `
 
 const CurrencyList = ({
