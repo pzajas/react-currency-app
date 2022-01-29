@@ -43,18 +43,17 @@ const StyledCode = styled.div`
     height: 2.1rem;
     width: 3.5rem;
 
-    font-size: 1.2rem;
-  }
-
-  @media (max-width: 1025px) {
-    height: 1.8rem;
-    width: 3rem;
-
     font-size: 1rem;
   }
 
-  @media (max-width: 750px) {
-    /* height: 1.5rem; */
+  @media (max-width: 768px) {
+    height: 1.8rem;
+    width: 3rem;
+
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 400px) {
     width: 2.5rem;
     font-size: 0.8rem;
   }
@@ -71,49 +70,58 @@ const colourStyles = {
     "@media (max-width: 2500px)": {
       maxWidth: "9.6rem",
     },
-    "@media (max-width: 1025px)": {
-      maxWidth: "9rem",
-    },
     "@media (max-width: 750px)": {
-      maxWidth: "8.4rem",
+      maxWidth: "8rem",
+    },
+    "@media (max-width: 400px)": {
+      maxWidth: "7rem",
     },
   }),
   control: () => ({
     marginTop: 4,
     marginRight: 4,
+    marginBottom: -2,
     border: "1px solid #2d2d37",
     backgroundColor: "#2d2d37",
     color: "white",
     boxShadow: "none",
-    fontSize: "1.2rem",
-    height: "2.5rem",
     minHeight: 10,
     display: "flex",
     alignItems: "center",
-    alignText: "center",
     "@media (max-width: 2500px)": {
       minWidth: "8rem",
       maxWidth: "9.2rem",
-    },
-    "@media (max-width: 1025px)": {
-      minWidth: "8rem",
-      maxWidth: "8.6rem",
+      height: "2.5rem",
+      fontSize: "1.2rem",
     },
     "@media (max-width: 750px)": {
       minWidth: "4rem",
       maxWidth: "8rem",
+      height: "2.3rem",
+      fontSize: "1.1rem",
+    },
+    "@media (max-width: 400px)": {
+      minWidth: "4rem",
+      maxWidth: "8rem",
+      height: "2.1rem",
+      fontSize: "0.9rem",
     },
   }),
   input: styles => ({
     ...styles,
     color: "white",
-    fontSize: "1.2rem",
     maxLength: "3",
-    "@media (max-width: 2500px)": {
-      height: "44px",
-    },
-    "@media (max-width: 750px)": {
+    "@media (max-width: 2500)": {
       height: "2.5rem",
+      fontSize: "1.1rem",
+    },
+    "@media (max-width: 768px)": {
+      height: "2.5rem",
+      fontSize: "1rem",
+    },
+    "@media (max-width: 400px)": {
+      height: "2.5rem",
+      fontSize: "0.9rem",
     },
   }),
   dropdownIndicator: styles => ({
@@ -125,12 +133,12 @@ const colourStyles = {
   }),
   menu: () => ({
     border: "none",
-    marginRight: 8,
+    marginRight: 4,
   }),
   menuList: styles => ({
     ...styles,
     zIndex: 9999,
-    // alignItems: "center",
+    backgroundColor: "rgb(55, 55, 55)",
   }),
   singleValue: styles => ({
     ...styles,
@@ -139,20 +147,29 @@ const colourStyles = {
   option: (styles, { isDisabled }) => {
     return {
       ...styles,
-      fontSize: "10px",
       color: "white",
       justifyContent: "center",
       backgroundColor: "#2d2d37",
-      "&:hover": {
-        backgroundColor: "grey",
-      },
       "@media (max-width: 2400px)": {
-        height: "44px",
-        fontSize: 25,
+        display: "flex",
+        height: "2.2rem",
+        marginBottom: 2,
+        alignItems: "center",
+        justifyContent: "left",
       },
       "@media (max-width: 750px)": {
-        height: "3.4rem",
-        fontSize: 16,
+        display: "flex",
+        height: "2.2rem",
+        marginBottom: 2,
+        alignItems: "center",
+        justifyContent: "left",
+      },
+      "@media (max-width: 400px)": {
+        display: "flex",
+        height: "2rem",
+        marginBottom: 2,
+        alignItems: "center",
+        justifyContent: "left",
       },
       cursor: isDisabled ? "not-allowed" : "default",
     }
@@ -178,7 +195,7 @@ const CurrencyChange = ({ currencyCountryListWithValues, baseCurrency, setBaseCu
         options={currencyCountryListWithValues}
         getOptionLabel={option => (
           <div className="select-option">
-            <img
+            {/* <img
               className="select-flag"
               alt="country flag"
               src={
@@ -192,8 +209,8 @@ const CurrencyChange = ({ currencyCountryListWithValues, baseCurrency, setBaseCu
                   ? `https://flagcdn.com/w320/au.png`
                   : option.countryFlag
               }
-            />
-            {/* <StyledCode className="select-code">{option.currencyCode}</StyledCode> */}
+            /> */}
+            <StyledCode className="select-code">{option.currencyCode}</StyledCode>
           </div>
         )}
         getOptionValue={option =>

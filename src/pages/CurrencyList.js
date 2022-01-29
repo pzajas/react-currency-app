@@ -3,16 +3,14 @@ import styled from "styled-components"
 
 const StyledListContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 25rem 25rem;
 
-  @media (max-width: 750px) {
-    display: flex;
-    flex-wrap: wrap;
+  @media (max-width: 768px) {
+    grid-template-columns: 25rem;
   }
 
-  @media (max-width: 280px) {
-    display: flex;
-    flex-wrap: wrap;
+  @media (max-width: 400px) {
+    grid-template-columns: 24rem;
   }
 `
 

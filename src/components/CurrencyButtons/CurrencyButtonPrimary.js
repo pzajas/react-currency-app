@@ -1,26 +1,16 @@
 import styled from "styled-components"
 
 const StyledButton = styled.button`
+  background: none;
   border: none;
-  border-radius: 0.1rem;
-  cursor: pointer;
+  border-bottom: 2px solid salmon;
   z-index: 1000;
+
+  cursor: pointer;
 
   @media (max-width: 2500px) {
     height: 3rem;
     width: 18rem;
-    background-color: white;
-    color: black;
-    font-size: 2rem;
-    &:hover {
-      color: black;
-    }
-  }
-
-  @media (max-width: 1025px) {
-    height: 3rem;
-    width: 16rem;
-    background-color: white;
     color: black;
     font-size: 2rem;
     &:hover {
@@ -29,7 +19,6 @@ const StyledButton = styled.button`
   }
 
   @media (max-width: 750px) {
-    background-color: white;
     height: 2.5rem;
     width: 14rem;
     color: black;
@@ -37,6 +26,13 @@ const StyledButton = styled.button`
     &:hover {
       color: black;
     }
+  }
+
+  @media (max-width: 400px) {
+    height: 2.5rem;
+    width: 14rem;
+    color: whitesmoke;
+    font-size: 1rem;
   }
 `
 

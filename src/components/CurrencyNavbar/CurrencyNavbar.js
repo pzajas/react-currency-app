@@ -16,11 +16,11 @@ import SouthAmerica from "../../assets/South_America.png"
 const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
-
   .test {
     display: flex;
     justify-content: right;
     z-index: 1001;
+    margin: 2rem 1.5rem 2rem 2rem;
     cursor: pointer;
   }
 
@@ -30,83 +30,70 @@ const StyledContainer = styled.div`
 `
 
 const StyledNavbar = styled.nav`
-  height: 50px;
   background-color: #2d2d37;
   color: black;
   display: flex;
   justify-content: right;
   font-weight: 500;
-  width: 100px;
   border-radius: 4px 4px 0px 0px;
   transition: all 0.5s linear;
 
+  .test:hover {
+    transform: rotate(360deg);
+  }
+
   @media (max-width: 2500px) {
     width: 100%;
-    height: 6rem;
+    height: 4.7rem;
     font-size: 40px;
 
     .test {
       align-items: center;
       font-size: 3rem;
-      margin: 2rem 2rem 2rem 2rem;
       color: white;
-    }
-    .test:hover {
-      transform: rotate(360deg);
     }
   }
 
-  @media (max-width: 1025px) {
-    width: 100%;
-    height: 5rem;
+  @media (max-width: 768px) {
+    width: 25rem;
+    height: 4.2rem;
 
     .test {
       align-items: center;
       font-size: 2.5rem;
-      margin: 1.5rem 1.5rem 1.5rem 1.5rem;
       color: white;
-    }
-    .test:hover {
-      transform: rotate(360deg);
     }
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 400px) {
+    width: 24rem;
     height: 4rem;
-    width: 100%;
-    transition: all 0.5s linear;
+    font-size: 0.5rem;
 
     .test {
-      align-items: center;
-      font-size: 2.2rem;
-      margin: 1rem 1rem 1rem 1rem;
+      font-size: 2rem;
       color: white;
-    }
-    .test:hover {
-      transform: rotate(360deg);
     }
   }
 `
 
 const StyledLinkContainer = styled.div`
-  left: 0;
-  right: 0;
-
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
-  height: 100%;
-  width: 100%;
   z-index: 1000;
-  left: 0;
-  right: 0;
   background-size: cover;
   background-position-x: center;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   background-blend-mode: darken;
+
+  @media (max-width: 400px) {
+    height: 100%;
+    position: fixed;
+  }
 `
 
 const StyledLink = styled(Link)`
@@ -162,7 +149,6 @@ const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFi
           //   }`,
           // }}
           >
-            <div></div>
             <StyledLink onClick={handleToggleBurgerMenu} to="/">
               <CurrencyButtonPrimary value="Currency" />
             </StyledLink>

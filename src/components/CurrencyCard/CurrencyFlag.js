@@ -12,36 +12,14 @@ const StyledFlag = styled.div`
     img {
       height: 4rem;
       width: 5.5rem;
+      margin-right: 2rem;
     }
   }
-  @media (max-width: 1200px) {
-    img {
-      height: 3.8rem;
-      width: 5.3rem;
-    }
-  }
-  @media (max-width: 1000px) {
-    img {
-      height: 3.6rem;
-      width: 5.1rem;
-    }
-  }
-  @media (max-width: 750px) {
+
+  @media (max-width: 768px) {
     & img {
       height: 3.4rem;
       width: 4.9rem;
-    }
-  }
-  @media (max-width: 500px) {
-    img {
-      height: 3.2rem;
-      width: 4.7rem;
-    }
-  }
-  @media (max-width: 400px) {
-    img {
-      height: 3rem;
-      width: 4.5rem;
     }
   }
 `
