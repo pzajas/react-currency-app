@@ -47,6 +47,15 @@ const colourStyles = {
     alignItems: "center",
     alignText: "center",
     type: "number",
+    "@media (max-width: 2500px)": {
+      height: "2.5rem",
+    },
+    "@media (max-width: 750px)": {
+      height: "2.3rem",
+    },
+    "@media (max-width: 400px)": {
+      height: "2.1rem",
+    },
   }),
   input: styles => ({
     ...styles,
@@ -89,16 +98,9 @@ const colourStyles = {
         marginBottom: "3px",
         marginRight: "1rem",
       },
-      "@media (max-width: 1500px)": {
-        height: "4rem",
-        marginBottom: "3px",
-        marginRight: "1rem",
-      },
       "@media (max-width: 750px)": {
         height: "3rem",
-        marginRight: "1rem",
-      },
-      "@media (max-width: 500px)": {
+        // marginRight: "1rem",
         fontSize: "0.9rem",
       },
       "@media (max-width: 400px)": {

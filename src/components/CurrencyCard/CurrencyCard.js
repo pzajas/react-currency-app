@@ -14,13 +14,12 @@ import CurrencySymbol from "./CurrencySymbol"
 
 const StyledCard = styled.div`
   display: grid;
-  grid-template-columns: 0.2fr 0.1fr 1fr;
   grid-template-rows: 50% 50%;
   box-sizing: border-box;
   background-color: #343441;
   color: white;
   border-radius: 2px;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   align-items: center;
   font-size: 1rem;
 
@@ -48,6 +47,9 @@ const StyledCard = styled.div`
   }
 
   .symbol-container {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -63,29 +65,24 @@ const StyledCard = styled.div`
 
     padding-bottom: 0.5rem;
   }
+
   @media (max-width: 2500px) {
+    grid-template-columns: 6.8rem 2.4rem 13.2rem 2rem;
     height: 4.5rem;
+    font-size: 1rem;
   }
 
-  @media (max-width: 1200px) {
-    height: 4.3rem;
-  }
-
-  @media (max-width: 1000px) {
+  @media (max-width: 768px) {
+    grid-template-columns: 6.2rem 2.4rem 14rem 2rem;
+    width: 24.5rem;
     height: 4.1rem;
-  }
-
-  @media (max-width: 750px) {
-    height: 3.9rem;
-  }
-
-  @media (max-width: 500px) {
-    height: 3.7rem;
     font-size: 0.9rem;
   }
 
   @media (max-width: 400px) {
-    height: 3.5rem;
+    grid-template-columns: 6rem 2.4rem 13rem 2rem;
+    width: 23.5rem;
+    height: 3.9rem;
     font-size: 0.8rem;
   }
 `
