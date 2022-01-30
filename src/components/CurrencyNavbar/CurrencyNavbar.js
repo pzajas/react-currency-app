@@ -79,27 +79,21 @@ const StyledNavbar = styled.nav`
 
 const StyledLinkContainer = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   flex-direction: column;
-  justify-content: top;
-  padding-top: 5rem;
-  align-items: center;
+  padding-top: 4.87rem;
   position: absolute;
   z-index: 1000;
   background-size: cover;
   background-position-x: center;
   background-color: #181818;
   background-blend-mode: darken;
-
-  @media (max-width: 400px) {
-    height: 100%;
-    position: fixed;
-  }
+  height: 40%;
+  position: fixed;
 `
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: white;
 `
 
 const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFiltered }) => {
@@ -162,7 +156,7 @@ const CurrencyNavbar = ({ currencyCountryListWithValues, setCurrencyContinentsFi
             <StyledLink to="/">
               <CurrencyButtonPrimary
                 onClick={handleFilterContinents}
-                value={countryNameOnButton}
+                value={`Filter: ${countryNameOnButton}`}
               ></CurrencyButtonPrimary>
             </StyledLink>
           </StyledLinkContainer>
