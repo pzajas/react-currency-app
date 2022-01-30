@@ -26,6 +26,7 @@ const StyledFlag = styled.div`
 const CurrencyFlag = ({ currencyCode, countryFlag }) => {
   const EU_FLAG = `https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png`
   const US_FLAG = `https://flagcdn.com/w320/us.png`
+  const GB_FLAG = `https://flagcdn.com/w320/gb.png`
   const AU_FLAG = `https://flagcdn.com/w320/au.png`
   return (
     <StyledFlag>
@@ -38,6 +39,8 @@ const CurrencyFlag = ({ currencyCode, countryFlag }) => {
             ? US_FLAG
             : currencyCode === "AUD"
             ? AU_FLAG
+            : currencyCode === "GBP"
+            ? GB_FLAG
             : countryFlag
         }
       />

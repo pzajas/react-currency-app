@@ -7,7 +7,7 @@ import styled from "styled-components"
 import CurrencyNavbar from "./components/CurrencyNavbar/CurrencyNavbar"
 import CurrencyForm from "./components/CurrencyForm/CurrencyForm"
 import CurrencyList from "./pages/CurrencyList"
-import CurrencyAdd from "./components/DropDownMenus/CurrencyAdd"
+import CurrencyAdd from "./components/CurrencyAdd/CurrencyAdd"
 import Favourite from "./pages/CurrencyFavourite"
 import About from "./pages/About"
 

@@ -27,7 +27,7 @@ const StyledList = styled.ul`
 
   & li {
     box-sizing: border-box;
-    padding: 0px 4px 2px 4px;
+    padding: 0 0.24rem 0.12rem 0.24rem;
     list-style: none;
     width: 100%;
     color: white;

@@ -11,7 +11,6 @@ import CurrencyCode from "./CurrencyCode"
 import CurrencyPrice from "./CurrencyPrice"
 import CurrencyName from "./CurrencyName"
 import CurrencySymbol from "./CurrencySymbol"
-import { faLevelDownAlt } from "@fortawesome/free-solid-svg-icons"
 
 const StyledCard = styled.div`
   display: grid;
@@ -23,6 +22,7 @@ const StyledCard = styled.div`
   margin-bottom: 2px;
   align-items: center;
   font-size: 1rem;
+  cursor: pointer;
 
   @media (max-width: 2500px) {
     grid-template-columns: 6.8rem 2.4rem 13.2rem 2rem;

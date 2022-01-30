@@ -71,6 +71,7 @@ const colourStyles = {
   }),
   dropdownIndicator: styles => ({
     ...styles,
+    paddingRight: "0.75rem",
     "&:hover": {
       border: "#2d2d37",
       color: "white",
