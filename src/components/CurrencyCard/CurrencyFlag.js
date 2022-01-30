@@ -12,7 +12,6 @@ const StyledFlag = styled.div`
     img {
       height: 4rem;
       width: 5.5rem;
-      margin-right: 2rem;
     }
   }
 

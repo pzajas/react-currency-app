@@ -11,6 +11,7 @@ import CurrencyCode from "./CurrencyCode"
 import CurrencyPrice from "./CurrencyPrice"
 import CurrencyName from "./CurrencyName"
 import CurrencySymbol from "./CurrencySymbol"
+import { faLevelDownAlt } from "@fortawesome/free-solid-svg-icons"
 
 const StyledCard = styled.div`
   display: grid;
@@ -22,49 +23,6 @@ const StyledCard = styled.div`
   margin-bottom: 2px;
   align-items: center;
   font-size: 1rem;
-
-  .flag-container {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
-  }
-
-  .code-container {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-
-    padding-top: 0.5rem;
-  }
-
-  .name-container {
-    display: flex;
-    align-items: center;
-
-    padding-top: 0.5rem;
-  }
-
-  .symbol-container {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding-top: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .price-container {
-    grid-column-start: 2;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 3;
-
-    padding-bottom: 0.5rem;
-  }
 
   @media (max-width: 2500px) {
     grid-template-columns: 6.8rem 2.4rem 13.2rem 2rem;
@@ -84,6 +42,66 @@ const StyledCard = styled.div`
     width: 23.5rem;
     height: 3.9rem;
     font-size: 0.8rem;
+  }
+`
+
+const StyledFlagContainer = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+`
+
+const StyledCodeContainer = styled.div`
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+  padding-top: 0.5rem;
+`
+
+const StyledNameContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  padding-top: 0.5rem;
+`
+
+const StyledSymbolContainer = styled.div`
+  grid-column-start: 4;
+  grid-column-end: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+`
+
+const StyledPriceContainer = styled.div`
+  .price-container {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    padding-bottom: 0.5rem;
+  }
+`
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2.5rem;
+
+  @media (max-width: 768px) {
+    padding-top: 2.3rem;
+  }
+
+  @media (max-width: 400px) {
+    padding-top: 2.2rem;
   }
 `
 
@@ -126,25 +144,55 @@ const CurrencyCard = ({
 
   return (
     <StyledCard onClick={handleToggleDeleteButton}>
-      <div className="flag-container">
+      <StyledFlagContainer>
         <CurrencyFlag currencyCode={currencyCode} countryFlag={countryFlag} currencyName={currencyName}></CurrencyFlag>
-      </div>
+      </StyledFlagContainer>
 
-      <div className="code-container">
+      <StyledCodeContainer>
         <CurrencyCode currencyCode={currencyCode} currencyName={currencyName} currencySymbol={currencySymbol} />
-      </div>
+      </StyledCodeContainer>
 
-      <div className="name-container">
+      <StyledNameContainer>
         <CurrencyName currencyName={currencyName} />
-      </div>
+      </StyledNameContainer>
 
-      <div className="symbol-container">
-        <CurrencySymbol currencySymbol={currencySymbol} />
-      </div>
+      {!toggleDeleteButton ? (
+        <StyledSymbolContainer>
+          <CurrencySymbol currencySymbol={currencySymbol} />
+        </StyledSymbolContainer>
+      ) : userCurrencyList ? (
+        <StyledButtonContainer>
+          <CurrencyButton
+            plusMinusSign={minus}
+            onClick={handleDeleteCurrencyFromTheUserList}
+            userCurrencyList={userCurrencyList}
+            setUserCurrencyList={setUserCurrencyList}
+            currencyCode={currencyCode}
+          />
+          <CurrencyButton
+            plusMinusSign={plus}
+            onClick={handleAddCurrencyToFavourieList}
+            userCurrencyList={userCurrencyList}
+            userFavouriteCurrencyList={userFavouriteCurrencyList}
+            setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
+            currencyCode={currencyCode}
+          />
+        </StyledButtonContainer>
+      ) : (
+        <StyledButtonContainer>
+          <CurrencyButton
+            plusMinusSign={minus}
+            onClick={handleDeleteCurrencyFromTheFavouritesList}
+            userFavouriteCurrencyList={userFavouriteCurrencyList}
+            setUserFavouriteCurrencyList={setUserFavouriteCurrencyList}
+            currencyCode={currencyCode}
+          />
+        </StyledButtonContainer>
+      )}
 
-      <div className="price-container">
+      <StyledPriceContainer>
         <CurrencyPrice currencyPriceRatioCalculated={currencyPriceRatioCalculated} />
-      </div>
+      </StyledPriceContainer>
 
       {/* <div className="container">
         {!toggleDeleteButton ? (

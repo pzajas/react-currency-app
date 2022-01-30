@@ -81,13 +81,14 @@ const StyledLinkContainer = styled.div`
   display: flex;
   gap: 1rem;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
+  padding-top: 5rem;
   align-items: center;
   position: absolute;
   z-index: 1000;
   background-size: cover;
   background-position-x: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #181818;
   background-blend-mode: darken;
 
   @media (max-width: 400px) {

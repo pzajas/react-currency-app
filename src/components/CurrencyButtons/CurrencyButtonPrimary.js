@@ -3,10 +3,12 @@ import styled from "styled-components"
 const StyledButton = styled.button`
   background: none;
   border: none;
-  border-bottom: 2px solid salmon;
   z-index: 1000;
-
   cursor: pointer;
+
+  &:hover {
+    border-bottom: 2px solid salmon;
+  }
 
   @media (max-width: 2500px) {
     height: 3rem;
@@ -33,6 +35,10 @@ const StyledButton = styled.button`
     width: 14rem;
     color: whitesmoke;
     font-size: 1rem;
+
+    &:hover {
+      border-bottom: 2px solid salmon;
+    }
   }
 `
 
