@@ -1,6 +1,19 @@
 import CurrencyCard from "../../src/components/CurrencyCard/CurrencyCard"
 import styled from "styled-components"
 
+const StyledListContainer = styled.div`
+  display: grid;
+  grid-template-columns: 25rem 25rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 25rem;
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: 24rem;
+  }
+`
+
 const StyledList = styled.ul`
   box-sizing: border-box;
   margin: 0;
@@ -23,7 +36,7 @@ const StyledList = styled.ul`
 
 const Favourite = ({ userFavouriteCurrencyList, currencyValuesListFiltered, input, setUserFavouriteCurrencyList }) => {
   return (
-    <div>
+    <StyledListContainer>
       {userFavouriteCurrencyList.map(({ currencyCode, currencyName, currencySymbol, countryFlag }) => (
         <StyledList>
           <li>
@@ -40,7 +53,7 @@ const Favourite = ({ userFavouriteCurrencyList, currencyValuesListFiltered, inpu
           </li>
         </StyledList>
       ))}
-    </div>
+    </StyledListContainer>
   )
 }
 
