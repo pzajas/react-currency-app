@@ -195,7 +195,7 @@ const CurrencyChange = ({ currencyCountryListWithValues, baseCurrency, setBaseCu
         options={currencyCountryListWithValues}
         getOptionLabel={option => (
           <div className="select-option">
-            {/* <img
+            <img
               className="select-flag"
               alt="country flag"
               src={
@@ -209,7 +209,7 @@ const CurrencyChange = ({ currencyCountryListWithValues, baseCurrency, setBaseCu
                   ? `https://flagcdn.com/w320/au.png`
                   : option.countryFlag
               }
-            /> */}
+            />
             <StyledCode className="select-code">{option.currencyCode}</StyledCode>
           </div>
         )}
