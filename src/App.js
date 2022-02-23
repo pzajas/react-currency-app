@@ -73,7 +73,6 @@ const App = () => {
           currencyContinent: item.continents[0],
         }))
       setCurrencyCountryListFiltered([...currencyCountryListArray])
-      console.log(response.data)
     })
   }, [baseCurrency, CURRENCY_COUNTRY_API_URL])
 
