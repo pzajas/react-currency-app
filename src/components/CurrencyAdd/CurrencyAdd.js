@@ -141,7 +141,6 @@ const CurrencyAdd = ({ userCurrencyList, setUserCurrencyList, currencyContinents
     setSelectInput(characters.toLowerCase())
   }
 
-  console.log(addCurrencySelectOptions)
   return (
     <div className="custom-select">
       <StyledSelect
