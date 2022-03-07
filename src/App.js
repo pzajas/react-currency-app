@@ -56,7 +56,7 @@ const App = () => {
   const [currencyCountryListWithValues, setCurrencyCountryListWithValues] = useState([])
   const [currencyContinentsFiltered, setCurrencyContinentsFiltered] = useState([])
 
-  const CURRENCY_VALUES_API_URL = `https://freecurrencyapi.net/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
+  const CURRENCY_VALUES_API_URL = `https://currencyapi.com/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
   const CURRENCY_COUNTRY_API_URL = `https://restcountries.com/v3.1/all`
 
   //------------FETCH DATA FROM API AND MAKE ARRAYS OF CURRENCIES AND VALUES ------------//
