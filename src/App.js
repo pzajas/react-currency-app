@@ -56,7 +56,7 @@ const App = () => {
   const [currencyCountryListWithValues, setCurrencyCountryListWithValues] = useState([])
   const [currencyContinentsFiltered, setCurrencyContinentsFiltered] = useState([])
 
-  const CURRENCY_VALUES_API_URL = `https://currencyapi.com/api/v2/latest?apikey=86c489a0-5a0d-11ec-a1ea-9309d8ea8734&base_currency=${baseCurrency}`
+  const CURRENCY_VALUES_API_URL = `https://v6.exchangerate-api.com/v6/44838a4e5a64d39ba105a77f/latest/${baseCurrency}`
   const CURRENCY_COUNTRY_API_URL = `https://restcountries.com/v3.1/all`
 
   //------------FETCH DATA FROM API AND MAKE ARRAYS OF CURRENCIES AND VALUES ------------//
@@ -78,11 +78,12 @@ const App = () => {
 
   useEffect(() => {
     axios.get(CURRENCY_VALUES_API_URL).then(response => {
-      const currencyValuesListArray = Object.entries(response.data.data).map(([key, value]) => ({
+      const currencyValuesListArray = Object.entries(response.data.conversion_rates).map(([key, value]) => ({
         nation: key,
         price: value,
       }))
       setCurrencyValuesListFiltered([...currencyValuesListArray])
+      console.log(response.data)
     })
   }, [baseCurrency, CURRENCY_VALUES_API_URL])
 
