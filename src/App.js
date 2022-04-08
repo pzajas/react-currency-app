@@ -83,7 +83,6 @@ const App = () => {
         price: value,
       }))
       setCurrencyValuesListFiltered([...currencyValuesListArray])
-      console.log(response.data)
     })
   }, [baseCurrency, CURRENCY_VALUES_API_URL])
 
